@@ -1,18 +1,18 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "E:\\PTUDTMDT\\project\\EcomerceWebsite\\EcomerceWebsite\\",
+  "WorkspaceRootPath": "E:\\PTUDTMDT\\lastProject\\EcomerceWebsite\\EcomerceWebsite\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E594B403-EEAF-4D75-B708-A85A23C4959D}|EcomerceWebsite\\EcomerceWebsite.csproj|e:\\ptudtmdt\\project\\ecomercewebsite\\ecomercewebsite\\ecomercewebsite\\views\\login\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{E594B403-EEAF-4D75-B708-A85A23C4959D}|EcomerceWebsite\\EcomerceWebsite.csproj|solutionrelative:ecomercewebsite\\views\\login\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{E594B403-EEAF-4D75-B708-A85A23C4959D}|EcomerceWebsite\\EcomerceWebsite.csproj|e:\\ptudtmdt\\lastproject\\ecomercewebsite\\ecomercewebsite\\ecomercewebsite\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E594B403-EEAF-4D75-B708-A85A23C4959D}|EcomerceWebsite\\EcomerceWebsite.csproj|solutionrelative:ecomercewebsite\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E594B403-EEAF-4D75-B708-A85A23C4959D}|EcomerceWebsite\\EcomerceWebsite.csproj|E:\\PTUDTMDT\\project\\EcomerceWebsite\\EcomerceWebsite\\ecomercewebsite\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E594B403-EEAF-4D75-B708-A85A23C4959D}|EcomerceWebsite\\EcomerceWebsite.csproj|solutionrelative:ecomercewebsite\\controllers\\logincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E594B403-EEAF-4D75-B708-A85A23C4959D}|EcomerceWebsite\\EcomerceWebsite.csproj|e:\\ptudtmdt\\lastproject\\ecomercewebsite\\ecomercewebsite\\ecomercewebsite\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{E594B403-EEAF-4D75-B708-A85A23C4959D}|EcomerceWebsite\\EcomerceWebsite.csproj|solutionrelative:ecomercewebsite\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E594B403-EEAF-4D75-B708-A85A23C4959D}|EcomerceWebsite\\EcomerceWebsite.csproj|E:\\PTUDTMDT\\project\\EcomerceWebsite\\EcomerceWebsite\\ecomercewebsite\\models\\dbbanhangtmdtcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E594B403-EEAF-4D75-B708-A85A23C4959D}|EcomerceWebsite\\EcomerceWebsite.csproj|solutionrelative:ecomercewebsite\\models\\dbbanhangtmdtcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{E594B403-EEAF-4D75-B708-A85A23C4959D}|EcomerceWebsite\\EcomerceWebsite.csproj|e:\\ptudtmdt\\lastproject\\ecomercewebsite\\ecomercewebsite\\ecomercewebsite\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E594B403-EEAF-4D75-B708-A85A23C4959D}|EcomerceWebsite\\EcomerceWebsite.csproj|solutionrelative:ecomercewebsite\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Bookmark",
@@ -42,50 +42,42 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Login.cshtml",
-              "DocumentMoniker": "E:\\PTUDTMDT\\project\\EcomerceWebsite\\EcomerceWebsite\\EcomerceWebsite\\Views\\Login\\Login.cshtml",
-              "RelativeDocumentMoniker": "EcomerceWebsite\\Views\\Login\\Login.cshtml",
-              "ToolTip": "E:\\PTUDTMDT\\project\\EcomerceWebsite\\EcomerceWebsite\\EcomerceWebsite\\Views\\Login\\Login.cshtml",
-              "RelativeToolTip": "EcomerceWebsite\\Views\\Login\\Login.cshtml",
-              "ViewState": "AQIAAK8AAAAAAAAAAAAmwBoBAAASAAAA",
+              "DocumentIndex": 1,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "E:\\PTUDTMDT\\lastProject\\EcomerceWebsite\\EcomerceWebsite\\EcomerceWebsite\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "EcomerceWebsite\\Views\\Home\\Index.cshtml",
+              "ToolTip": "E:\\PTUDTMDT\\lastProject\\EcomerceWebsite\\EcomerceWebsite\\EcomerceWebsite\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "EcomerceWebsite\\Views\\Home\\Index.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAOUBAAAeAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-06-01T17:12:10.135Z",
+              "WhenOpened": "2024-06-04T15:58:56.487Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "LoginController.cs",
-              "DocumentMoniker": "E:\\PTUDTMDT\\project\\EcomerceWebsite\\EcomerceWebsite\\EcomerceWebsite\\Controllers\\LoginController.cs",
-              "RelativeDocumentMoniker": "EcomerceWebsite\\Controllers\\LoginController.cs",
-              "ToolTip": "E:\\PTUDTMDT\\project\\EcomerceWebsite\\EcomerceWebsite\\EcomerceWebsite\\Controllers\\LoginController.cs",
-              "RelativeToolTip": "EcomerceWebsite\\Controllers\\LoginController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAuwAsAAAAhAAAA",
+              "DocumentIndex": 2,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "E:\\PTUDTMDT\\lastProject\\EcomerceWebsite\\EcomerceWebsite\\EcomerceWebsite\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "EcomerceWebsite\\Controllers\\HomeController.cs",
+              "ToolTip": "E:\\PTUDTMDT\\lastProject\\EcomerceWebsite\\EcomerceWebsite\\EcomerceWebsite\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "EcomerceWebsite\\Controllers\\HomeController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAcAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-01T17:11:40.941Z"
+              "WhenOpened": "2024-06-04T15:58:42.73Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "DBBanHangTMDTContext.cs",
-              "DocumentMoniker": "E:\\PTUDTMDT\\project\\EcomerceWebsite\\EcomerceWebsite\\EcomerceWebsite\\Models\\DBBanHangTMDTContext.cs",
-              "RelativeDocumentMoniker": "EcomerceWebsite\\Models\\DBBanHangTMDTContext.cs",
-              "ToolTip": "E:\\PTUDTMDT\\project\\EcomerceWebsite\\EcomerceWebsite\\EcomerceWebsite\\Models\\DBBanHangTMDTContext.cs",
-              "RelativeToolTip": "EcomerceWebsite\\Models\\DBBanHangTMDTContext.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-01T17:11:15.297Z"
-            }
-          ]
-        },
-        {
-          "DockedWidth": 1144,
-          "SelectedChildIndex": -1,
-          "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+              "DocumentIndex": 0,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "E:\\PTUDTMDT\\lastProject\\EcomerceWebsite\\EcomerceWebsite\\EcomerceWebsite\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "EcomerceWebsite\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "E:\\PTUDTMDT\\lastProject\\EcomerceWebsite\\EcomerceWebsite\\EcomerceWebsite\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "EcomerceWebsite\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAhAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-06-04T15:56:12.852Z",
+              "EditorCaption": ""
             }
           ]
         },
