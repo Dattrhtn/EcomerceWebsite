@@ -1,29 +1,40 @@
-﻿using System;
-using System.Collections.Generic;
-
-// Code scaffolded by EF Core assumes nullable reference types (NRTs) are not used or disabled.
-// If you have enabled NRTs for your project, then un-comment the following line:
-// #nullable disable
-
 namespace EcomerceWebsite.Models
 {
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.Data.Entity.Spatial;
+
+    [Table("Order")]
     public partial class Order
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Order()
         {
-            OrderItem = new HashSet<OrderItem>();
+            order_item = new HashSet<order_item>();
         }
 
-        public int OrderId { get; set; }
-        public DateTime? OrderDate { get; set; }
-        public decimal? TotalPrice { get; set; }
-        public int? CustomerCustomerId { get; set; }
-        public int? PaymentPaymentId { get; set; }
-        public int? ShipmentShipmentId { get; set; }
+        [Key]
+        public int order_id { get; set; }
 
-        public virtual Account CustomerCustomer { get; set; }
-        public virtual Payment PaymentPayment { get; set; }
-        public virtual Shipment ShipmentShipment { get; set; }
-        public virtual ICollection<OrderItem> OrderItem { get; set; }
+        public DateTime? order_date { get; set; }
+
+        public decimal? total_price { get; set; }
+
+        public int? account_account_id { get; set; }
+
+        public int? Payment_payment_id { get; set; }
+
+        public int? Shipment_shipment_id { get; set; }
+
+        public virtual account account { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<order_item> order_item { get; set; }
+
+        public virtual Payment Payment { get; set; }
+
+        public virtual shipment shipment { get; set; }
     }
 }

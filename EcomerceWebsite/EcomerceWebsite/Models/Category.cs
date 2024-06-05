@@ -1,22 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-
-// Code scaffolded by EF Core assumes nullable reference types (NRTs) are not used or disabled.
-// If you have enabled NRTs for your project, then un-comment the following line:
-// #nullable disable
-
 namespace EcomerceWebsite.Models
 {
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.Data.Entity.Spatial;
+
+    [Table("Category")]
     public partial class Category
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Category()
         {
-            Product = new HashSet<Product>();
+            Products = new HashSet<Product>();
         }
 
-        public int CategoryId { get; set; }
-        public string Name { get; set; }
+        [Key]
+        public int category_id { get; set; }
 
-        public virtual ICollection<Product> Product { get; set; }
+        [StringLength(100)]
+        public string name { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Product> Products { get; set; }
     }
 }

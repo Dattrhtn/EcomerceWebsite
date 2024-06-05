@@ -1,37 +1,60 @@
-﻿using System;
-using System.Collections.Generic;
-
-// Code scaffolded by EF Core assumes nullable reference types (NRTs) are not used or disabled.
-// If you have enabled NRTs for your project, then un-comment the following line:
-// #nullable disable
-
 namespace EcomerceWebsite.Models
 {
-    public partial class Account
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.Data.Entity.Spatial;
+
+    [Table("account")]
+    public partial class account
     {
-        public Account()
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public account()
         {
-            Cart = new HashSet<Cart>();
-            Order = new HashSet<Order>();
-            Payment = new HashSet<Payment>();
-            Shipment = new HashSet<Shipment>();
-            Wishlist = new HashSet<Wishlist>();
+            carts = new HashSet<cart>();
+            Orders = new HashSet<Order>();
+            Payments = new HashSet<Payment>();
+            shipments = new HashSet<shipment>();
+            wishlists = new HashSet<wishlist>();
         }
 
-        public int CustomerId { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string Email { get; set; }
-        public string Password { get; set; }
-        public string Address { get; set; }
-        public string PhoneNumber { get; set; }
-        public int? Role { get; set; }
-        public string Username { get; set; }
+        [Key]
+        public int account_id { get; set; }
 
-        public virtual ICollection<Cart> Cart { get; set; }
-        public virtual ICollection<Order> Order { get; set; }
-        public virtual ICollection<Payment> Payment { get; set; }
-        public virtual ICollection<Shipment> Shipment { get; set; }
-        public virtual ICollection<Wishlist> Wishlist { get; set; }
+        [StringLength(100)]
+        public string first_name { get; set; }
+
+        [StringLength(100)]
+        public string last_name { get; set; }
+
+        [StringLength(100)]
+        public string email { get; set; }
+
+        [StringLength(100)]
+        public string password { get; set; }
+
+        [StringLength(100)]
+        public string address { get; set; }
+
+        public int? role { get; set; }
+
+        [StringLength(100)]
+        public string phone_number { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<cart> carts { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Order> Orders { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Payment> Payments { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<shipment> shipments { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<wishlist> wishlists { get; set; }
     }
 }

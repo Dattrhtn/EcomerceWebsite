@@ -1,19 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-
-// Code scaffolded by EF Core assumes nullable reference types (NRTs) are not used or disabled.
-// If you have enabled NRTs for your project, then un-comment the following line:
-// #nullable disable
-
 namespace EcomerceWebsite.Models
 {
-    public partial class Wishlist
-    {
-        public int WishlistId { get; set; }
-        public int CustomerCustomerId { get; set; }
-        public int? ProductProductId { get; set; }
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.Data.Entity.Spatial;
 
-        public virtual Account CustomerCustomer { get; set; }
-        public virtual Product ProductProduct { get; set; }
+    [Table("wishlist")]
+    public partial class wishlist
+    {
+        [Key]
+        [Column(Order = 0)]
+        public int wishlist_id { get; set; }
+
+        [Key]
+        [Column(Order = 1)]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int account_account_id { get; set; }
+
+        public int? product_product_id { get; set; }
+
+        public virtual account account { get; set; }
+
+        public virtual Product Product { get; set; }
     }
 }

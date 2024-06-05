@@ -1,29 +1,45 @@
-﻿using System;
-using System.Collections.Generic;
-
-// Code scaffolded by EF Core assumes nullable reference types (NRTs) are not used or disabled.
-// If you have enabled NRTs for your project, then un-comment the following line:
-// #nullable disable
-
 namespace EcomerceWebsite.Models
 {
-    public partial class Shipment
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.Data.Entity.Spatial;
+
+    [Table("shipment")]
+    public partial class shipment
     {
-        public Shipment()
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public shipment()
         {
-            Order = new HashSet<Order>();
+            Orders = new HashSet<Order>();
         }
 
-        public int ShipmentId { get; set; }
-        public DateTime? ShipmentDate { get; set; }
-        public string Address { get; set; }
-        public string City { get; set; }
-        public string State { get; set; }
-        public string Country { get; set; }
-        public string ZipCode { get; set; }
-        public int? CustomerCustomerId { get; set; }
+        [Key]
+        public int shipment_id { get; set; }
 
-        public virtual Account CustomerCustomer { get; set; }
-        public virtual ICollection<Order> Order { get; set; }
+        public DateTime? shipment_date { get; set; }
+
+        [StringLength(100)]
+        public string address { get; set; }
+
+        [StringLength(100)]
+        public string city { get; set; }
+
+        [StringLength(20)]
+        public string state { get; set; }
+
+        [StringLength(50)]
+        public string country { get; set; }
+
+        [StringLength(10)]
+        public string zip_code { get; set; }
+
+        public int? account_account_id { get; set; }
+
+        public virtual account account { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Order> Orders { get; set; }
     }
 }

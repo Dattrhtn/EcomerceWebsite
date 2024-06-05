@@ -1,26 +1,35 @@
-﻿using System;
-using System.Collections.Generic;
-
-// Code scaffolded by EF Core assumes nullable reference types (NRTs) are not used or disabled.
-// If you have enabled NRTs for your project, then un-comment the following line:
-// #nullable disable
-
 namespace EcomerceWebsite.Models
 {
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.Data.Entity.Spatial;
+
+    [Table("Payment")]
     public partial class Payment
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Payment()
         {
-            Order = new HashSet<Order>();
+            Orders = new HashSet<Order>();
         }
 
-        public int PaymentId { get; set; }
-        public DateTime? PaymentDate { get; set; }
-        public string PaymentMethod { get; set; }
-        public decimal? Amount { get; set; }
-        public int? CustomerCustomerId { get; set; }
+        [Key]
+        public int payment_id { get; set; }
 
-        public virtual Account CustomerCustomer { get; set; }
-        public virtual ICollection<Order> Order { get; set; }
+        public DateTime? payment_date { get; set; }
+
+        [StringLength(100)]
+        public string payment_method { get; set; }
+
+        public decimal? amount { get; set; }
+
+        public int? account_account_id { get; set; }
+
+        public virtual account account { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Order> Orders { get; set; }
     }
 }
