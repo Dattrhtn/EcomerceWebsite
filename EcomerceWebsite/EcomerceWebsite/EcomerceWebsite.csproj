@@ -129,6 +129,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\Admin_CategoriesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Global.asax.cs">
@@ -171,6 +172,7 @@
     <Content Include="CSS\owl.carousel.min.css" />
     <Content Include="CSS\slicknav.min.css" />
     <Content Include="CSS\style.css" />
+    <Content Include="CSS\styleAdmin.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\ElegantIcons.svg" />
     <Content Include="fonts\fontawesome-webfont.svg" />
@@ -301,6 +303,12 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Shared\_LayoutPageAdmin.cshtml" />
+    <Content Include="Views\Admin_Categories\Create.cshtml" />
+    <Content Include="Views\Admin_Categories\Delete.cshtml" />
+    <Content Include="Views\Admin_Categories\Details.cshtml" />
+    <Content Include="Views\Admin_Categories\Edit.cshtml" />
+    <Content Include="Views\Admin_Categories\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

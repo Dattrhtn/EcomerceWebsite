@@ -18,14 +18,14 @@ namespace EcomerceWebsite.Models
         [Key]
         public int payment_id { get; set; }
 
-        public DateTime? payment_date { get; set; }
-
         [StringLength(100)]
         public string payment_method { get; set; }
 
         public decimal? amount { get; set; }
 
         public int? account_account_id { get; set; }
+
+        public DateTime? ngayTao { get; set; }
 
         public virtual account account { get; set; }
 

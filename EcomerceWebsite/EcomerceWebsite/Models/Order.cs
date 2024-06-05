@@ -18,8 +18,6 @@ namespace EcomerceWebsite.Models
         [Key]
         public int order_id { get; set; }
 
-        public DateTime? order_date { get; set; }
-
         public decimal? total_price { get; set; }
 
         public int? account_account_id { get; set; }
@@ -27,6 +25,8 @@ namespace EcomerceWebsite.Models
         public int? Payment_payment_id { get; set; }
 
         public int? Shipment_shipment_id { get; set; }
+
+        public DateTime? ngayTao { get; set; }
 
         public virtual account account { get; set; }
 

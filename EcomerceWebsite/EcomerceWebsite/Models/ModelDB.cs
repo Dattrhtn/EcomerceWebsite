@@ -25,23 +25,11 @@ namespace EcomerceWebsite.Models
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<account>()
-                .Property(e => e.first_name)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<account>()
-                .Property(e => e.last_name)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<account>()
                 .Property(e => e.email)
                 .IsUnicode(false);
 
             modelBuilder.Entity<account>()
                 .Property(e => e.password)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<account>()
-                .Property(e => e.address)
                 .IsUnicode(false);
 
             modelBuilder.Entity<account>()
@@ -76,10 +64,6 @@ namespace EcomerceWebsite.Models
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Category>()
-                .Property(e => e.name)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Category>()
                 .HasMany(e => e.Products)
                 .WithOptional(e => e.Category)
                 .HasForeignKey(e => e.Category_category_id);
@@ -99,10 +83,6 @@ namespace EcomerceWebsite.Models
                 .HasPrecision(10, 2);
 
             modelBuilder.Entity<Payment>()
-                .Property(e => e.payment_method)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<Payment>()
                 .Property(e => e.amount)
                 .HasPrecision(10, 2);
 
@@ -112,16 +92,20 @@ namespace EcomerceWebsite.Models
                 .HasForeignKey(e => e.Payment_payment_id);
 
             modelBuilder.Entity<Product>()
-                .Property(e => e.SKU)
+                .Property(e => e.productCode)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Product>()
-                .Property(e => e.description)
+                .Property(e => e.SKU)
                 .IsUnicode(false);
 
             modelBuilder.Entity<Product>()
                 .Property(e => e.price)
                 .HasPrecision(10, 2);
+
+            modelBuilder.Entity<Product>()
+                .Property(e => e.size)
+                .IsUnicode(false);
 
             modelBuilder.Entity<Product>()
                 .Property(e => e.Image)
@@ -141,22 +125,6 @@ namespace EcomerceWebsite.Models
                 .HasMany(e => e.wishlists)
                 .WithOptional(e => e.Product)
                 .HasForeignKey(e => e.product_product_id);
-
-            modelBuilder.Entity<shipment>()
-                .Property(e => e.address)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<shipment>()
-                .Property(e => e.city)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<shipment>()
-                .Property(e => e.state)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<shipment>()
-                .Property(e => e.country)
-                .IsUnicode(false);
 
             modelBuilder.Entity<shipment>()
                 .Property(e => e.zip_code)

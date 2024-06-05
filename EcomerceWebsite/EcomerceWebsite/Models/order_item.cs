@@ -23,6 +23,8 @@ namespace EcomerceWebsite.Models
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int order_order_id { get; set; }
 
+        public DateTime? ngayTao { get; set; }
+
         public virtual Order Order { get; set; }
 
         public virtual Product Product { get; set; }

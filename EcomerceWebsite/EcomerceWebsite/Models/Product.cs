@@ -21,6 +21,9 @@ namespace EcomerceWebsite.Models
         public int product_id { get; set; }
 
         [StringLength(100)]
+        public string productCode { get; set; }
+
+        [StringLength(100)]
         public string SKU { get; set; }
 
         [StringLength(100)]
@@ -28,12 +31,24 @@ namespace EcomerceWebsite.Models
 
         public decimal? price { get; set; }
 
+        [StringLength(200)]
+        public string name { get; set; }
+
+        [StringLength(10)]
+        public string size { get; set; }
+
+        public int? color { get; set; }
+
+        public int? quantity { get; set; }
+
         public int? stock { get; set; }
 
         public int? Category_category_id { get; set; }
 
         [StringLength(500)]
         public string Image { get; set; }
+
+        public DateTime? ngayTao { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<cart> carts { get; set; }
