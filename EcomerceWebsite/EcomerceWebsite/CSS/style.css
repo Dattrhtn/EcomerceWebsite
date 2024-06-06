@@ -1181,7 +1181,7 @@ ol {
 	color: #b7b7b7;
 }
 
-.shop__sidebar__search form input::-ms-input-placeholder {
+.shop__sidebar__search form input:-ms-input-placeholder {
 	color: #b7b7b7;
 }
 
@@ -1288,7 +1288,6 @@ ol {
 	margin-right: 5px;
 	cursor: pointer;
 }
-
 .shop__sidebar__size label.active {
 	background: #111111;
 	color: #ffffff;
@@ -2011,7 +2010,7 @@ ol {
 	color: #3d3d3d;
 }
 
-.footer__widget .footer__newslatter form input::-ms-input-placeholder {
+.footer__widget .footer__newslatter form input:-ms-input-placeholder {
 	color: #3d3d3d;
 }
 
@@ -2456,7 +2455,7 @@ ol {
 	color: #b7b7b7;
 }
 
-.cart__discount form input::-ms-input-placeholder {
+.cart__discount form input:-ms-input-placeholder {
 	color: #b7b7b7;
 }
 
@@ -2580,7 +2579,7 @@ ol {
 	color: #b7b7b7;
 }
 
-.checkout__input input::-ms-input-placeholder {
+.checkout__input input:-ms-input-placeholder {
 	color: #b7b7b7;
 }
 
@@ -2840,7 +2839,7 @@ ol {
 	color: #444444;
 }
 
-.blog__sidebar__item form input::-ms-input-placeholder {
+.blog__sidebar__item form input:-ms-input-placeholder {
 	color: #444444;
 }
 
@@ -3187,7 +3186,7 @@ ol {
 	color: #b7b7b7;
 }
 
-.blog__details__comment form input::-ms-input-placeholder {
+.blog__details__comment form input:-ms-input-placeholder {
 	color: #b7b7b7;
 }
 
@@ -3226,7 +3225,7 @@ ol {
 	color: #b7b7b7;
 }
 
-.blog__details__comment form textarea::-ms-input-placeholder {
+.blog__details__comment form textarea:-ms-input-placeholder {
 	color: #b7b7b7;
 }
 
@@ -3317,7 +3316,7 @@ ol {
 	color: #b7b7b7;
 }
 
-.contact__form input::-ms-input-placeholder {
+.contact__form input:-ms-input-placeholder {
 	color: #b7b7b7;
 }
 
@@ -3349,7 +3348,7 @@ ol {
 	color: #b7b7b7;
 }
 
-.contact__form textarea::-ms-input-placeholder {
+.contact__form textarea:-ms-input-placeholder {
 	color: #b7b7b7;
 }
 

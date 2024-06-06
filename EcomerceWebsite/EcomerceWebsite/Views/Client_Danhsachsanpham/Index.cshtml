@@ -1,0 +1,253 @@
+﻿@model IEnumerable<EcomerceWebsite.Models.Product>
+
+@{
+    ViewBag.Title = "Cửa hàng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    bool[] checkCount = { false };
+}
+<style>
+    .shop__sidebar__size a.size_link {
+        color: #000;
+        padding: 8px 24px;
+    }
+    .shop__product__option__right a.sort_price:hover {
+        opacity: 0.6;
+    }
+    .shop__sidebar__size label.active a.size_link {
+        color: #ffffff;
+    }
+
+    .shop__sidebar__size label.label_size {
+        padding: 0;
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .shop__sidebar__color a.size_link_color {
+        width: 30px;
+        height: 30px;
+        display: block;
+        position: relative;
+        z-index: 999;
+    }
+
+    .shop__sidebar__price .btn_searchByPrice:hover {
+        opacity: 0.6;
+    }
+</style>
+<section class="breadcrumb-option">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb__text">
+                    <h4>Cửa hàng</h4>
+                    <div class="breadcrumb__links">
+                        <a href="./index.html">Home</a>
+                        <span>Cửa hàng</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="shop spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="shop__sidebar">
+                    <div class="shop__sidebar__search">
+                        <form id="searchForm" method="post" action="@Url.Action("Search", "Client_Danhsachsanpham")">
+                            <input class="form-control" aria-describedby="inputGroupPrepend" required type="text" id="search_value" name="search_value" placeholder="Nhập tên sản phẩm...">
+                            <button type="submit"><img src="../../img/icon/search.png" /></button>
+                        </form>
+                    </div>
+                    <div class="shop__sidebar__accordion">
+                        <div class="accordion" id="accordionExample">
+                            <div class="card">
+                                <div class="card-heading">
+                                    <a data-toggle="collapse" data-target="#collapseOne">Danh mục</a>
+                                </div>
+                                <div id="collapseOne" class="collapse show" data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        <div class="shop__sidebar__categories">
+                                            <ul class="nice-scroll">
+                                                @foreach (var item in ViewBag.listCate)
+                                                {
+                                                    var id = Convert.ToInt32(@item.category_id);
+                                                    <li><a href="/Client_Danhsachsanpham/SearchbyCategory/?category_id=@id">@item.name</a></li>
+                                                }
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-heading">
+                                    <a data-toggle="collapse" data-target="#collapseThree">Lọc theo giá</a>
+                                </div>
+                                <div id="collapseThree" class="collapse show" data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        <div class="shop__sidebar__price">
+                                            <form style="display: flex; justify-content: space-around; align-items: center;" id="priceForm" method="post" action="@Url.Action("SearchByPrice", "Client_Danhsachsanpham")">
+                                                <input class="price_value form-control" style="width: 30%;" aria-describedby="inputGroupPrepend" required type="text" id="min_price" name="min_price" placeholder="Price...">
+                                                <span> - </span>
+                                                <input class="form-control" style="width: 30%;" aria-describedby="inputGroupPrepend" required type="text" id="max_price" name="max_price" placeholder="Price...">
+                                                <button class="price_value btn_searchByPrice" style="background: #f7f7f7; border: none; padding: 7px 10px;" type="submit">Lọc</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-heading">
+                                    <a data-toggle="collapse" data-target="#collapseFour">Kích thước</a>
+                                </div>
+                                <div id="collapseFour" class="collapse show" data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        <div class="shop__sidebar__size">
+
+                                            <label class="label_size" for="m">
+                                                <a class="size_link" href="/Client_Danhsachsanpham/SearchbySize/?size=M">M</a>
+                                                <input type="radio" id="m">
+                                            </label>
+                                            <label class="label_size" for="s">
+                                                <a class="size_link" href="/Client_Danhsachsanpham/SearchbySize/?size=S">S</a>
+                                                <input type="radio" id="s">
+                                            </label>
+                                            <label class="label_size" for="l">
+                                                <a class="size_link" href="/Client_Danhsachsanpham/SearchbySize/?size=L">L</a>
+                                                <input type="radio" id="l">
+                                            </label>
+                                            <label class="label_size" for="xl">
+                                                <a class="size_link" href="/Client_Danhsachsanpham/SearchbySize/?size=XL">XL</a>
+                                                <input type="radio" id="xl">
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-heading">
+                                    <a data-toggle="collapse" data-target="#collapseFive">Màu sắc</a>
+                                </div>
+                                <div id="collapseFive" class="collapse show" data-parent="#accordionExample">
+                                    <div class="card-body">
+                                        <div class="shop__sidebar__color">
+                                            <label class="c-1" for="sp-1">
+                                                <a class="size_link_color" href="/Client_Danhsachsanpham/SearchbyColor/?Color=7"></a>
+                                                <input type="radio" id="sp-1">
+                                            </label>
+                                            <label class="c-2" for="sp-2">
+                                                <a class="size_link_color" href="/Client_Danhsachsanpham/SearchbyColor/?Color=1"></a>
+                                                <input type="radio" id="sp-2">
+                                            </label>
+                                            <label class="c-3" for="sp-3">
+                                                <a class="size_link_color" href="/Client_Danhsachsanpham/SearchbyColor/?Color=2"></a>
+                                                <input type="radio" id="sp-3">
+                                            </label>
+                                            <label class="c-4" for="sp-4">
+                                                <input type="radio" id="sp-4">
+                                                <a class="size_link_color" href="/Client_Danhsachsanpham/SearchbyColor/?Color=3"></a>
+                                            </label>
+                                            <label class="c-5" for="sp-5">
+                                                <a class="size_link_color" href="/Client_Danhsachsanpham/SearchbyColor/?Color=8"></a>
+                                                <input type="radio" id="sp-5">
+                                            </label>
+                                            <label class="c-6" for="sp-6">
+                                                <a class="size_link_color" href="/Client_Danhsachsanpham/SearchbyColor/?Color=5"></a>
+                                                <input type="radio" id="sp-6">
+                                            </label>
+                                            <label class="c-9" for="sp-9">
+                                                <a class="size_link_color" href="/Client_Danhsachsanpham/SearchbyColor/?Color=6"></a>
+                                                <input type="radio" id="sp-9">
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-9">
+                <div class="shop__product__option">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                            <div class="shop__product__option__left">
+                                <p>Hiển thị 1–12 của @Model.Count() sản phẩm</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6">
+                            <div class="shop__product__option__right">
+                                <p>Sắp xếp theo giá:</p>
+                                <a style="color: black; padding: 8px" class="sort_price" href="/Client_Danhsachsanpham/SortbyPrice">Giá giảm dần</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    @foreach (var item in Model)
+                    {
+                        @*@Html.ActionLink("Details", "Details", new { id = item.product_id })*@
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                            <div class="product__item">
+                                <div class="product__item__pic set-bg" data-setbg="@item.Image" style="border: 0.5px solid #efefef; box-shadow:rgb(131 129 129 / 30%) 10px 10px 35px ; ">
+                                    <ul class="product__hover">
+                                        <li><a href="#"><img src="../../img/icon/heart.png" alt=""></a></li>
+                                        <li>
+                                            <a href="#"><img src="../../img/icon/compare.png" alt=""> <span>So sánh</span></a>
+                                        </li>
+                                        <li><a href="#"><img src="../../img/icon/search.png" alt=""></a></li>
+                                    </ul>
+                                </div>
+                                <div class="product__item__text">
+                                    <h6>@item.name</h6>
+                                    <a href="/Client_Danhsachsanpham/AddToCart/?product_id=@item.product_id" class="add-cart">+ Thêm vào giỏ hàng</a>
+                                    <div class="rating">
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                        <i class="fa fa-star-o"></i>
+                                    </div>
+                                    <h5>@item.price$</h5>
+                                    <div class="product__color__select">
+                                        <label for="pc-4">
+                                            <input type="radio" id="pc-4">
+                                        </label>
+                                        <label class="active black" for="pc-5">
+                                            <input type="radio" id="pc-5">
+                                        </label>
+                                        <label class="grey" for="pc-6">
+                                            <input type="radio" id="pc-6">
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="product__pagination">
+                            <a class="active" href="#">1</a>
+                            <a href="#">2</a>
+                            <a href="#">3</a>
+                            <span>...</span>
+                            <a href="#">21</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    document.getElementById("searchForm").addEventListener("submit", function (event) {
+        var searchValue = document.getElementById("search_value").value.trim();
+        if (searchValue === "") {
+            event.preventDefault(); // Ngăn chặn sự kiện submit
+        }
+    });
+</script>
