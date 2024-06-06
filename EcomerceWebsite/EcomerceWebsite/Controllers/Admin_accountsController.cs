@@ -89,7 +89,9 @@ namespace EcomerceWebsite.Controllers
                 account.ngayTao = existingPayment.ngayTao; // Giữ nguyên giá trị ngayTao
                 db.Entry(account).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                TempData["erEditAC"] = "Sửa thông tin tài khoản thành công!";
+                ViewBag.erEditAC = TempData["erEditAC"] as string;
+                return View(account);
             }
             return View(account);
         }
