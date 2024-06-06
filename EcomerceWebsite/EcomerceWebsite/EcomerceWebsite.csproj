@@ -130,6 +130,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\Admin_CategoriesController.cs" />
+    <Compile Include="Controllers\Client_CartController.cs" />
+    <Compile Include="Controllers\Client_DanhsachsanphamController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Global.asax.cs">
@@ -309,6 +311,20 @@
     <Content Include="Views\Admin_Categories\Details.cshtml" />
     <Content Include="Views\Admin_Categories\Edit.cshtml" />
     <Content Include="Views\Admin_Categories\Index.cshtml" />
+    <Content Include="Views\Client_Danhsachsanpham\Details.cshtml" />
+    <Content Include="Views\Client_Danhsachsanpham\Index.cshtml" />
+    <Content Include="Views\Client_Danhsachsanpham\Search.cshtml" />
+    <Content Include="Views\Client_Danhsachsanpham\SearchbyCategory.cshtml" />
+    <Content Include="Views\Client_Danhsachsanpham\SearchbySize.cshtml" />
+    <Content Include="Views\Client_Danhsachsanpham\SearchbyColor.cshtml" />
+    <Content Include="Views\Client_Danhsachsanpham\SearchByPrice.cshtml" />
+    <Content Include="Views\Client_Danhsachsanpham\SortbyPrice.cshtml" />
+    <Content Include="Views\Client_Cart\Create.cshtml" />
+    <Content Include="Views\Client_Cart\Delete.cshtml" />
+    <Content Include="Views\Client_Cart\Details.cshtml" />
+    <Content Include="Views\Client_Cart\Edit.cshtml" />
+    <Content Include="Views\Client_Cart\Index.cshtml" />
+    <Content Include="Views\Client_Danhsachsanpham\AddToCart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

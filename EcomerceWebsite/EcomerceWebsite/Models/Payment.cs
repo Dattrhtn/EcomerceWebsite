@@ -25,7 +25,7 @@ namespace EcomerceWebsite.Models
 
         public int? account_account_id { get; set; }
 
-        public DateTime? ngayTao { get; set; }
+        public DateTime ngayTao { get; set; }
 
         public virtual account account { get; set; }
 

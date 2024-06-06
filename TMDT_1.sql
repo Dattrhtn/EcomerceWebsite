@@ -1,6 +1,6 @@
-﻿--use master
---drop database DBBanHangTMDT
---g
+﻿use master
+drop database DBBanHangTMDT
+go
 
 create database DBBanHangTMDT
 go
