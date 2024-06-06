@@ -27,6 +27,21 @@
         .header__menu ul li a {
             font-size: 15px;
         }
+        .header__nav__option a span
+        {
+            color: #fff;
+            font-size: 14px;
+            position: absolute;
+            right: -15px;
+            top: -15px;
+            border-radius: 50%;
+            background-color: palevioletred;
+            z-index: 999;
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -55,7 +70,7 @@
         <div class="offcanvas__nav__option">
             <a href="#" class="search-switch"><img src="../../img/icon/search.png" alt=""></a>
             <a href="#"><img src="../../img/icon/heart.png" alt=""></a>
-            <a href="#"><img src="../../img/icon/cart.png" alt=""> <span>0</span></a>
+            <a href="/Client_Cart/Index"><img src="../../img/icon/cart.png" alt=""> <span>0</span></a>
             <div class="price">$0.00</div>
         </div>
         <div id="mobile-menu-wrap"></div>
@@ -91,7 +106,7 @@
                     <nav class="header__menu mobile-menu">
                         <ul>
                             <li class="active"><a href="/">Trang chủ</a></li>
-                            <li><a href="/Client_Danhsachsanpham">Cửa hàng</a></li>
+                            <li><a href="/Client_Danhsachsanpham/Index">Cửa hàng</a></li>
                             <li>
                                 <a href="#">Pages</a>
                                 <ul class="dropdown">
@@ -111,8 +126,7 @@
                     <div class="header__nav__option">
                         <a href="#" data-toggle="tooltip" title="Tìm kiếm" class="search-switch"><img src="../../img/icon/search.png" alt=""></a>
                         <a href="#" data-toggle="tooltip" title="Yêu thích"><img src="../../img/icon/heart.png" alt=""></a>
-                        <a href="#" data-toggle="tooltip" title="Giỏ hàng"><img src="../../img/icon/cart.png" alt=""> <span>0</span></a>
-                        <div class="price">$0.00</div>
+                        <a href="/Client_Cart/Index" data-toggle="tooltip" title="Giỏ hàng"><img src="../../img/icon/cart.png" alt=""> <span>@Session["numberOfCart"]</span></a>
                     </div>
                 </div>
             </div>

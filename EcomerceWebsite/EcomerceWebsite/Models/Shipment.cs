@@ -21,13 +21,13 @@ namespace EcomerceWebsite.Models
         [Column(TypeName = "datetime2")]
         public DateTime? shipment_date { get; set; }
 
-        [StringLength(100)]
+        [StringLength(255)]
         public string address { get; set; }
 
         [StringLength(100)]
         public string city { get; set; }
 
-        [StringLength(20)]
+        [StringLength(255)]
         public string state { get; set; }
 
         [StringLength(50)]

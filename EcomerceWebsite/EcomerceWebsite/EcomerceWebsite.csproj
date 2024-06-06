@@ -152,6 +152,7 @@
     <Compile Include="Models\Payment.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\shipment.cs" />
+    <Compile Include="Models\sysdiagram.cs" />
     <Compile Include="Models\wishlist.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -333,11 +334,6 @@
     <Content Include="Views\Client_Danhsachsanpham\SearchbyColor.cshtml" />
     <Content Include="Views\Client_Danhsachsanpham\SearchByPrice.cshtml" />
     <Content Include="Views\Client_Danhsachsanpham\SortbyPrice.cshtml" />
-    <Content Include="Views\Client_Cart\Create.cshtml" />
-    <Content Include="Views\Client_Cart\Delete.cshtml" />
-    <Content Include="Views\Client_Cart\Details.cshtml" />
-    <Content Include="Views\Client_Cart\Edit.cshtml" />
-    <Content Include="Views\Client_Cart\Index.cshtml" />
     <Content Include="Views\Client_Danhsachsanpham\AddToCart.cshtml" />
     <Content Include="Views\Admin_Payments\Create.cshtml" />
     <Content Include="Views\Admin_Payments\Delete.cshtml" />
@@ -365,6 +361,11 @@
     <Content Include="Views\Admin_shipments\Details.cshtml" />
     <Content Include="Views\Admin_shipments\Edit.cshtml" />
     <Content Include="Views\Admin_shipments\Index.cshtml" />
+    <Content Include="Views\Client_Cart\Create.cshtml" />
+    <Content Include="Views\Client_Cart\Delete.cshtml" />
+    <Content Include="Views\Client_Cart\Details.cshtml" />
+    <Content Include="Views\Client_Cart\Edit.cshtml" />
+    <Content Include="Views\Client_Cart\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

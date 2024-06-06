@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Core;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -17,6 +18,7 @@ namespace EcomerceWebsite.Controllers
         private ModelDB db = new ModelDB();
 
         // GET: Client_Danhsachsanpham
+        [HttpGet]
         public ActionResult Index()
         {
             List<Product> products_Search = TempData["products_Search"] as List<Product>;
@@ -25,6 +27,12 @@ namespace EcomerceWebsite.Controllers
             List<Product> productsByColor = TempData["products_ByColor"] as List<Product>;
             List<Product> productsByPrice = TempData["products_ByPrice"] as List<Product>;
             List<Product> productsSortByPrice = TempData["products_SortByPrice"] as List<Product>;
+
+            string messAddError = TempData["MessAddCateError"] as string;
+            if (messAddError != "")
+            {
+                ViewBag.messAddError = messAddError;
+            }
             var products = db.Products.Include(p => p.Category);
             var categories = db.Categories.ToList();
 
@@ -176,8 +184,34 @@ namespace EcomerceWebsite.Controllers
 
         public ActionResult AddToCart(int? product_id)
         {
-            ViewBag.Messeage = product_id;
-            return View();
+            try
+            {
+                var product = db.Products.Where(p => p.product_id == product_id).FirstOrDefault();
+
+                var check_product_ID = db.carts.Where(c => c.product_product_id == product_id).FirstOrDefault();
+                if (check_product_ID == null)
+                {
+                    cart new_Cart_Item = new cart();
+                    new_Cart_Item.quantity = 1;
+                    new_Cart_Item.product_product_id = product.product_id;
+                    new_Cart_Item.account_account_id = 1;
+                    new_Cart_Item.ngayTao = DateTime.Now;
+                    db.carts.Add(new_Cart_Item);
+                    db.SaveChanges();
+                }
+                else
+                {
+                    check_product_ID.quantity = check_product_ID.quantity + 1;
+                    db.Entry(check_product_ID).State = EntityState.Modified;
+                    db.SaveChanges();
+                }
+                Session["numberOfCart"] = db.carts.Count();
+            }
+            catch (Exception e)
+            {
+                TempData["MessAddCateError"] = "Thêm sản phẩm lỗi!" + e.InnerException?.Message;
+            }
+            return RedirectToAction("Index");
         }
         protected override void Dispose(bool disposing)
         {
