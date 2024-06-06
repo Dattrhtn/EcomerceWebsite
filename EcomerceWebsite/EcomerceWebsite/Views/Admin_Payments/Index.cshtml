@@ -1,0 +1,40 @@
+﻿@model IEnumerable<EcomerceWebsite.Models.Payment>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPageAdmin.cshtml";
+}
+
+<h2>Phương thức thanh toán</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.payment_method)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ngayTao)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.payment_method)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ngayTao)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.payment_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.payment_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.payment_id })
+        </td>
+    </tr>
+}
+
+</table>

@@ -2,6 +2,7 @@
 drop database DBBanHangTMDT
 go
 
+
 create database DBBanHangTMDT
 go
 use DbBanHangTMDT
@@ -15,14 +16,14 @@ create table account(
  address nvarchar(100),
  [role] int,
  phone_number varchar(100),
- ngayTao datetime default(getdate())
+ ngayTao datetime2 not null default(getdate())
 )
 go
 
 create table Category (
  category_id int primary key identity,
  name nvarchar(100),
-  ngayTao  datetime not null default(getdate())
+  ngayTao  datetime2 not null default(getdate())
 )
 go
 create table Product (
@@ -39,7 +40,7 @@ create table Product (
  stock int,
  Category_category_id int,
  Image varchar(500),
-  ngayTao datetime not null default(getdate()),
+  ngayTao datetime2 not null default(getdate()),
  constraint Product_Category foreign key (Category_category_id) references Category(category_id)
 )
 
@@ -47,21 +48,21 @@ go
 create table Payment(
  payment_id int primary key identity,
  payment_method nvarchar(100),
- amount decimal(10,2),
- account_account_id int,
-  ngayTao datetime not null default(getdate()),
- constraint payment_account foreign key (account_account_id) references account(account_id)
+ ngayTao datetime2 not null default(getdate()),
 )
+
+go
+
 create table shipment (
  shipment_id int primary key identity,
- shipment_date datetime,
+ shipment_date datetime2,
  address nvarchar(100),
  city nvarchar(100),
  state nvarchar(20),
  country nvarchar(50),
  zip_code varchar(10),
  account_account_id int,
- ngayTao datetime not null default(getdate()),
+ ngayTao datetime2 not null default(getdate()),
  constraint shipment_account foreign key (account_account_id) references account(account_id)
 )
 go
@@ -71,10 +72,10 @@ create table [Order](
  account_account_id int,
  Payment_payment_id int,
  Shipment_shipment_id int,
-  ngayTao datetime not null default(getdate()),
+ ngayTao datetime2 not null default(getdate()),
  constraint order_account foreign key (account_account_id) references account(account_id),
  constraint order_payment foreign key (payment_payment_id) references Payment(payment_id),
- constraint order_shipment foreign key (Shipment_shipment_id) references shipment(shipment_id)
+ constraint order_shipment foreign key (Shipment_shipment_id) references shipment(shipment_id),
 )
 go
 create table order_item(
@@ -83,7 +84,7 @@ create table order_item(
  price decimal(10,2),
  product_product_id int,
  order_order_id int,
-  ngayTao datetime not null default(getdate()),
+  ngayTao datetime2 not null default(getdate()),
  primary key (order_item_id, order_order_id),
  constraint order_item_product foreign key (product_product_id) references product(product_id),
  constraint order_item_order foreign key (order_order_id) references [order](order_id),
@@ -94,7 +95,7 @@ create table cart (
  quantity int,
  account_account_id int,
  product_product_id int,
-  ngayTao datetime not null default(getdate()),
+  ngayTao datetime2 not null default(getdate()),
  primary key (cart_id, account_account_id),
  constraint cart_account foreign key (account_account_id) references account(account_id),
  constraint cart_product foreign key (product_product_id) references product(product_id),
@@ -104,7 +105,7 @@ create table wishlist(
  wishlist_id int identity,
  account_account_id int,
  product_product_id int,
-  ngayTao datetime not null default(getdate()),
+  ngayTao datetime2 not null default(getdate()),
  primary key (wishlist_id, account_account_id),
   constraint wishlist_account foreign key (account_account_id) references account(account_id),
    constraint wishlist_product foreign key (product_product_id) references product(product_id),

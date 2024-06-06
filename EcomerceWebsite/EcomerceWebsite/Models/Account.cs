@@ -14,7 +14,6 @@ namespace EcomerceWebsite.Models
         {
             carts = new HashSet<cart>();
             Orders = new HashSet<Order>();
-            Payments = new HashSet<Payment>();
             shipments = new HashSet<shipment>();
             wishlists = new HashSet<wishlist>();
         }
@@ -42,16 +41,14 @@ namespace EcomerceWebsite.Models
         [StringLength(100)]
         public string phone_number { get; set; }
 
-        public DateTime? ngayTao { get; set; }
+        [Column(TypeName = "datetime2")]
+        public DateTime ngayTao { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<cart> carts { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order> Orders { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Payment> Payments { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<shipment> shipments { get; set; }

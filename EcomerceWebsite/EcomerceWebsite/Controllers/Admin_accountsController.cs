@@ -10,125 +10,122 @@ using EcomerceWebsite.Models;
 
 namespace EcomerceWebsite.Controllers
 {
-    public class Admin_CategoriesController : Controller
+    public class Admin_accountsController : Controller
     {
         private ModelDB db = new ModelDB();
 
-        // GET: Admin_Categories
+        // GET: Admin_accounts
         public ActionResult Index()
         {
-            return View(db.Categories.ToList());
+            return View(db.accounts.ToList());
         }
 
-        // GET: Admin_Categories/Details/5
+        // GET: Admin_accounts/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Category category = db.Categories.Find(id);
-            if (category == null)
+            account account = db.accounts.Find(id);
+            if (account == null)
             {
                 return HttpNotFound();
             }
-            return View(category);
+            return View(account);
         }
 
-        // GET: Admin_Categories/Create
+        // GET: Admin_accounts/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Admin_Categories/Create
+        // POST: Admin_accounts/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "category_id,name")] Category category)
+        public ActionResult Create([Bind(Include = "account_id,first_name,last_name,email,password,address,role,phone_number")] account account)
         {
             if (ModelState.IsValid)
             {
-                category.ngayTao = DateTime.Now;
-                db.Categories.Add(category);
+                account.ngayTao = DateTime.Now;
+                db.accounts.Add(account);
                 db.SaveChanges();
-                TempData["erAddCate"] = "Thêm danh mục sản phẩm thành công!";
-                ViewBag.erAddCate = TempData["erAddCate"] as string;
+                TempData["erAddAc"] = "Thêm tài khoản thành công!";
+                ViewBag.erAddAc = TempData["erAddAc"] as string;
                 return View();
             }
 
-            return View(category);
+            return View(account);
         }
 
-        // GET: Admin_Categories/Edit/5
+        // GET: Admin_accounts/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Category category = db.Categories.Find(id);
-            if (category == null)
+            account account = db.accounts.Find(id);
+            if (account == null)
             {
                 return HttpNotFound();
             }
-            return View(category);
+            return View(account);
         }
 
-        // POST: Admin_Categories/Edit/5
+        // POST: Admin_accounts/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "category_id,name")] Category category)
+        public ActionResult Edit([Bind(Include = "account_id,first_name,last_name,email,password,address,role,phone_number")] account account)
         {
-            var existingPayment = db.Categories.AsNoTracking().FirstOrDefault(p => p.category_id == category.category_id);
+            var existingPayment = db.accounts.AsNoTracking().FirstOrDefault(p => p.account_id == account.account_id);
             if (ModelState.IsValid)
             {
-                category.ngayTao = existingPayment.ngayTao; // Giữ nguyên giá trị ngayTao
-                db.Entry(category).State = EntityState.Modified;
+                account.ngayTao = existingPayment.ngayTao; // Giữ nguyên giá trị ngayTao
+                db.Entry(account).State = EntityState.Modified;
                 db.SaveChanges();
-                TempData["erEditCate"] = "Sửa danh mục sản phẩm thành công!";
-                ViewBag.erEditCate = TempData["erEditCate"] as string;
-                return View(category);
+                return RedirectToAction("Index");
             }
-            return View(category);
+            return View(account);
         }
 
-        // GET: Admin_Categories/Delete/5
+        // GET: Admin_accounts/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Category category = db.Categories.Find(id);
-            if (category == null)
+            account account = db.accounts.Find(id);
+            if (account == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.erDeleteCate = TempData["erDeleteCate"] as string;
-            return View(category);
+            ViewBag.erDeleteAc = TempData["erDeleteAc"] as string;
+            return View(account);
         }
 
-        // POST: Admin_Categories/Delete/5
+        // POST: Admin_accounts/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Category category = db.Categories.Find(id);
-            try
-            {
+            account account = db.accounts.Find(id);
+            try { 
                 
-                db.Categories.Remove(category);
+                db.accounts.Remove(account);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
             catch(Exception ex)
             {
-                TempData["erDeleteCate"] = "Không thể xóa danh mục: danh mục đang chứa sản phẩm";
-                return RedirectToAction("Delete",new { id = category.category_id});
+                TempData["erDeleteAc"] = "Tài khoản đang được sử dụng!";
+                return RedirectToAction("Delete", new { id = account.account_id});
             }
         }
 

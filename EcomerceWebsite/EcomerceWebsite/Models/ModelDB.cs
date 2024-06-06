@@ -48,11 +48,6 @@ namespace EcomerceWebsite.Models
                 .HasForeignKey(e => e.account_account_id);
 
             modelBuilder.Entity<account>()
-                .HasMany(e => e.Payments)
-                .WithOptional(e => e.account)
-                .HasForeignKey(e => e.account_account_id);
-
-            modelBuilder.Entity<account>()
                 .HasMany(e => e.shipments)
                 .WithOptional(e => e.account)
                 .HasForeignKey(e => e.account_account_id);
@@ -80,10 +75,6 @@ namespace EcomerceWebsite.Models
 
             modelBuilder.Entity<order_item>()
                 .Property(e => e.price)
-                .HasPrecision(10, 2);
-
-            modelBuilder.Entity<Payment>()
-                .Property(e => e.amount)
                 .HasPrecision(10, 2);
 
             modelBuilder.Entity<Payment>()

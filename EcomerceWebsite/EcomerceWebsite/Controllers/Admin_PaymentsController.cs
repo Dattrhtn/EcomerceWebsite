@@ -10,125 +10,126 @@ using EcomerceWebsite.Models;
 
 namespace EcomerceWebsite.Controllers
 {
-    public class Admin_CategoriesController : Controller
+    public class Admin_PaymentsController : Controller
     {
         private ModelDB db = new ModelDB();
 
-        // GET: Admin_Categories
+        // GET: Admin_Payments
         public ActionResult Index()
         {
-            return View(db.Categories.ToList());
+            return View(db.Payments.ToList());
         }
 
-        // GET: Admin_Categories/Details/5
+        // GET: Admin_Payments/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Category category = db.Categories.Find(id);
-            if (category == null)
+            Payment payment = db.Payments.Find(id);
+            if (payment == null)
             {
                 return HttpNotFound();
             }
-            return View(category);
+            return View(payment);
         }
 
-        // GET: Admin_Categories/Create
+        // GET: Admin_Payments/Create
         public ActionResult Create()
         {
+            ViewBag.erAddPa = TempData["erAddPa"] as string;
             return View();
         }
 
-        // POST: Admin_Categories/Create
+        // POST: Admin_Payments/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "category_id,name")] Category category)
+        public ActionResult Create([Bind(Include = "payment_id,payment_method")] Payment payment)
         {
             if (ModelState.IsValid)
             {
-                category.ngayTao = DateTime.Now;
-                db.Categories.Add(category);
+                payment.ngayTao = DateTime.Now;
+                db.Payments.Add(payment);
                 db.SaveChanges();
-                TempData["erAddCate"] = "Thêm danh mục sản phẩm thành công!";
-                ViewBag.erAddCate = TempData["erAddCate"] as string;
-                return View();
+                TempData["erAddPa"] = "Thêm Phương thức thanh toán thành công!";
+                ViewBag.erAddPa = TempData["erAddPa"] as string;
+                return RedirectToAction("Create");
             }
 
-            return View(category);
+            return View(payment);
         }
 
-        // GET: Admin_Categories/Edit/5
+        // GET: Admin_Payments/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Category category = db.Categories.Find(id);
-            if (category == null)
+            Payment payment = db.Payments.Find(id);
+            if (payment == null)
             {
                 return HttpNotFound();
             }
-            return View(category);
+            ViewBag.erEditPa = TempData["erEditPa"] as string;
+            return View(payment);
         }
 
-        // POST: Admin_Categories/Edit/5
+        // POST: Admin_Payments/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "category_id,name")] Category category)
+        public ActionResult Edit([Bind(Include = "payment_id,payment_method")] Payment payment)
         {
-            var existingPayment = db.Categories.AsNoTracking().FirstOrDefault(p => p.category_id == category.category_id);
+            var existingPayment = db.Payments.AsNoTracking().FirstOrDefault(p => p.payment_id == payment.payment_id);
             if (ModelState.IsValid)
             {
-                category.ngayTao = existingPayment.ngayTao; // Giữ nguyên giá trị ngayTao
-                db.Entry(category).State = EntityState.Modified;
+                payment.ngayTao = existingPayment.ngayTao; // Giữ nguyên giá trị ngayTao
+                db.Entry(payment).State = EntityState.Modified;
                 db.SaveChanges();
-                TempData["erEditCate"] = "Sửa danh mục sản phẩm thành công!";
-                ViewBag.erEditCate = TempData["erEditCate"] as string;
-                return View(category);
+                TempData["erEditPa"] = "Sửa thông tin phương thức thanh toán thành công!";
+                ViewBag.erEditPa = TempData["erEditPa"] as string;
+                return RedirectToAction("Edit");
             }
-            return View(category);
+            return View(payment);
         }
 
-        // GET: Admin_Categories/Delete/5
+        // GET: Admin_Payments/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Category category = db.Categories.Find(id);
-            if (category == null)
+            Payment payment = db.Payments.Find(id);
+            if (payment == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.erDeleteCate = TempData["erDeleteCate"] as string;
-            return View(category);
+            ViewBag.erDeletePayment = TempData["erDeletePayment"] as string;
+            return View(payment);
         }
 
-        // POST: Admin_Categories/Delete/5
+        // POST: Admin_Payments/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Category category = db.Categories.Find(id);
+            Payment payment = db.Payments.Find(id);
             try
             {
-                
-                db.Categories.Remove(category);
+                db.Payments.Remove(payment);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
             catch(Exception ex)
             {
-                TempData["erDeleteCate"] = "Không thể xóa danh mục: danh mục đang chứa sản phẩm";
-                return RedirectToAction("Delete",new { id = category.category_id});
+                TempData["erDeletePayment"] = "Phương thức thanh toán đang được sử dụng!";
+                return RedirectToAction("Delete", new { id = payment.payment_id });
             }
         }
 

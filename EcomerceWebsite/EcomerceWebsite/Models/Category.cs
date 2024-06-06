@@ -21,6 +21,7 @@ namespace EcomerceWebsite.Models
         [StringLength(100)]
         public string name { get; set; }
 
+        [Column(TypeName = "datetime2")]
         public DateTime ngayTao { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

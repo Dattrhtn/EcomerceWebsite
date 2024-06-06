@@ -23,6 +23,7 @@ namespace EcomerceWebsite.Models
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int order_order_id { get; set; }
 
+        [Column(TypeName = "datetime2")]
         public DateTime ngayTao { get; set; }
 
         public virtual Order Order { get; set; }
