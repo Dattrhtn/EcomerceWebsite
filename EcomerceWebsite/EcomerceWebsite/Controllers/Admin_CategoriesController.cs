@@ -46,13 +46,16 @@ namespace EcomerceWebsite.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "category_id,name,ngayTao")] Category category)
+        public ActionResult Create([Bind(Include = "category_id,name")] Category category)
         {
             if (ModelState.IsValid)
             {
+                category.ngayTao = DateTime.Now;
                 db.Categories.Add(category);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                TempData["erAddCate"] = "Thêm danh mục sản phẩm thành công!";
+                ViewBag.erAddCate = TempData["erAddCate"] as string;
+                return View();
             }
 
             return View(category);
@@ -80,11 +83,15 @@ namespace EcomerceWebsite.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "category_id,name")] Category category)
         {
+            var existingPayment = db.Categories.AsNoTracking().FirstOrDefault(p => p.category_id == category.category_id);
             if (ModelState.IsValid)
             {
+                category.ngayTao = existingPayment.ngayTao; // Giữ nguyên giá trị ngayTao
                 db.Entry(category).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                TempData["erEditCate"] = "Sửa danh mục sản phẩm thành công!";
+                ViewBag.erEditCate = TempData["erEditCate"] as string;
+                return View(category);
             }
             return View(category);
         }
@@ -101,6 +108,7 @@ namespace EcomerceWebsite.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.erDeleteCate = TempData["erDeleteCate"] as string;
             return View(category);
         }
 
@@ -110,9 +118,18 @@ namespace EcomerceWebsite.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Category category = db.Categories.Find(id);
-            db.Categories.Remove(category);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            try
+            {
+                
+                db.Categories.Remove(category);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            catch(Exception ex)
+            {
+                TempData["erDeleteCate"] = "Không thể xóa danh mục: danh mục đang chứa sản phẩm";
+                return RedirectToAction("Delete",new { id = category.category_id});
+            }
         }
 
         protected override void Dispose(bool disposing)

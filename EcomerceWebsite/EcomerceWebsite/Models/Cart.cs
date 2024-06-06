@@ -23,7 +23,8 @@ namespace EcomerceWebsite.Models
 
         public int? product_product_id { get; set; }
 
-        public DateTime? ngayTao { get; set; }
+        [Column(TypeName = "datetime2")]
+        public DateTime ngayTao { get; set; }
 
         public virtual account account { get; set; }
 

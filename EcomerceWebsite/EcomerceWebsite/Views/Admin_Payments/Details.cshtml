@@ -1,0 +1,35 @@
+﻿@model EcomerceWebsite.Models.Payment
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutPageAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Payment</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.payment_method)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.payment_method)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ngayTao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ngayTao)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.payment_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

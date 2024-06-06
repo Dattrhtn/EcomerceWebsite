@@ -21,8 +21,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-    @*<link href="assets/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="assets/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />*@
+    <link href="../../css/owl.carousel.min.css" rel="stylesheet">
+    <link href="../../css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
 
     <!-- Customized Bootstrap Stylesheet -->
     <link rel="stylesheet" href="../../css/bootstrap.min.css" type="text/css">
@@ -57,34 +57,16 @@
                     </div>
                 </div>
                 <div class="navbar-nav w-100">
-                    <a href="index.html" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Elements</a>
-                        <div class="dropdown-menu bg-transparent border-0">
-                            <a href="button.html" class="dropdown-item">Buttons</a>
-                            <a href="typography.html" class="dropdown-item">Typography</a>
-                            <a href="element.html" class="dropdown-item">Other Elements</a>
-                        </div>
-                    </div>
-                    <a href="widget.html" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Widgets</a>
-                    <a href="form.html" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Forms</a>
-                    <a href="table.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i>Tables</a>
-                    <a href="chart.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>Charts</a>
-                    <div class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Pages</a>
-                        <div class="dropdown-menu bg-transparent border-0">
-                            <a href="signin.html" class="dropdown-item">Sign In</a>
-                            <a href="signup.html" class="dropdown-item">Sign Up</a>
-                            <a href="404.html" class="dropdown-item">404 Error</a>
-                            <a href="blank.html" class="dropdown-item">Blank Page</a>
-                        </div>
-                    </div>
+                    <a href="@Url.Action("Index", "Admin_dashboard")" class="navclick nav-item nav-link" data-id="div1"><i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+                    <a href="@Url.Action("Index", "Admin_Categories")" class="navclick nav-item nav-link" data-id="div2"><i class="fa fa-th me-2"></i>Loại sản phẩm</a>
+                    <a href="@Url.Action("Index", "Admin_Products")" class="navclick nav-item nav-link" data-id="div3"><i class="fa fa-laptop me-2"></i>Sản phẩm</a>
+                    <a href="@Url.Action("Index", "Admin_Payments")" class="navclick nav-item nav-link" data-id="div4"><i class="fa fa-credit-card me-2"></i>Thanh toán</a>
+                    <a href="@Url.Action("Index", "Admin_Orders")" class="navclick nav-item nav-link" data-id="div5"><i class="far fa-file-alt me-2"></i>Đơn hàng</a>
+                    <a href="@Url.Action("Index", "Admin_accounts")" class="navclick nav-item nav-link" data-id="div6"><i class="fa fa-users me-2"></i>Tài khoản</a>
                 </div>
             </nav>
         </div>
         <!-- Sidebar End -->
-
-
         <!-- Content Start -->
         <div class="content">
             <!-- Navbar Start -->
@@ -179,7 +161,7 @@
             <!-- Footer Start -->
             <div class="container-fluid pt-4 px-4">
                 @RenderBody()
-                </div>
+            </div>
             <div class="container-fluid pt-4 px-4">
                 <div class="bg-light rounded-top p-4">
                     <div class="row">
@@ -195,27 +177,57 @@
                     </div>
                 </div>
             </div>
-                <!-- Footer End -->
+            <!-- Footer End -->
 
-            </div>
-            <!-- Content End -->
-            <!-- Back to Top -->
-            <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
         </div>
+        <!-- Content End -->
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+    </div>
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    @*<script src="assets/lib/chart/chart.min.js"></script>
-    <script src="assets/lib/easing/easing.min.js"></script>
-    <script src="assets/lib/waypoints/waypoints.min.js"></script>
-    <script src="assets/lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="assets/lib/tempusdominus/js/moment.min.js"></script>
-    <script src="assets/lib/tempusdominus/js/moment-timezone.min.js"></script>
-    <script src="assets/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>*@
+
+    <script src="../../js/easing.min.js"></script>
+        <script src="../../js/waypoints.min.js"></script>
+    <script src="../../js/owl.carousel.min.js"></script>
+    <script src="../../js/moment.min.js"></script>
+    <script src="../../js/moment-timezone.min.js"></script>
+    <script src="../../js/tempusdominus-bootstrap-4.min.js"></script>
 
     <!-- Template Javascript -->
-    <script src="../../js/main.js"></script>
+    <script src="../../js/main2.js"></script>
 </body>
+<script>
+
+    document.addEventListener('DOMContentLoaded', function () {
+        var divs = document.querySelectorAll('.navclick');
+
+        // Kiểm tra và đặt lớp 'active' từ localStorage
+        var activeDivId = localStorage.getItem('activeDiv');
+        if (activeDivId) {
+            var activeDiv = document.querySelector('.navclick[data-id="' + activeDivId + '"]');
+            if (activeDiv) {
+                activeDiv.classList.add('active');
+            }
+        }
+
+        divs.forEach(function (div) {
+            div.addEventListener('click', function () {
+                // Loại bỏ lớp 'active' từ tất cả các thẻ div
+                divs.forEach(function (d) {
+                    d.classList.remove('active');
+                });
+
+                // Thêm lớp 'active' vào thẻ div được bấm
+                this.classList.add('active');
+
+                // Lưu trữ trạng thái vào localStorage
+                localStorage.setItem('activeDiv', this.getAttribute('data-id'));
+            });
+        });
+    });
+</script>
 
 </html>
