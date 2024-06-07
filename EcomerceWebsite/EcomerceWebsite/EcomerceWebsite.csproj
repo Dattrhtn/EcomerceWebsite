@@ -134,12 +134,14 @@
     <Compile Include="Controllers\Client_BlogController.cs" />
     <Compile Include="Controllers\Client_CartController.cs" />
     <Compile Include="Controllers\Client_ContactController.cs" />
+    <Compile Include="Controllers\Client_DanhsachOrdersController.cs" />
     <Compile Include="Controllers\Client_DanhsachsanphamController.cs" />
     <Compile Include="Controllers\Admin_dashboardController.cs" />
     <Compile Include="Controllers\Admin_OrdersController.cs" />
     <Compile Include="Controllers\Admin_PaymentsController.cs" />
     <Compile Include="Controllers\Admin_ProductsController.cs" />
     <Compile Include="Controllers\Admin_shipmentsController.cs" />
+    <Compile Include="Controllers\Client_ProductDetailController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\OrdersController.cs" />
@@ -380,6 +382,12 @@
     <Content Include="Views\Orders\Edit.cshtml" />
     <Content Include="Views\Orders\Index.cshtml" />
     <Content Include="Views\Orders\OrderSuccess.cshtml" />
+    <Content Include="Views\Client_ProductDetail\Index.cshtml" />
+    <Content Include="Views\Client_DanhsachOrders\Create.cshtml" />
+    <Content Include="Views\Client_DanhsachOrders\Delete.cshtml" />
+    <Content Include="Views\Client_DanhsachOrders\Details.cshtml" />
+    <Content Include="Views\Client_DanhsachOrders\Edit.cshtml" />
+    <Content Include="Views\Client_DanhsachOrders\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

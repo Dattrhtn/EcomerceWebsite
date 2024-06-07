@@ -42,6 +42,21 @@
             line-height: 30px;
             text-align: center;
         }
+        #search_value {
+            max-width: 500px;
+        }
+        #search_value:focus {
+            background-color: #0c0c0c;
+            color: #fff;
+            border: none;
+        }
+        .form-control:focus {
+            outline:0;
+            box-shadow: 0 0 0 .2rem rgb(255 255 255 / 25%);
+        }
+        .search-model-form input {
+            border-bottom: 1px solid #9b9b9b;
+        }
     </style>
 </head>
 <body>
@@ -209,8 +224,9 @@
     <div class="search-model">
         <div class="h-100 d-flex align-items-center justify-content-center">
             <div class="search-close-switch">+</div>
-            <form class="search-model-form">
-                <input type="text" id="search-input" placeholder="Search here.....">
+            <form class="search-model-form" id="searchForm" method="post" action="@Url.Action("Search", "Client_Danhsachsanpham")">
+                <input class="form-control" aria-describedby="inputGroupPrepend" required type="text" id="search_value" name="search_value">
+                <button style="display: none" type="submit"></button>
             </form>
         </div>
     </div>
@@ -224,7 +240,14 @@
     <script src="../../js/mixitup.min.js"></script>
     <script src="../../js/owl.carousel.min.js"></script>
     <script src="../../js/main.js"></script>
-
+    <script>
+        document.getElementById("searchForm").addEventListener("submit", function (event) {
+            var searchValue = document.getElementById("search_value").value.trim();
+            if (searchValue === "") {
+                event.preventDefault(); // Ngăn chặn sự kiện submit
+            }
+        });
+    </script>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)

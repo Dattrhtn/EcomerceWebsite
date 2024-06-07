@@ -123,31 +123,28 @@ namespace EcomerceWebsite.Controllers
             // Chuyển hướng đến action Index của controller hiện tại
             return RedirectToAction("Index", currentController);
         }
-
+        [HttpPost]
         public ActionResult Update_Cart()
         {
             string list_cartid = Request["cart_id"].ToString();
             string list_quantity = Request["quantity_value"].ToString();
-
-            var mang_cartid = list_cartid.Split(',');
-            var mang_quantity = list_quantity.Split(',');
-
-            for (int i = 0; i < mang_cartid.Length; i++)
+            if (list_cartid != null && list_quantity != null)
             {
-                int cart_id = int.Parse(mang_cartid[i]);
-                int current_quantity = int.Parse(mang_quantity[i]);
-                var cart = db.carts.Find(cart_id);
+                var mang_cartid = list_cartid.Split(',');
+                var mang_quantity = list_quantity.Split(',');
 
-                cart.quantity = current_quantity;
-                db.Entry(cart).State = EntityState.Modified;
-                db.SaveChanges();
+                for (int i = 0; i < mang_cartid.Length; i++)
+                {
+                    int cart_id = int.Parse(mang_cartid[i]);
+                    int current_quantity = int.Parse(mang_quantity[i]);
+                    var cart = db.carts.Find(cart_id);
 
-                //await Task.Delay(TimeSpan.FromSeconds(5));
+                    cart.quantity = current_quantity;
+                    db.Entry(cart).State = EntityState.Modified;
+                    db.SaveChanges();
+                }
             }
             return RedirectToAction("Index");
-            //ViewBag.cart = mang_cartid;
-            //ViewBag.quantity = mang_quantity;
-            //return View();
         }
         protected override void Dispose(bool disposing)
         {
