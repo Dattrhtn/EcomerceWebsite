@@ -154,5 +154,25 @@ namespace EcomerceWebsite.Controllers
             }
             base.Dispose(disposing);
         }
+        //[Authorize]
+        public ActionResult Checkout()
+        {
+            var carts = db.carts.Include(c => c.account).Include(c => c.Product);
+
+            var Prices = from cart in db.carts
+                         join product in db.Products
+                         on cart.product_product_id equals product.product_id
+                         select cart.quantity * product.price;
+
+            var totalPrices = Prices.Sum();
+            ViewBag.totalPrices = totalPrices;
+            return View(carts.ToList());
+
+            //if (db.carts.Count() == 0)
+            //{
+            //    return Redirect("/");
+            //}
+            //return View();
+        }
     }
 }
