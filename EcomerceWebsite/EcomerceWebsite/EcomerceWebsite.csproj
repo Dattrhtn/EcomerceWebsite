@@ -132,6 +132,7 @@
     <Compile Include="Controllers\Admin_accountsController.cs" />
     <Compile Include="Controllers\Admin_CategoriesController.cs" />
     <Compile Include="Controllers\Client_CartController.cs" />
+    <Compile Include="Controllers\Client_DanhsachOrdersController.cs" />
     <Compile Include="Controllers\Client_DanhsachsanphamController.cs" />
     <Compile Include="Controllers\Admin_dashboardController.cs" />
     <Compile Include="Controllers\Admin_OrdersController.cs" />
@@ -153,7 +154,6 @@
     <Compile Include="Models\Payment.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\shipment.cs" />
-    <Compile Include="Models\sysdiagram.cs" />
     <Compile Include="Models\wishlist.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -368,6 +368,11 @@
     <Content Include="Views\Client_Cart\Edit.cshtml" />
     <Content Include="Views\Client_Cart\Index.cshtml" />
     <Content Include="Views\Client_ProductDetail\Index.cshtml" />
+    <Content Include="Views\Client_DanhsachOrders\Create.cshtml" />
+    <Content Include="Views\Client_DanhsachOrders\Delete.cshtml" />
+    <Content Include="Views\Client_DanhsachOrders\Details.cshtml" />
+    <Content Include="Views\Client_DanhsachOrders\Edit.cshtml" />
+    <Content Include="Views\Client_DanhsachOrders\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

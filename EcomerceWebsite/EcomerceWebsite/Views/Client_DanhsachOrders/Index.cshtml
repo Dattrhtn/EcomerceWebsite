@@ -1,0 +1,59 @@
+﻿@model IEnumerable<EcomerceWebsite.Models.Order>
+
+@{
+    ViewBag.Title = "danh sach don hang";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    table, th, td {
+        border: 1px solid black;
+    }
+</style>
+
+<h2 style="text-align:center">Danh Sách Đơn Hàng</h2>
+
+<table  class="table">
+    <tr>
+        <th>
+            Tên khách hàng
+        </th>
+        <th>
+            Phương thức thanh toán
+        </th>
+        <th>
+            Địa chỉ giao hàng
+        </th>
+        <th>
+            Tổng giá
+        </th>
+        <th>
+            Ngày tạo
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.account.first_name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Payment.payment_method)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.shipment.address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.total_price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ngayTao)
+            </td>
+            <td>
+                @Html.ActionLink("Chi tiết", "Details", new { id = item.order_id })
+            </td>
+        </tr>
+    }
+
+</table>
