@@ -1,0 +1,308 @@
+﻿@model IEnumerable<EcomerceWebsite.Models.cart>
+
+@{
+    ViewBag.Title = "Checkout";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    /*---------------------
+      Checkout
+    -----------------------*/
+
+
+    .checkout__title {
+        color: #111111;
+        font-weight: 700;
+        text-transform: uppercase;
+        border-bottom: 1px solid #e1e1e1;
+        padding-bottom: 25px;
+        margin-bottom: 30px;
+    }
+
+    .checkout__input {
+        margin-bottom: 6px;
+    }
+
+        .checkout__input p {
+            color: #111111;
+            margin-bottom: 12px;
+        }
+
+            .checkout__input p span {
+                color: #e53637;
+            }
+
+        .checkout__input input {
+            height: 50px;
+            width: 100%;
+            border: 1px solid #e1e1e1;
+            font-size: 14px;
+            color: #b7b7b7;
+            padding-left: 20px;
+            margin-bottom: 20px;
+        }
+
+            .checkout__input input::-webkit-input-placeholder {
+                color: #b7b7b7;
+            }
+
+            .checkout__input input::-moz-placeholder {
+                color: #b7b7b7;
+            }
+
+            .checkout__input input:-ms-input-placeholder {
+                color: #b7b7b7;
+            }
+
+            .checkout__input input::-ms-input-placeholder {
+                color: #b7b7b7;
+            }
+
+            .checkout__input input::placeholder {
+                color: #b7b7b7;
+            }
+
+    .checkout__input__checkbox label {
+        font-size: 15px;
+        color: #0d0d0d;
+        position: relative;
+        padding-left: 30px;
+        cursor: pointer;
+        margin-bottom: 16px;
+        display: block;
+    }
+
+        .checkout__input__checkbox label input {
+            position: absolute;
+            visibility: hidden;
+        }
+
+            .checkout__input__checkbox label input:checked ~ .checkmark {
+                border-color: #e53637;
+            }
+
+                .checkout__input__checkbox label input:checked ~ .checkmark:after {
+                    opacity: 1;
+                }
+
+        .checkout__input__checkbox label .checkmark {
+            position: absolute;
+            left: 0;
+            top: 3px;
+            height: 14px;
+            width: 14px;
+            border: 1.5px solid #d7d7d7;
+            content: "";
+            border-radius: 2px;
+        }
+
+            .checkout__input__checkbox label .checkmark:after {
+                position: absolute;
+                left: 1px;
+                top: -3px;
+                width: 14px;
+                height: 7px;
+                border: solid #e53637;
+                border-width: 1.5px 1.5px 0px 0px;
+                -webkit-transform: rotate(127deg);
+                -ms-transform: rotate(127deg);
+                transform: rotate(127deg);
+                content: "";
+                opacity: 0;
+            }
+
+    .checkout__input__checkbox p {
+        color: #0d0d0d;
+        font-size: 14px;
+        line-height: 24px;
+        margin-bottom: 22px;
+    }
+
+    .checkout__order {
+        background: #f3f2ee;
+        padding: 30px;
+    }
+
+        .checkout__order .order__title {
+            color: #111111;
+            font-weight: 700;
+            text-transform: uppercase;
+            border-bottom: 1px solid #d7d7d7;
+            padding-bottom: 25px;
+            margin-bottom: 30px;
+        }
+
+        .checkout__order p {
+            color: #444444;
+            font-size: 16px;
+            line-height: 28px;
+        }
+
+        .checkout__order .site-btn {
+            width: 100%;
+            margin-top: 8px;
+        }
+
+    .checkout__order__products {
+        
+        font-size: 16px;
+        color: #111111;
+        overflow: hidden;
+        margin-bottom: 18px;
+    }
+
+        .checkout__order__products span {
+            float: right;
+        }
+
+    .checkout__total__products {
+        margin-bottom: 20px;
+    }
+
+        .checkout__total__products li {
+           
+            font-size: 16px;
+            color: #444444;
+            list-style: none;
+            line-height: 26px;
+            overflow: hidden;
+            margin-bottom: 15px;
+        }
+
+            .checkout__total__products li:last-child {
+                margin-bottom: 0;
+            }
+
+            .checkout__total__products li span {
+                color: #111111;
+                float: right;
+            }
+
+    .checkout__total__all {
+        border-top: 1px solid #d7d7d7;
+        border-bottom: 1px solid #d7d7d7;
+        padding: 15px 0;
+        margin-bottom: 26px;
+    }
+
+        .checkout__total__all li {
+            list-style: none;
+            font-size: 16px;
+            color: #111111;
+            line-height: 40px;
+            overflow: hidden;
+        }
+
+            .checkout__total__all li span {
+                color: #e53637;
+                font-weight: 700;
+                float: right;
+            }
+</style>
+<!-- Breadcrumb Section Begin -->
+<section class="breadcrumb-option">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcrumb__text">
+                    <h4>Check Out</h4>
+                    <div class="breadcrumb__links">
+                        <a href="./index.html">Home</a>
+                        <a href="./shop.html">Shop</a>
+                        <span>Check Out</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Breadcrumb Section End -->
+<!-- Checkout Section Begin -->
+<section class="checkout spad">
+    <div class="container">
+        <div class="checkout__form">
+            @using (Html.BeginForm("Create", "Orders", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                <div class="row">
+                    <div class="col-lg-8 col-md-6">
+
+                        <h6 class="checkout__title">Chi tiết thanh toán</h6>
+                        <div class="row">
+                            <div class="col-lg-6">
+
+                                <div class="checkout__input">
+
+                                    <p>Họ<span>*</span></p>
+                                    <input type="text">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="checkout__input">
+                                    <p>Tên<span>*</span></p>
+                                    <input type="text">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="checkout__input">
+                            <p>Địa chỉ cụ thể<span>*</span></p>
+                            <input type="text" placeholder="Thôn/Xã/Huyện" class="checkout__input__add" name="address">
+                        </div>
+                        <div class="checkout__input">
+                            <p>Tỉnh/Thành Phố<span>*</span></p>
+                            <input type="text" name="city">
+                        </div>
+                        <div class="checkout__input">
+                            <p>Quốc gia<span>*</span></p>
+                            <input type="text" name="country">
+                        </div>
+                        <div class="checkout__input">
+                            <p>Code/Zip<span>*</span></p>
+                            <input type="text" name="zip_code">
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="checkout__input">
+                                    <p>Số điện thoại<span>*</span></p>
+                                    <input type="text">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="checkout__input">
+                                    <p>Email<span>*</span></p>
+                                    <input type="text">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="checkout__input">
+                            <p>Ghi chú <span>*</span></p>
+                            <input type="text" />
+
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="checkout__order">
+                            <h4 class="order__title">Thông tin thanh toán</h4>
+                            <div class="checkout__order__products">Tên <span>Tổng cộng</span></div>
+                            @foreach (var item in Model)
+                            {
+                                <ul class="checkout__total__products">
+                                    <li>@item.Product.name <span>$ @(@item.quantity * @item.Product.price)</span></li>
+                                </ul>
+                            }
+                            <ul class="checkout__total__all">
+                                <li>Tổng phụ <span>$ @ViewBag.totalPrices</span></li>
+                                <li>Tổng tiền <span>$ @ViewBag.totalPrices</span></li>
+                            </ul>
+                            <button type="submit" class="site-btn">Đặt Hàng (COD)</button>
+                            @*<button type="submit" class="site-btn">Thanh Toán VNPay</button>*@
+
+                        </div>
+                    </div>
+                </div>
+            }
+            </div>
+    </div>
+</section>
+<!-- Checkout Section End -->
