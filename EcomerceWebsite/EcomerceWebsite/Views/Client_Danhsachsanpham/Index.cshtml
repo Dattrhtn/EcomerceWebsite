@@ -35,6 +35,12 @@
     .shop__sidebar__price .btn_searchByPrice:hover {
         opacity: 0.6;
     }
+
+   .product-detail{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+    }
 </style>
 <section class="breadcrumb-option">
     <div class="container">
@@ -75,7 +81,7 @@
                                                 @foreach (var item in ViewBag.listCate)
                                                 {
                                                     var id = Convert.ToInt32(@item.category_id);
-                                                    <li><a href="/Client_Danhsachsanpham/SearchbyCategory/?category_id=@id">@item.name</a></li>
+                                                    <li><a href="/Client_ProductDetail/SearchbyCategory/?category_id=@id">@item.name</a></li>
                                                 }
                                             </ul>
                                         </div>
@@ -194,13 +200,7 @@
                         <div class="col-lg-4 col-md-6 col-sm-6">
                             <div class="product__item">
                                 <div class="product__item__pic set-bg" data-setbg="@item.Image" style="border: 0.5px solid #efefef; box-shadow:rgb(131 129 129 / 30%) 10px 10px 35px ; ">
-                                    <ul class="product__hover">
-                                        <li><a href="#"><img src="../../img/icon/heart.png" alt=""></a></li>
-                                        <li>
-                                            <a href="#"><img src="../../img/icon/compare.png" alt=""> <span>So sánh</span></a>
-                                        </li>
-                                        <li><a href="#"><img src="../../img/icon/search.png" alt=""></a></li>
-                                    </ul>
+                                    <a href="/Client_ProductDetail/Index/?product_id=@item.product_id" class="product-detail"></a>
                                 </div>
                                 <div class="product__item__text">
                                     <h6>@item.name</h6>
