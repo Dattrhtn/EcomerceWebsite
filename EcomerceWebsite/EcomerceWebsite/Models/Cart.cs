@@ -10,6 +10,7 @@ namespace EcomerceWebsite.Models
     public partial class cart
     {
         [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int cart_id { get; set; }
 
         public int? quantity { get; set; }
