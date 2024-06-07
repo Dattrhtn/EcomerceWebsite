@@ -1,0 +1,166 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+
+
+    /*---------------------
+      Contact
+    -----------------------*/
+
+    .contact__text .section-title {
+        text-align: left;
+        margin-bottom: 40px;
+    }
+
+        .contact__text .section-title h2 {
+            font-size: 48px;
+            margin-bottom: 18px;
+        }
+
+        .contact__text .section-title p {
+            color: #707070;
+            line-height: 26px;
+            margin-bottom: 0;
+        }
+
+    .contact__text ul li {
+        list-style: none;
+        margin-bottom: 26px;
+    }
+
+        .contact__text ul li:last-child {
+            margin-bottom: 0;
+        }
+
+        .contact__text ul li h4 {
+            color: #111111;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .contact__text ul li p {
+            line-height: 27px;
+            margin-bottom: 0;
+        }
+
+    .contact__form input {
+        height: 50px;
+        width: 100%;
+        border: 1px solid #e1e1e1;
+        padding-left: 20px;
+        font-size: 15px;
+        color: #b7b7b7;
+        margin-bottom: 30px;
+    }
+
+        .contact__form input::-webkit-input-placeholder {
+            color: #b7b7b7;
+        }
+
+        .contact__form input::-moz-placeholder {
+            color: #b7b7b7;
+        }
+
+        .contact__form input:-ms-input-placeholder {
+            color: #b7b7b7;
+        }
+
+        .contact__form input::-ms-input-placeholder {
+            color: #b7b7b7;
+        }
+
+        .contact__form input::placeholder {
+            color: #b7b7b7;
+        }
+
+    .contact__form textarea {
+        height: 150px;
+        width: 100%;
+        border: 1px solid #e1e1e1;
+        padding-left: 20px;
+        padding-top: 12px;
+        font-size: 15px;
+        color: #b7b7b7;
+        margin-bottom: 24px;
+        resize: none;
+    }
+
+        .contact__form textarea::-webkit-input-placeholder {
+            color: #b7b7b7;
+        }
+
+        .contact__form textarea::-moz-placeholder {
+            color: #b7b7b7;
+        }
+
+        .contact__form textarea:-ms-input-placeholder {
+            color: #b7b7b7;
+        }
+
+        .contact__form textarea::-ms-input-placeholder {
+            color: #b7b7b7;
+        }
+
+        .contact__form textarea::placeholder {
+            color: #b7b7b7;
+        }
+
+    .contact__form button {
+        letter-spacing: 4px;
+        padding: 14px 35px;
+    }
+</style>
+<!-- Map Begin -->
+<div class="map">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.4213248859517!2d105.73210837532947!3d21.0532042884217!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31345308d93d938f%3A0x843a3ad82f3bb07c!2sHanoi%20University%20of%20Industry!5e0!3m2!1sen!2s!4v1696580012345!5m2!1sen!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</div>
+<!-- Bản đồ Kết thúc -->
+<!-- Phần Liên hệ Bắt đầu -->
+<section class="contact spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6">
+                <div class="contact__text">
+                    <div class="section-title">
+                        <span>Thông tin</span>
+                        <h2>Liên Hệ Chúng Tôi</h2>
+                        <p>
+                            Với kinh nghiệm và sự tinh tế của một thương hiệu thời trang hàng đầu, chúng tôi cam kết mang đến cho bạn những sản phẩm chất lượng và phong cách đỉnh cao.
+                        </p>
+                    </div>
+                    <ul>
+                        <li>
+                            <h4>Việt Nam</h4>
+                            <p>Nhổn, Minh Khai, Từ Liêm, Hà Nội <br />+84 66668888</p>
+                        </li>
+                      
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6">
+                <div class="contact__form">
+                    <form action="#">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <input type="text" placeholder="Tên">
+                            </div>
+                            <div class="col-lg-6">
+                                <input type="text" placeholder="Email">
+                            </div>
+                            <div class="col-lg-12">
+                                <textarea placeholder="Tin nhắn"></textarea>
+
+                            </div>
+                            <button type="submit" class="site-btn">Gửi Tin Nhắn</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
