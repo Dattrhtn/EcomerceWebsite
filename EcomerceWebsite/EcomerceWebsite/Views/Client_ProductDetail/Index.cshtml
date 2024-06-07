@@ -1,0 +1,253 @@
+﻿
+@{
+    ViewBag.Title = "Chi tiết sản phẩm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .product__details__pic .nav-tabs .nav-item .nav-link .product__thumb__pic {
+        width: 130px;
+    }
+    .product-detail {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+    }
+</style>
+<section class="shop-details">
+    <div class="product__details__pic">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="product__details__breadcrumb">
+                        <a href="./index.html">Trang chủ</a>
+                        <a href="./shop.html">Cửa hàng</a>
+                        <span>Chi tiết sản phẩm</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-md-3">
+                    <ul class="nav nav-tabs" role="tablist">
+                        @{var index1 = 1;
+                            var active1 = "";
+                            var isActive1 = true;
+                        }
+                        @foreach (var item in @ViewBag.listImage)
+                        {
+                            if (isActive1)
+                            {
+                                active1 = "active";
+                            }
+                            else
+                            {
+                                active1 = "";
+                            }
+                            <li class="nav-item">
+                                <a class="nav-link @active1" data-toggle="tab" href="#tabs-@index1" role="tab">
+                                    <div style="box-shadow: 10px 10px 17px #d8d3d3; border-radius: 12%; " class="product__thumb__pic set-bg" data-setbg="@item"></div>
+                                </a>
+                            </li>
+                            index1++;
+                            isActive1 = false;
+                        }
+                    </ul>
+                </div>
+                <div class="col-lg-6 col-md-9">
+                    <div class="tab-content">
+                        @{var index = 1;
+                            var active = "";
+                            var isActive = true;}
+                        @foreach (var item in @ViewBag.listImage)
+                        {
+                            if (isActive)
+                            {
+                                active = "active";
+                            }
+                            else
+                            {
+                                active = "";
+                            }
+                            <div class="tab-pane @active" id="tabs-@index" role="tabpanel">
+
+                                <div class="product__details__pic__item">
+
+                                    <img src="@item" alt="">
+
+                                </div>
+                            </div>
+                            index++;
+                            isActive = false;
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="product__details__content">
+        <div class="container">
+            <div class="row d-flex justify-content-center">
+                <div class="col-lg-8">
+                    <div class="product__details__text">
+                        <h4>@ViewBag.product_name</h4>
+                        <h3>$@ViewBag.product_price @*<span>70.00</span>*@</h3>
+                        <p>
+                            @ViewBag.product_description
+                        </p>
+                        <div class="product__details__option">
+                            <div class="product__details__option__size">
+                                <span>Kích thước:</span>
+                                <label for="xxl">
+                                    xxl
+                                    <input type="radio" id="xxl">
+                                </label>
+                                <label class="active" for="xl">
+                                    xl
+                                    <input type="radio" id="xl">
+                                </label>
+                                <label for="l">
+                                    l
+                                    <input type="radio" id="l">
+                                </label>
+                                <label for="sm">
+                                    s
+                                    <input type="radio" id="sm">
+                                </label>
+                            </div>
+                            <div class="product__details__option__color">
+                                <span>Màu sắc:</span>
+                                <label class="c-1" for="sp-1">
+                                    <input type="radio" id="sp-1">
+                                </label>
+                                <label class="c-2" for="sp-2">
+                                    <input type="radio" id="sp-2">
+                                </label>
+                                <label class="c-3" for="sp-3">
+                                    <input type="radio" id="sp-3">
+                                </label>
+                                <label class="c-4" for="sp-4">
+                                    <input type="radio" id="sp-4">
+                                </label>
+                                <label class="c-9" for="sp-9">
+                                    <input type="radio" id="sp-9">
+                                </label>
+                            </div>
+                        </div>
+                        <div class="product__details__cart__option">
+                            <div class="quantity">
+                                <div class="pro-qty">
+                                    <input type="text" value="1">
+                                </div>
+                            </div>
+                            <a href="#" class="primary-btn">Thêm vào giỏ hàng</a>
+                        </div>
+                        <div class="product__details__last__option">
+                            <h5><span>Đảm bảo thanh toán an toàn</span></h5>
+                            <img src="../../img/shop-details/details-payment.png" alt="">
+                            <ul>
+                                <li><span>SKU:</span> @ViewBag.SKU</li>
+                                <li><span>Danh mục:</span> @ViewBag.cate_name</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="product__details__tab">
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" data-toggle="tab" href="#tabs-5"
+                                   role="tab">Mô tả</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#tabs-6" role="tab">
+                                    Phản hồi từ khách hàng(5)
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="tab" href="#tabs-7" role="tab">
+                                    Thông tin thêm
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="tab-content">
+                            <div class="tab-pane active" id="tabs-5" role="tabpanel">
+                                <div class="product__details__tab__content">
+                                    <div class="product__details__tab__content__item">
+                                        <h5>Thông tin sản phẩm</h5>
+                                        <p>
+                                            Áo khoác dù Paradox® BRACE với thiết kế thời thượng bằng chất liệu dù 2 lớp mang đến sự thoải mái và thoáng khí khi mặc. Hình in kéo lụa chắc chắn và bền màu. .
+                                        </p>
+                                        <p>
+                                            Form áo oversize cá tính và che hết mọi khuyết điểm trên cơ thể. Sản phẩm phù hợp với mọi hoạt động thường ngày. Cổ áo lọ tôn dáng và thoải mái khi mặc
+                                        </p>
+                                    </div>
+                                    <div class="product__details__tab__content__item">
+                                        <h5>Chất liệu</h5>
+                                        <p>
+                                            Polyester được coi là chất lượng thấp hơn do chất lượng không tự nhiên của nó. Được làm từ chất liệu tổng hợp chứ không phải tự nhiên như len. Bộ đồ polyester dễ bị nhàu và nổi tiếng là không thoáng khí. Bộ đồ polyester có xu hướng tỏa sáng hơn so với bộ đồ len và cotton, điều này có thể khiến bộ đồ trông rẻ tiền. Kết cấu nhung sang trọng và thoáng khí. Nhung là sự lựa chọn tuyệt vời cho áo khoác dự tiệc tối và có thể mặc quanh năm.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Shop Details Section End -->
+<!-- Related Section Begin -->
+<section class="related spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h3 class="related-title">Sản phẩm liên quan</h3>
+            </div>
+        </div>
+        <div class="row">
+            @foreach (var item in @ViewBag.RealatedProducts)
+            {
+                <div class="col-lg-3 col-md-6 col-sm-6 col-sm-6">
+                    <div class="product__item">
+                        <div class="product__item__pic set-bg" data-setbg="@item.Image"  style="border: 0.5px solid #efefef; box-shadow:rgb(131 129 129 / 30%) 10px 10px 35px ; ">
+                            <a href="/Client_ProductDetail/Index/?product_id=@item.product_id" class="product-detail"></a>
+                            <ul class="product__hover">
+                                <li><a href="#"><img src="../../img/icon/heart.png" alt=""></a></li>
+                                <li><a href="#"><img src="../../img/icon/compare.png" alt=""> <span>So sánh</span></a></li>
+                                <li><a href="#"><img src="../../img/icon/search.png" alt=""></a></li>
+                            </ul>
+                        </div>
+                        <div class="product__item__text">
+                            <h6>@item.name</h6>
+                            <a href="/Client_Danhsachsanpham/AddToCart/?product_id=@item.product_id" class="add-cart">+ Thêm vào giỏ hàng</a>
+                            <div class="rating">
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o"></i>
+                            </div>
+                            <h5>$@item.price</h5>
+                            <div class="product__color__select">
+                                <label for="pc-1">
+                                    <input type="radio" id="pc-1">
+                                </label>
+                                <label class="active black" for="pc-2">
+                                    <input type="radio" id="pc-2">
+                                </label>
+                                <label class="grey" for="pc-3">
+                                    <input type="radio" id="pc-3">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</section>
+
