@@ -26,7 +26,6 @@ namespace EcomerceWebsite.Models
         [StringLength(100)]
         public string SKU { get; set; }
 
-        [StringLength(100)]
         public string description { get; set; }
 
         public decimal? price { get; set; }

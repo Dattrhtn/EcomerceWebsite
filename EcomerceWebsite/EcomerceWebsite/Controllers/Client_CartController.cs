@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using EcomerceWebsite.Models;
@@ -17,9 +18,19 @@ namespace EcomerceWebsite.Controllers
         // GET: Client_Cart
         public ActionResult Index()
         {
+            Session["numberOfCart"] = db.carts.Count();
             var carts = db.carts.Include(c => c.account).Include(c => c.Product);
+
+            var Prices = from cart in db.carts
+                         join product in db.Products
+                         on cart.product_product_id equals product.product_id
+                         select cart.quantity * product.price;
+
+            var totalPrices = Prices.Sum();
+            ViewBag.totalPrices = totalPrices;
             return View(carts.ToList());
         }
+
 
         // GET: Client_Cart/Details/5
         public ActionResult Details(int? id)
@@ -49,7 +60,7 @@ namespace EcomerceWebsite.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "cart_id,account_account_id,quantity,product_product_id,ngayTao")] cart cart)
+        public ActionResult Create([Bind(Include = "cart_id,quantity,account_account_id,product_product_id,ngayTao")] cart cart)
         {
             if (ModelState.IsValid)
             {
@@ -85,7 +96,7 @@ namespace EcomerceWebsite.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "cart_id,account_account_id,quantity,product_product_id,ngayTao")] cart cart)
+        public ActionResult Edit([Bind(Include = "cart_id,quantity,account_account_id,product_product_id,ngayTao")] cart cart)
         {
             if (ModelState.IsValid)
             {
@@ -99,31 +110,42 @@ namespace EcomerceWebsite.Controllers
         }
 
         // GET: Client_Cart/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            cart cart = db.carts.Find(id);
-            if (cart == null)
-            {
-                return HttpNotFound();
-            }
-            return View(cart);
-        }
-
-        // POST: Client_Cart/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        [HttpGet]
+        public ActionResult Xoa(int? id)
         {
             cart cart = db.carts.Find(id);
             db.carts.Remove(cart);
             db.SaveChanges();
+
+            // Lấy thông tin về controller hiện tại
+            string currentController = ControllerContext.RouteData.Values["controller"].ToString();
+
+            // Chuyển hướng đến action Index của controller hiện tại
+            return RedirectToAction("Index", currentController);
+        }
+        [HttpPost]
+        public ActionResult Update_Cart()
+        {
+            string list_cartid = Request["cart_id"].ToString();
+            string list_quantity = Request["quantity_value"].ToString();
+            if (list_cartid != null && list_quantity != null)
+            {
+                var mang_cartid = list_cartid.Split(',');
+                var mang_quantity = list_quantity.Split(',');
+
+                for (int i = 0; i < mang_cartid.Length; i++)
+                {
+                    int cart_id = int.Parse(mang_cartid[i]);
+                    int current_quantity = int.Parse(mang_quantity[i]);
+                    var cart = db.carts.Find(cart_id);
+
+                    cart.quantity = current_quantity;
+                    db.Entry(cart).State = EntityState.Modified;
+                    db.SaveChanges();
+                }
+            }
             return RedirectToAction("Index");
         }
-
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -131,6 +153,26 @@ namespace EcomerceWebsite.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+        //[Authorize]
+        public ActionResult Checkout()
+        {
+            var carts = db.carts.Include(c => c.account).Include(c => c.Product);
+
+            var Prices = from cart in db.carts
+                         join product in db.Products
+                         on cart.product_product_id equals product.product_id
+                         select cart.quantity * product.price;
+
+            var totalPrices = Prices.Sum();
+            ViewBag.totalPrices = totalPrices;
+            return View(carts.ToList());
+
+            //if (db.carts.Count() == 0)
+            //{
+            //    return Redirect("/");
+            //}
+            //return View();
         }
     }
 }

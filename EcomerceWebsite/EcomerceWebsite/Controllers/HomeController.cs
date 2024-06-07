@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EcomerceWebsite.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,8 +9,10 @@ namespace EcomerceWebsite.Controllers
 {
     public class HomeController : Controller
     {
+        ModelDB db = new ModelDB();
         public ActionResult Index()
         {
+            Session["numberOfCart"] = db.carts.Count();
             return View();
         }
 
