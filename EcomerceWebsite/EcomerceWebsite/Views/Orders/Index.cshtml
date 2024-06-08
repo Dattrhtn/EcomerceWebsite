@@ -1,0 +1,58 @@
+﻿v   @model IEnumerable<EcomerceWebsite.Models.Order>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.account.first_name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Payment.payment_method)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.shipment.address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.total_price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ngayTao)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.account.first_name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Payment.payment_method)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.shipment.address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.total_price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ngayTao)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.order_id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.order_id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.order_id })
+        </td>
+    </tr>
+}
+
+</table>

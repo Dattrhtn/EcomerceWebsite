@@ -131,7 +131,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\Admin_accountsController.cs" />
     <Compile Include="Controllers\Admin_CategoriesController.cs" />
+    <Compile Include="Controllers\Client_BlogController.cs" />
     <Compile Include="Controllers\Client_CartController.cs" />
+    <Compile Include="Controllers\Client_ContactController.cs" />
     <Compile Include="Controllers\Client_DanhsachOrdersController.cs" />
     <Compile Include="Controllers\Client_DanhsachsanphamController.cs" />
     <Compile Include="Controllers\Admin_dashboardController.cs" />
@@ -142,6 +144,7 @@
     <Compile Include="Controllers\Client_ProductDetailController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\OrdersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -368,6 +371,18 @@
     <Content Include="Views\Client_Cart\Details.cshtml" />
     <Content Include="Views\Client_Cart\Edit.cshtml" />
     <Content Include="Views\Client_Cart\Index.cshtml" />
+    <Content Include="Views\Client_Blog\BlogDetail1.cshtml" />
+    <Content Include="Views\Client_Blog\BlogDetail2.cshtml" />
+    <Content Include="Views\Client_Blog\BlogDetail3.cshtml" />
+    <Content Include="Views\Client_Blog\Index.cshtml" />
+    <Content Include="Views\Client_Contact\Index.cshtml" />
+    <Content Include="Views\Client_Cart\Checkout.cshtml" />
+    <Content Include="Views\Orders\Create.cshtml" />
+    <Content Include="Views\Orders\Delete.cshtml" />
+    <Content Include="Views\Orders\Details.cshtml" />
+    <Content Include="Views\Orders\Edit.cshtml" />
+    <Content Include="Views\Orders\Index.cshtml" />
+    <Content Include="Views\Orders\OrderSuccess.cshtml" />
     <Content Include="Views\Client_ProductDetail\Index.cshtml" />
     <Content Include="Views\Client_DanhsachOrders\Create.cshtml" />
     <Content Include="Views\Client_DanhsachOrders\Delete.cshtml" />
