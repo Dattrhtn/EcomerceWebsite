@@ -51,15 +51,21 @@ namespace EcomerceWebsite.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "order_id,total_price,account_account_id,Payment_payment_id,Shipment_shipment_id,ngayTao")] Order order, [Bind(Include = "shipment_id,shipment_date,address,city,state,country,zip_code,account_account_id,ngayTao")] shipment shipment )
+        public ActionResult Create([Bind(Include = "order_id,total_price,account_account_id,Payment_payment_id,Shipment_shipment_id")] Order order, [Bind(Include = "shipment_id,shipment_date,address,city,state,country,zip_code,account_account_id")] shipment shipment )
         {
             if (ModelState.IsValid)
             {
-                //using (var transaction = db.Database.BeginTransaction())
-                //{
-                    try
+                using (var transaction = db.Database.BeginTransaction())
+                {
+                   // try
                     {
                         // Tạo đối tượng giao hàng
+                        var total_price = (from product in db.Products
+                                           join cart in db.carts
+                                           on product.product_id equals cart.product_product_id
+                                           where cart.account_account_id == 1
+                                           select (cart.quantity * product.price)).Sum();
+
                         var newShipment = new shipment
                         {
                             address = shipment.address,
@@ -67,34 +73,45 @@ namespace EcomerceWebsite.Controllers
                             country = shipment.country,
                             zip_code =shipment.zip_code,
                             account_account_id = 1,
+                            state = "Chờ xác nhận",
                             ngayTao = DateTime.Now,
                             shipment_date = DateTime.Now.AddDays(2)
 
                         };
-                        db.shipments.Add(shipment);
+                        db.shipments.Add(newShipment);
                         db.SaveChanges();
-
+                        var id_shipment = db.shipments.OrderByDescending(s => s.ngayTao).Select(s => s.shipment_id).FirstOrDefault();
                         // Tạo đơn hàng với shipment_id đã được cập nhật
                         var newOrder = new Order
                         {
-                            total_price = order.total_price,
+                            total_price = total_price,
                             account_account_id = 1,
-                            Payment_payment_id = 1,
-                            Shipment_shipment_id = shipment.shipment_id,
+                            Payment_payment_id = 1,                            
+                            Shipment_shipment_id = id_shipment,
                             ngayTao = DateTime.Now
                         };
                         db.Orders.Add(newOrder);
                         db.SaveChanges();
-
+                        var id_order = db.Orders.OrderByDescending(s => s.ngayTao).Select(s => s.order_id).FirstOrDefault();
                         // Tạo các mặt hàng trong đơn hàng
-                        foreach (var item in order.order_item)
+                        var cartJoinProduct = (from p in db.Products
+                                               join c in db.carts
+                                               on p.product_id equals c.product_product_id
+                                               where c.account_account_id == 1
+                                               select new
+                                               {
+                                                   product_id = p.product_id,
+                                                   quantity = c.quantity,
+                                                   price = p.price
+                                               }).ToList();
+                        foreach (var item in cartJoinProduct)
                         {
                             var orderItem = new order_item
                             {
                                 quantity = item.quantity,
                                 price = item.price,
-                                product_product_id = item.product_product_id,
-                                order_order_id = newOrder.order_id,
+                                product_product_id = item.product_id,
+                                order_order_id = id_order,
                                 ngayTao = DateTime.Now
                             };
                             db.order_item.Add(orderItem);
@@ -106,33 +123,20 @@ namespace EcomerceWebsite.Controllers
 
                         return RedirectToAction("OrderSuccess");
                     }
-                    catch (Exception ex)
-                    {
-                        // Rollback transaction nếu có lỗi xảy ra
-                        //transaction.Rollback();
-                        ModelState.AddModelError("", "Có lỗi xảy ra khi xử lý đơn hàng của bạn. Vui lòng thử lại.");
-                        // Log lỗi nếu cần thiết
-                    }
-                
+                    //catch (Exception ex)
+                    //{
+                    //    // Rollback transaction nếu có lỗi xảy ra
+                    //    transaction.Rollback();
+                    //    ModelState.AddModelError("", "Có lỗi xảy ra khi xử lý đơn hàng của bạn. Vui lòng thử lại.");
+                    //    // Log lỗi nếu cần thiết
+                    //}
+                }
             }
             ViewBag.account_account_id = new SelectList(db.accounts, "account_id", "first_name", order.account_account_id);
             ViewBag.Payment_payment_id = new SelectList(db.Payments, "payment_id", "payment_method", order.Payment_payment_id);
             ViewBag.Shipment_shipment_id = new SelectList(db.shipments, "shipment_id", "address", order.Shipment_shipment_id);
             return View("Checkout", order);
         }
-        //if (ModelState.IsValid)
-        //{
-        //    db.Orders.Add(order);
-        //    db.SaveChanges();
-        //    return RedirectToAction("Index");
-        //}
-
-        //ViewBag.account_account_id = new SelectList(db.accounts, "account_id", "first_name", order.account_account_id);
-        //ViewBag.Payment_payment_id = new SelectList(db.Payments, "payment_id", "payment_method", order.Payment_payment_id);
-        //ViewBag.Shipment_shipment_id = new SelectList(db.shipments, "shipment_id", "address", order.Shipment_shipment_id);
-        //return View(order);
-//    }
-//}
 
         // GET: Orders/Edit/5
         public ActionResult Edit(int? id)

@@ -126,7 +126,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -504,11 +504,93 @@
         },
         {
           "DockedWidth": 1256,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "E:\\PTUDTMDT\\LastProject\\EcomerceWebsite\\EcomerceWebsite\\EcomerceWebsite\\Views\\Client_Contact\\Index.cshtml",
+              "RelativeDocumentMoniker": "EcomerceWebsite\\Views\\Client_Contact\\Index.cshtml",
+              "ToolTip": "E:\\PTUDTMDT\\LastProject\\EcomerceWebsite\\EcomerceWebsite\\EcomerceWebsite\\Views\\Client_Contact\\Index.cshtml",
+              "RelativeToolTip": "EcomerceWebsite\\Views\\Client_Contact\\Index.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAcAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-06-08T02:23:20.388Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Admin_OrdersController.cs",
+              "DocumentMoniker": "E:\\PTUDTMDT\\LastProject\\EcomerceWebsite\\EcomerceWebsite\\EcomerceWebsite\\Controllers\\Admin_OrdersController.cs",
+              "RelativeDocumentMoniker": "EcomerceWebsite\\Controllers\\Admin_OrdersController.cs",
+              "ToolTip": "E:\\PTUDTMDT\\LastProject\\EcomerceWebsite\\EcomerceWebsite\\EcomerceWebsite\\Controllers\\Admin_OrdersController.cs",
+              "RelativeToolTip": "EcomerceWebsite\\Controllers\\Admin_OrdersController.cs",
+              "ViewState": "AQIAAEAAAAAAAAAAAAAtwFIAAAB2AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-08T02:04:21.673Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ModelDB.cs",
+              "DocumentMoniker": "E:\\PTUDTMDT\\LastProject\\EcomerceWebsite\\EcomerceWebsite\\EcomerceWebsite\\Models\\ModelDB.cs",
+              "RelativeDocumentMoniker": "EcomerceWebsite\\Models\\ModelDB.cs",
+              "ToolTip": "E:\\PTUDTMDT\\LastProject\\EcomerceWebsite\\EcomerceWebsite\\EcomerceWebsite\\Models\\ModelDB.cs",
+              "RelativeToolTip": "EcomerceWebsite\\Models\\ModelDB.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAABBAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-08T02:02:47.451Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Web.config",
+              "DocumentMoniker": "E:\\PTUDTMDT\\LastProject\\EcomerceWebsite\\EcomerceWebsite\\EcomerceWebsite\\Web.config",
+              "RelativeDocumentMoniker": "EcomerceWebsite\\Web.config",
+              "ToolTip": "E:\\PTUDTMDT\\LastProject\\EcomerceWebsite\\EcomerceWebsite\\EcomerceWebsite\\Web.config",
+              "RelativeToolTip": "EcomerceWebsite\\Web.config",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAEUAAAAQAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
+              "WhenOpened": "2024-06-08T02:01:38.635Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "OrdersController.cs",
+              "DocumentMoniker": "E:\\PTUDTMDT\\LastProject\\EcomerceWebsite\\EcomerceWebsite\\EcomerceWebsite\\Controllers\\OrdersController.cs",
+              "RelativeDocumentMoniker": "EcomerceWebsite\\Controllers\\OrdersController.cs",
+              "ToolTip": "E:\\PTUDTMDT\\LastProject\\EcomerceWebsite\\EcomerceWebsite\\EcomerceWebsite\\Controllers\\OrdersController.cs",
+              "RelativeToolTip": "EcomerceWebsite\\Controllers\\OrdersController.cs",
+              "ViewState": "AQIAAFkAAAAAAAAAAAAowHYAAAAYAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-08T00:52:18.307Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Checkout.cshtml",
+              "DocumentMoniker": "E:\\PTUDTMDT\\LastProject\\EcomerceWebsite\\EcomerceWebsite\\EcomerceWebsite\\Views\\Client_Cart\\Checkout.cshtml",
+              "RelativeDocumentMoniker": "EcomerceWebsite\\Views\\Client_Cart\\Checkout.cshtml",
+              "ToolTip": "E:\\PTUDTMDT\\LastProject\\EcomerceWebsite\\EcomerceWebsite\\EcomerceWebsite\\Views\\Client_Cart\\Checkout.cshtml",
+              "RelativeToolTip": "EcomerceWebsite\\Views\\Client_Cart\\Checkout.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAYAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-06-08T00:46:46.303Z",
+              "EditorCaption": ""
             }
           ]
         }

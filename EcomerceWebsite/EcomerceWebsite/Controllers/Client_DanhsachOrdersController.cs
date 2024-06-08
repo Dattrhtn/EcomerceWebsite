@@ -17,14 +17,14 @@ namespace EcomerceWebsite.Controllers
         // GET: Client_DanhSachOrder
         public ActionResult Index()
         {
-             order_item order_item1 =  new order_item();
-            order_item1.quantity = 2;
-            order_item1.price = 700;
-            order_item1.product_product_id = 1;
-            order_item1.order_order_id = 1;
-            order_item1.ngayTao = DateTime.Now;
-            db.order_item.Add(order_item1);
-            db.SaveChanges();
+            // order_item order_item1 =  new order_item();
+            //order_item1.quantity = 2;
+            //order_item1.price = 700;
+            //order_item1.product_product_id = 1;
+            //order_item1.order_order_id = 1;
+            //order_item1.ngayTao = DateTime.Now;
+            //db.order_item.Add(order_item1);
+            //db.SaveChanges();
 
             var currentUserId = 1;
 
