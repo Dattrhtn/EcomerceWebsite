@@ -1,59 +1,50 @@
 ﻿@model IEnumerable<EcomerceWebsite.Models.Order>
 
-@{
-    ViewBag.Title = "danh sach don hang";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
-<style>
-    table, th, td {
-        border: 1px solid black;
+    @{
+        ViewBag.Title = "Danh Sách Đơn Hàng";
+        Layout = "~/Views/Shared/_Layout.cshtml";
     }
-</style>
+    <style>
+        .order-table {
+            margin-top: 20px;
+        }
 
-<h2 style="text-align:center">Danh Sách Đơn Hàng</h2>
+            .order-table th, .order-table td {
+                text-align: center;
+                vertical-align: middle;
+            }
+    </style>
 
-<table  class="table">
-    <tr>
-        <th>
-            Tên khách hàng
-        </th>
-        <th>
-            Phương thức thanh toán
-        </th>
-        <th>
-            Địa chỉ giao hàng
-        </th>
-        <th>
-            Tổng giá
-        </th>
-        <th>
-            Ngày tạo
-        </th>
-        <th></th>
-    </tr>
+    <div class="container">
+        <h2 class="text-center my-4">Danh Sách Đơn Hàng</h2>
+        <table class="table table-bordered table-hover order-table">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Mã Order</th>
+                    <th>Phương thức thanh toán</th>
+                    <th>Địa chỉ giao hàng</th>
+                    <th>Tổng giá</th>
+                    <th>Ngày tạo</th>
+                    <th>Trạng thái</th>
+                    <th></th>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.account.first_name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Payment.payment_method)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.shipment.address)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.total_price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ngayTao)
-            </td>
-            <td>
-                @Html.ActionLink("Chi tiết", "Details", new { id = item.order_id })
-            </td>
-        </tr>
-    }
-
-</table>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.order_id)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Payment.payment_method)</td>
+                        <td>@Html.DisplayFor(modelItem => item.shipment.address)</td>
+                        <td>@Html.DisplayFor(modelItem => item.total_price)</td>
+                        <td>@Html.DisplayFor(modelItem => item.ngayTao)</td>
+                        <td>@Html.DisplayFor(modelItem => item.shipment.state)</td>
+                        <td>
+                            @Html.ActionLink("Chi tiết", "Details", new { id = item.order_id }, new { @class = "btn btn-info btn-sm" })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
