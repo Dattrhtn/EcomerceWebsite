@@ -154,6 +154,7 @@
     <Compile Include="Models\Payment.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\shipment.cs" />
+    <Compile Include="Models\sysdiagram.cs" />
     <Compile Include="Models\wishlist.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
