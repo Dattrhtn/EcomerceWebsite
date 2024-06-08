@@ -13,7 +13,7 @@ namespace EcomerceWebsite.Models
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int cart_id { get; set; }
 
-        public int? quantity { get; set; }S
+        public int? quantity { get; set; }
 
         public int account_account_id { get; set; }
 
