@@ -80,7 +80,7 @@ namespace EcomerceWebsite.Controllers
             }
             var itemShipment = db.shipments.FirstOrDefault(p => p.shipment_id == order.Shipment_shipment_id);
             string tmp = ""; 
-            tmp = itemShipment.address.ToString() + " " + itemShipment.city.ToString() + " " + itemShipment.country.ToString();
+            tmp = itemShipment.address?.ToString() + " " + itemShipment.city?.ToString() + " " + itemShipment.country?.ToString();
             ViewBag.address = tmp;
             ViewBag.zipCode = itemShipment.zip_code;
             ViewBag.shipDate = itemShipment.shipment_date;

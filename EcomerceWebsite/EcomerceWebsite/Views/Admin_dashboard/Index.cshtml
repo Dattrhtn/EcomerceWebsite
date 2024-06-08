@@ -4,5 +4,162 @@
     Layout = "~/Views/Shared/_LayoutPageAdmin.cshtml";
 }
 
-<h2>Index</h2>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<h2 style="color:darkblue; margin-bottom: 40px; font-weight: 700">Trang chủ quản trị</h2>
+<div>
+    <div style="display: flex; justify-content:center;">
+        <div style="width:48% !important;">
+            <h5 style="font-weight:700;">Lượt mua theo ngày</h5>
+            <div style=" display: flex; justify-content: center;">
+                <canvas id="chartDonTheoNgay"></canvas>
+            </div>
+
+        </div>
+        <div style="width:48% !important; margin-left:2%;">
+            <h5 style="font-weight:700;">Lượt mua theo năm</h5>
+            <div style=" display: flex; justify-content: center;">
+                <canvas id="chartDonTheoNam"></canvas>
+            </div>
+
+        </div>
+    </div>
+    <div style="display: flex; justify-content: center; margin-top: 20px;">
+        <div style="width:48% !important;">
+            <h5 style="font-weight:700; ">Lượt mua theo tháng</h5>
+            <div style=" display: flex; justify-content: center;">
+                <canvas id="chartDonTheoThang"></canvas>
+            </div>
+        </div>
+        <div style="width: 48% !important; margin-left: 2%; margin-top: 60px;">
+            <p style="font-weight: 700; color:darkslateblue; font-size: 18px;">Doanh thu tháng này: <span style="color:blueviolet; font-size: 22px; margin-left:10px">$@ViewBag.dtThang</span></p>
+            <p style="font-weight: 700; color:darkslateblue; font-size: 18px;">Doanh thu trong năm: <span style="color: blueviolet; font-size: 22px; margin-left: 10px ">$@ViewBag.dtNam</span></p>
+            <p style="font-weight: 700; color:darkslateblue; font-size: 18px;">Tổng doanh thu: <span style="color: blueviolet; font-size: 22px; margin-left: 10px ">$@ViewBag.tongdt</span></p>
+        </div>
+
+        </div>
+
+
+    <script>
+    const ctx = document.getElementById('chartDonTheoThang');
+    const ctx2 = document.getElementById('chartDonTheoNgay');
+    const ctx3 = document.getElementById('chartDonTheoNam');
+    new Chart(ctx2, {
+        type: 'bar',
+        data: {
+            labels: [
+                @{
+                    List<string> recentDates = new List<string>();
+                    for (int i = 6; i >= 0; i--) // Bắt đầu từ ngày hiện tại và lặp lại 7 ngày trước đó
+                    {
+                        DateTime date = DateTime.Today.AddDays(-i);
+                        recentDates.Add(date.ToString("dd/MM/yyyy"));
+                    }
+
+                 }
+               @foreach (var day in recentDates)
+                {
+                    @Html.Raw("'" + day + "',")
+                }
+
+            ],
+            datasets: [
+                {
+                    label: 'Lượt mua',
+                    data: [
+                         @foreach (var oj in Model.ngay)
+                         {
+                             @Html.Raw(oj.SoLuongDonHang + ",")
+                         }
+                    ],
+                    borderWidth: 1,
+                },
+            ]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: [
+                'Tháng 1',
+                'Tháng 2',
+                'Tháng 3',
+                'Tháng 4',
+                'Tháng 5',
+                'Tháng 6',
+                'Tháng 7',
+                'Tháng 8',
+                'Tháng 9',
+                'Tháng 10',
+                'Tháng 11',
+                'Tháng 12',
+            ],
+            datasets: [
+                {
+                    label: 'Lượt mua',
+                    data: [
+                         @foreach (var oj in Model.thang)
+                         {
+                             @Html.Raw(oj.SoLuongDonHang + ",")
+                         }
+                     ],
+                    borderWidth: 1
+                },
+            ]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+    new Chart(ctx3, {
+        type: 'line',
+        data: {
+            labels: [
+                @{
+                    List<int> recentYears = new List<int>();
+                    for (int i = 3; i >= 0; i--)
+                    {
+                        int date = DateTime.Today.Year - i;
+                        recentYears.Add(date);
+                    }
+
+                  }
+                @foreach (var day in recentYears)
+                 {
+                     @Html.Raw("'" + day.ToString() + "',")
+                 }
+            ],
+            datasets: [
+                {
+                    label: 'Lượt mua',
+                    data: [
+                    @foreach (var oj in Model.nam)
+                    {
+                        @Html.Raw(oj.SoLuongDonHang + ",")
+                    }
+                    ],
+                    borderWidth: 1
+                },
+            ]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+    </script>
 

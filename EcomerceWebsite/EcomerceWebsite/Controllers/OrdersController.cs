@@ -55,8 +55,8 @@ namespace EcomerceWebsite.Controllers
         {
             if (ModelState.IsValid)
             {
-                using (var transaction = db.Database.BeginTransaction())
-                {
+                //using (var transaction = db.Database.BeginTransaction())
+                //{
                     try
                     {
                         // Tạo đối tượng giao hàng
@@ -102,18 +102,18 @@ namespace EcomerceWebsite.Controllers
                         db.SaveChanges();
 
                         // Commit transaction
-                        transaction.Commit();
+                        //transaction.Commit();
 
                         return RedirectToAction("OrderSuccess");
                     }
                     catch (Exception ex)
                     {
                         // Rollback transaction nếu có lỗi xảy ra
-                        transaction.Rollback();
+                        //transaction.Rollback();
                         ModelState.AddModelError("", "Có lỗi xảy ra khi xử lý đơn hàng của bạn. Vui lòng thử lại.");
                         // Log lỗi nếu cần thiết
                     }
-                }
+                
             }
             ViewBag.account_account_id = new SelectList(db.accounts, "account_id", "first_name", order.account_account_id);
             ViewBag.Payment_payment_id = new SelectList(db.Payments, "payment_id", "payment_method", order.Payment_payment_id);
