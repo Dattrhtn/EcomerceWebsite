@@ -25,10 +25,10 @@
     <link rel="stylesheet" href="../../css/style.css" type="text/css">
     <style>
         .header__menu ul li a {
-            font-size: 15px;
+            font-size: 16px;
         }
-        .header__nav__option a span
-        {
+
+        .header__nav__option a span {
             color: #fff;
             font-size: 14px;
             position: absolute;
@@ -42,18 +42,22 @@
             line-height: 30px;
             text-align: center;
         }
+
         #search_value {
             max-width: 500px;
         }
-        #search_value:focus {
-            background-color: #0c0c0c;
-            color: #fff;
-            border: none;
-        }
+
+            #search_value:focus {
+                background-color: #0c0c0c;
+                color: #fff;
+                border: none;
+            }
+
         .form-control:focus {
-            outline:0;
+            outline: 0;
             box-shadow: 0 0 0 .2rem rgb(255 255 255 / 25%);
         }
+
         .search-model-form input {
             border-bottom: 1px solid #9b9b9b;
         }
@@ -85,7 +89,10 @@
         <div class="offcanvas__nav__option">
             <a href="#" class="search-switch"><img src="../../img/icon/search.png" alt=""></a>
             <a href="#"><img src="../../img/icon/heart.png" alt=""></a>
-            <a href="/Client_Cart/Index"><img src="../../img/icon/cart.png" alt=""> <span>0</span></a>
+                <a href="/Client_Cart/Index">
+                    <img src="../../img/icon/cart.png" alt="">
+                    <span>@Session["numberOfCart"]</span>
+                </a>
             <div class="price">$0.00</div>
         </div>
         <div id="mobile-menu-wrap"></div>
@@ -102,8 +109,17 @@
                     <div class="col-lg-12 col-md-5">
                         <div class="header__top__right">
                             <div class="header__top__links" style="margin: 0">
-                                <a href="~/Login/Login">Đăng nhập</a>
-                                <a href="#">Hỏi đáp</a>
+                                @if (Session["IsAuthenticated"] != null && (bool)Session["IsAuthenticated"])
+                                {
+                                    <a href="~/Account/Index">@Session["name"]</a>
+                                    <a href="~/Logout/Index">Đăng xuất</a>
+                                }
+                                else
+                                {
+                                    <a href="~/Login/Index">Đăng nhập</a>
+                                    <a href="~/Client_DangNhap_DangKy/DangKy">Đăng ký</a>
+                                }
+
                             </div>
                         </div>
                     </div>
@@ -122,16 +138,6 @@
                         <ul>
                             <li class="active"><a href="/">Trang chủ</a></li>
                             <li><a href="/Client_Danhsachsanpham/Index">Cửa hàng</a></li>
-                            <li>
-                                <a href="#">Pages</a>
-                                <ul class="dropdown">
-                                    <li><a href="./about.cshtml">Về chúng tôi</a></li>
-                                    <li><a href="./shop-details.cshtml">Sản phẩm</a></li>
-                                    <li><a href="./shopping-cart.cshtml">Giỏ hàng</a></li>
-                                    <li><a href="./checkout.cshtml">Thanh toán</a></li>
-                                    <li><a href="/Client_Blog/Index">Bài viết</a></li>
-                                </ul>
-                            </li>
                             <li><a href="/Client_Blog/Index">Bài viết</a></li>
                             <li><a href="/Client_Contact/Index">Liên hệ</a></li>
                         </ul>

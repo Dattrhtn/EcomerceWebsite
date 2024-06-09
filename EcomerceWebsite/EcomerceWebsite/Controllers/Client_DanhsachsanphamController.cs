@@ -21,50 +21,55 @@ namespace EcomerceWebsite.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            List<Product> products_Search = TempData["products_Search"] as List<Product>;
-            List<Product> productsByCategory = TempData["products_ByCategory"] as List<Product>;
-            List<Product> productsBySize = TempData["products_BySize"] as List<Product>;
-            List<Product> productsByColor = TempData["products_ByColor"] as List<Product>;
-            List<Product> productsByPrice = TempData["products_ByPrice"] as List<Product>;
-            List<Product> productsSortByPrice = TempData["products_SortByPrice"] as List<Product>;
+            if (Session["IsAuthenticated"] != null && (bool)Session["IsAuthenticated"])
+            {
+                var account_id = int.Parse(Session["account_id"] as string);
+                Session["numberOfCart"] = db.carts.Where(c => c.account_account_id == account_id).Count();
+                List<Product> products_Search = TempData["products_Search"] as List<Product>;
+                List<Product> productsByCategory = TempData["products_ByCategory"] as List<Product>;
+                List<Product> productsBySize = TempData["products_BySize"] as List<Product>;
+                List<Product> productsByColor = TempData["products_ByColor"] as List<Product>;
+                List<Product> productsByPrice = TempData["products_ByPrice"] as List<Product>;
+                List<Product> productsSortByPrice = TempData["products_SortByPrice"] as List<Product>;
+                string messAddError = TempData["MessAddCateError"] as string;
+                if (messAddError != "")
+                {
+                    ViewBag.messAddError = messAddError;
+                }
+                var products = db.Products.Include(p => p.Category);
+                var categories = db.Categories.ToList();
 
-            string messAddError = TempData["MessAddCateError"] as string;
-            if (messAddError != "")
-            {
-                ViewBag.messAddError = messAddError;
-            }
-            var products = db.Products.Include(p => p.Category);
-            var categories = db.Categories.ToList();
+                var list_products = products.GroupBy(p => p.productCode).Select(p => p.FirstOrDefault()).ToList();
+                TempData["list"] = categories;
+                ViewBag.listCate = TempData["list"] as List<Category>;
 
-            var list_products = products.GroupBy(p => p.productCode).Select(p => p.FirstOrDefault()).ToList();
-            TempData["list"] = categories;
-            ViewBag.listCate = TempData["list"] as List<Category>;
-
-            if (products_Search != null && products_Search.Count > 0)
-            {
-                list_products = products_Search;
+                if (products_Search != null && products_Search.Count > 0)
+                {
+                    list_products = products_Search;
+                }
+                if (productsByCategory != null && productsByCategory.Count > 0)
+                {
+                    list_products = productsByCategory;
+                }
+                if (productsBySize != null && productsBySize.Count > 0)
+                {
+                    list_products = productsBySize;
+                }
+                if (productsByColor != null && productsByColor.Count > 0)
+                {
+                    list_products = productsByColor;
+                }
+                if (productsByPrice != null && productsByPrice.Count > 0)
+                {
+                    list_products = productsByPrice;
+                }
+                if (productsSortByPrice != null && productsSortByPrice.Count > 0)
+                {
+                    list_products = productsSortByPrice;
+                }
+                return View(list_products);
             }
-            if (productsByCategory != null && productsByCategory.Count > 0)
-            {
-                list_products = productsByCategory;
-            }
-            if (productsBySize != null && productsBySize.Count > 0)
-            {
-                list_products = productsBySize;
-            }
-            if (productsByColor != null && productsByColor.Count > 0)
-            {
-                list_products = productsByColor;
-            }
-            if (productsByPrice != null && productsByPrice.Count > 0)
-            {
-                list_products = productsByPrice;
-            }
-            if (productsSortByPrice != null && productsSortByPrice.Count > 0)
-            {
-                list_products = productsSortByPrice;
-            }
-            return View(list_products);
+            return RedirectToAction("Index", "Login");
         }
 
         // GET: Client_Danhsachsanpham/Details/5
@@ -187,14 +192,14 @@ namespace EcomerceWebsite.Controllers
             try
             {
                 var product = db.Products.Where(p => p.product_id == product_id).FirstOrDefault();
-
-                var check_product_ID = db.carts.Where(c => c.product_product_id == product_id).FirstOrDefault();
+                var account_id = int.Parse(Session["account_id"] as string);
+                var check_product_ID = db.carts.Where(c => c.product_product_id == product_id && c.account_account_id == account_id).FirstOrDefault();
                 if (check_product_ID == null)
                 {
                     cart new_Cart_Item = new cart();
                     new_Cart_Item.quantity = 1;
                     new_Cart_Item.product_product_id = product.product_id;
-                    new_Cart_Item.account_account_id = 1;
+                    new_Cart_Item.account_account_id = account_id;
                     new_Cart_Item.ngayTao = DateTime.Now;
                     db.carts.Add(new_Cart_Item);
                     db.SaveChanges();
@@ -205,7 +210,6 @@ namespace EcomerceWebsite.Controllers
                     db.Entry(check_product_ID).State = EntityState.Modified;
                     db.SaveChanges();
                 }
-                Session["numberOfCart"] = db.carts.Count();
             }
             catch (Exception e)
             {
