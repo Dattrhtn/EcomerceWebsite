@@ -1,32 +1,29 @@
 ﻿
 @{
-    ViewBag.Title = "Login";
+    ViewBag.Title = "Đăng nhập";
 }
+<style>
+    * {
+        box-sizing: border-box;
+    }
 
+    .loginpage {
+        background: #f6f5f7;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        font-family: 'Montserrat', sans-serif;
+        height: 100vh;
+        margin: -20px 0 50px;
+    }
 
-
-    <style>
-        * {
-            box-sizing: border-box;
+        .loginpage h1 {
+            font-weight: bold;
+            margin: 0;
+            color: unset;
+            font-family: unset;
         }
-
-        .loginpage {
-            background: #f6f5f7;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            font-family: 'Montserrat', sans-serif;
-            height: 100vh;
-            margin: -20px 0 50px;
-        }
-
-            .loginpage h1 {
-                font-weight: bold;
-                margin: 0;
-                color: unset;
-                font-family: unset;
-            }
 
         .loginpage h2 {
             text-align: center;
@@ -214,103 +211,99 @@
             margin: 20px 0;
         }
 
-            .social-container a {
-                border: 1px solid #DDDDDD;
-                border-radius: 50%;
-                display: inline-flex;
-                justify-content: center;
-                align-items: center;
-                margin: 0 5px;
-                height: 40px;
-                width: 40px;
-            }
+    .social-container a {
+        border: 1px solid #DDDDDD;
+        border-radius: 50%;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 5px;
+        height: 40px;
+        width: 40px;
+    }
 
-        .loginpage footer {
-            background-color: #222;
-            color: #fff;
-            font-size: 14px;
-            bottom: 0;
-            position: fixed;
-            left: 0;
-            right: 0;
-            text-align: center;
-            z-index: 999;
+    .loginpage footer {
+        background-color: #222;
+        color: #fff;
+        font-size: 14px;
+        bottom: 0;
+        position: fixed;
+        left: 0;
+        right: 0;
+        text-align: center;
+        z-index: 999;
+    }
+
+        .loginpage footer p {
+            margin: 10px 0;
         }
 
-            .loginpage footer p {
-                margin: 10px 0;
-            }
+        .loginpage footer i {
+            color: red;
+        }
 
-            .loginpage footer i {
-                color: red;
-            }
+        .loginpage footer a {
+            color: #3c97bf;
+            text-decoration: none;
+        }
 
-            .loginpage footer a {
-                color: #3c97bf;
-                text-decoration: none;
-            }
-    </style>
-    <script>
-        const signUpButton = document.getElementById('signUp');
-        const signInButton = document.getElementById('signIn');
-        const container = document.getElementById('container');
+    .loginpage a {
+        color: #333;
+        font-size: 14px;
+        text-decoration: none;
+        margin: 15px 0;
+        color: #FFFFFF;
+        font-size: 12px;
+        font-weight: bold;
+        padding: 12px 45px;
+    }
 
-        signUpButton.addEventListener('click', () => {
-            container.classList.add("right-panel-active");
-        });
-
-        signInButton.addEventListener('click', () => {
-            container.classList.remove("right-panel-active");
-        });
-    </script>
-    <div class="loginpage">
-        <h2>Welcome to Fashion Store</h2>
-        <div class="container" id="container">
-            <div class="form-container sign-up-container">
-                <form action="#">
-                    <h1>Create Account</h1>
-                    <div class="social-container">
-                        <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
-                        <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                    <span>or use your email for registration</span>
-                    <input type="text" placeholder="Name" />
-                    <input type="email" placeholder="Email" />
-                    <input type="password" placeholder="Password" />
-                    <button>Sign Up</button>
-                </form>
-            </div>
-            <div class="form-container sign-in-container">
-                <form action="#">
-                    <h1>Sign in</h1>
-                    <div class="social-container">
-                        <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
-                        <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                    <span>or use your account</span>
-                    <input type="email" placeholder="Email" />
-                    <input type="password" placeholder="Password" />
-                    <a href="#">Forgot your password?</a>
-                    <button>Sign In</button>
-                </form>
-            </div>
-            <div class="overlay-container">
-                <div class="overlay">
-                    <div class="overlay-panel overlay-left">
-                        <h1>Welcome Back!</h1>
-                        <p>To keep connected with us please login with your personal info</p>
-                        <button class="ghost" id="signIn">Sign In</button>
-                    </div>
-                    <div class="overlay-panel overlay-right">
-                        <h1>Hello, Friend!</h1>
-                        <p>Enter your personal details and start journey with us</p>
-                        <button class="ghost" id="signUp">Sign Up</button>
-                    </div>
+    button #signUp {
+        padding: 12px !important;
+    }
+</style>
+<div class="loginpage">
+    <h2>Chào mừng tới với Đinh Khắc Diên</h2>
+    <div class="container" id="container">
+        <div class="form-container sign-in-container">
+            <form id="formSignIn" method="post" action="/Client_DangNhap_DangKy/DangNhap">
+                <h2>Đăng nhập</h2>
+                <input name="username" id="username" type="text" placeholder="User name" required />
+                <input name="pass" id="pass" type="password" placeholder="Password" required />
+                <button id="signIn" type="submit">Đăng nhập</button>
+            </form>
+        </div>
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-right">
+                    <h2>Chào bạn!</h2>
+                    <p>Nhập thông tin cá nhân để bắt đầu mua sắm với chúng tôi</p>
+                    <button class="ghost" id="signUp" padding="12px"><a href="/Client_DangNhap_DangKy/DangKy">Đăng ký</a></button>
                 </div>
             </div>
         </div>
-
-
     </div>
+    @if (@ViewBag.mess != "")
+    {
+        <h3 style="margin-top: 24px" class="text-danger">@ViewBag.mess</h3>
+
+    }
+</div>
+<script>
+    document.getElementById("formSignIn").addEventListener("submit", function (event) {
+        var usernameValue = document.getElementById("username").value.trim();
+        var passValue = document.getElementById("pass").value.trim();
+        if (usernameValue === "" || passValue === "") {
+            alert("Username hoặc mật khẩu không được để trống!");
+            event.preventDefault(); // Ngăn chặn sự kiện submit
+        }
+        else if (usernameValue.length < 6) {
+            alert("Username tối thiểu 6 ký tự!");
+            event.preventDefault();
+        }
+        else if (passValue.length < 8) {
+            alert("Mật khẩu tối thiểu 8 ký tư!");
+            event.preventDefault();
+        }
+    });
+</script>

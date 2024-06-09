@@ -11,9 +11,22 @@ namespace EcomerceWebsite.Controllers
     {
         ModelDB db = new ModelDB();
         public ActionResult Index()
-        {
-            Session["numberOfCart"] = db.carts.Count();
-            return View();
+        { 
+            if (Session["IsAuthenticated"] != null && (bool)Session["IsAuthenticated"])
+            {
+                ViewBag.CurentAccount = Session["name"] as string;
+                var account_id = int.Parse(Session["account_id"] as string);
+                Session["numberOfCart"] = db.carts.Where(c => c.account_account_id == account_id).Count();
+            }
+            else
+            {
+                Session["numberOfCart"] = 0;
+            }
+            //else
+            //{
+            //    return RedirectToAction("Login", "Account");
+            //}
+           return View();
         }
 
         public ActionResult About()

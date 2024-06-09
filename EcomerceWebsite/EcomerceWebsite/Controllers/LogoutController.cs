@@ -6,13 +6,13 @@ using System.Web.Mvc;
 
 namespace EcomerceWebsite.Controllers
 {
-    public class LoginController : Controller
+    public class LogoutController : Controller
     {
-        // GET: Login
+        // GET: Logout
         public ActionResult Index()
         {
-            ViewBag.mess = TempData["mess"] as string;
-            return View();
+            Session.Clear();
+            return RedirectToAction("Index", "Home");
         }
     }
 }

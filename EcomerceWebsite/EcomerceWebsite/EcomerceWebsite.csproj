@@ -134,6 +134,7 @@
     <Compile Include="Controllers\Client_BlogController.cs" />
     <Compile Include="Controllers\Client_CartController.cs" />
     <Compile Include="Controllers\Client_ContactController.cs" />
+    <Compile Include="Controllers\Client_DangNhap_DangKyController.cs" />
     <Compile Include="Controllers\Client_DanhsachOrdersController.cs" />
     <Compile Include="Controllers\Client_DanhsachsanphamController.cs" />
     <Compile Include="Controllers\Admin_dashboardController.cs" />
@@ -145,6 +146,7 @@
     <Compile Include="Controllers\Client_ProductDetailController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\LogoutController.cs" />
     <Compile Include="Controllers\OrdersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -390,9 +392,12 @@
     <Content Include="Views\Client_DanhsachOrders\Edit.cshtml" />
     <Content Include="Views\Client_DanhsachOrders\Index.cshtml" />
     <Content Include="Views\Client_Information\Index.cshtml" />
+    <Content Include="Views\Client_DangNhap_DangKy\DangNhap.cshtml" />
+    <Content Include="Views\Client_DangNhap_DangKy\DangKy.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Logout\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
