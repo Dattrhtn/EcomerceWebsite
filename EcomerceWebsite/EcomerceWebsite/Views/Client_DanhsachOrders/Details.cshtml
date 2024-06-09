@@ -1,76 +1,105 @@
 ﻿@model EcomerceWebsite.Models.Order
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Chi tiết đơn hàng";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["Message"]
+    </div>
+}
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["Error"]
+    </div>
+}
 
-<div>
-    <h4>Order</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.account.first_name)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.account.first_name)
-        </dd>
+<div class="container mt-4">
+    <h2 class="text-center">Chi tiết đơn hàng</h2>
+    <h4 class="mt-4">Đơn hàng</h4>
+    <div>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-3">
+                Mã order
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.order_id)
+            </dd>
 
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Payment.payment_method)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Payment.payment_method)
-        </dd>
+            <dt class="col-sm-3">
+                Phương thức thanh toán
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.Payment.payment_method)
+            </dd>
 
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.shipment.address)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.shipment.address)
-        </dd>
+            <dt class="col-sm-3">
+                Địa chỉ giao hàng
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.shipment.address)
+            </dd>
 
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.total_price)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.total_price)
-        </dd>
+            <dt class="col-sm-3">
+                Tổng giá
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.total_price)
+            </dd>
 
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.ngayTao)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.ngayTao)
-        </dd>
-    </dl>
-</div>
+            <dt class="col-sm-3">
+                Ngày tạo
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.ngayTao)
+            </dd>
+        </dl>
+    </div>
 
-<h4>Order Items</h4>
-<table class="table">
-    <thead>
-        <tr>
-            <th>Product Name</th>
-            <th>Quantity</th>
-            <th>Unit Price</th>
-            <th>Total</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model.order_item)
-        {
+    <h4 class="mt-4">Mặt hàng</h4>
+    <table class="table table-bordered table-hover">
+        <thead class="thead-dark">
             <tr>
-                <td>@item.Product.name</td>
-                <td>@item.quantity</td>
-                <td>@item.price</td>
-                <td>@(item.quantity * item.price)</td>
+                <th>Tên sản phẩm</th>
+                <th>Số lượng</th>
+                <th>Đơn giá</th>
+                <th>Tổng giá</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.order_item)
+            {
+                <tr>
+                    <td>@item.Product.name</td>
+                    <td>@item.quantity</td>
+                    <td>@String.Format("{0:C}", item.price)</td>
+                    <td>@String.Format("{0:C}", item.quantity * item.price)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
 
-<p>
-    @Html.ActionLink("Back to List", "Index")
-</p>
+    <div>
+        @if (Model.shipment.state == "Chờ xử lý")
+        {
+            using (Html.BeginForm("Cancel", "Client_DanhSachOrders", new { id = Model.order_id }, FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                <button type="submit" class="btn btn-danger">Hủy</button>
+            }
+        }
+        else
+        {
+            <p>Đơn hàng không thể hủy được.</p>
+        }
+    </div>
+
+    <p class="mt-4">
+        @Html.ActionLink("Trở lại danh sách", "Index", null, new { @class = "btn btn-primary" })
+    </p>
+</div>

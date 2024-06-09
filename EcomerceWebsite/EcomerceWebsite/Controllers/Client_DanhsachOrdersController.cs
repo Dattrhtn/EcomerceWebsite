@@ -17,25 +17,12 @@ namespace EcomerceWebsite.Controllers
         // GET: Client_DanhSachOrder
         public ActionResult Index()
         {
-            // order_item order_item1 =  new order_item();
-            //order_item1.quantity = 2;
-            //order_item1.price = 700;
-            //order_item1.product_product_id = 1;
-            //order_item1.order_order_id = 1;
-            //order_item1.ngayTao = DateTime.Now;
-            //db.order_item.Add(order_item1);
-            //db.SaveChanges();
-
-            var currentUserId = 1;
-
-            // Giả sử account_id được lưu trong User.Identity.Name
-            // hoặc bạn có thể có cách khác để lấy account_id của người dùng
+            var currentUserId = 1; // Giả sử account_id được lưu trong User.Identity.Name
             var orders = db.Orders
                            .Include(o => o.account)
                            .Include(o => o.Payment)
                            .Include(o => o.shipment)
                            .Where(o => o.account.account_id == currentUserId);
-
             return View(orders.ToList());
         }
 
@@ -56,6 +43,31 @@ namespace EcomerceWebsite.Controllers
             return View(order);
         }
 
+        // POST: Client_DanhSachOrder/Cancel/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Cancel(int id)
+        {
+            Order order = db.Orders.Include(o => o.shipment).FirstOrDefault(o => o.order_id == id);
+            if (order == null)
+            {
+                return HttpNotFound();
+            }
+
+            if (order.shipment.state == "Chờ xử lý")
+            {
+                order.shipment.state = "đã hủy";
+                db.SaveChanges();
+                TempData["Message"] = "Đơn hàng đã được hủy thành công.";
+            }
+            else
+            {
+                TempData["Error"] = "Đơn hàng không thể hủy được.";
+            }
+
+            return RedirectToAction("Details", new { id = id });
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -64,6 +76,5 @@ namespace EcomerceWebsite.Controllers
             }
             base.Dispose(disposing);
         }
-
     }
 }
