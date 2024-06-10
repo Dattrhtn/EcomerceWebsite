@@ -30,6 +30,7 @@ namespace EcomerceWebsite.Models
         [StringLength(100)]
         public string email { get; set; }
 
+        [Required]
         [StringLength(100)]
         public string password { get; set; }
 

@@ -74,6 +74,10 @@ namespace EcomerceWebsite.Controllers
             var color = Convert.ToInt32(selected_color);
             var productCode = db.Products.Where(p => p.product_id == productId).Select(p => p.productCode).FirstOrDefault();
             var product = db.Products.Where(p => p.color == color && p.size == selected_size && p.productCode == productCode).FirstOrDefault();
+            if(product == null)
+            {
+                product = db.Products.Where(p => p.product_id == productId).FirstOrDefault();
+            }
             var account_id = int.Parse(Session["account_id"] as string);
             var check_product_ID = db.carts.Where(c => c.product_product_id == product.product_id && c.account_account_id == account_id).FirstOrDefault();
             if (check_product_ID == null)

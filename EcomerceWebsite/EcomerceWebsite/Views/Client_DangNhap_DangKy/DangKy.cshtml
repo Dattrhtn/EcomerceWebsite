@@ -31,10 +31,17 @@
                 <div class="row">
                     <div class="col-lg-6">
                         <div class="checkout__input">
+                            <p>Email<span>*</span></p>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="checkout__input">
                             <p>Password<span>*</span></p>
                             <input type="password" id="pass" name="pass" required>
                         </div>
                     </div>
+
                 </div>
                 <div class="row">
                     <div class="col-lg-6">
@@ -64,14 +71,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-lg-6">
-                        <div class="checkout__input">
-                            <p>Email<span>*</span></p>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                    </div>
-                </div>
                 <div style="text-align:center">
                     <button id="clear" type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-light btn-lg">Nhập lại</button>
                     <button id="submit" type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-lg ms-2" style=" background-color: palevioletred; color: #fff; box-shadow: 0px 0px 28px #b5afaf;">Đăng ký</button>
@@ -92,15 +91,10 @@
         document.getElementById("form").reset();
     });
     document.getElementById("form").addEventListener("submit", function (event) {
-        var usernameValue = document.getElementById("username").value.trim();
         var passValue = document.getElementById("pass").value.trim();
-        if (usernameValue.length < 6) {
-            alert("Username tối thiểu 6 ký tự!");
-            event.preventDefault();
-            usernameValue.focus();
-        }
-        else if (passValue.length < 8) {
-            alert("Mật khẩu tối thiểu 8 ký tư!");
+        console.log(passValue);
+        if (passValue.length < 8) {           
+            alert("Mật khẩu tối thiểu 8 ký tự!");
             event.preventDefault();
             passValue.focus();
         }

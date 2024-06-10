@@ -92,7 +92,6 @@
                 .nav-item.dropdown .dropdown-menu .dropdown-item:hover {
                     background-color: #f8f9fa;
                 }
-
     </style>
 </head>
 <body>
@@ -138,24 +137,22 @@
         <div class="header__top">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-12 col-md-5">
+                    <div class="col-lg-12 col-md-5" style="padding-right: 0;">
                         <div class="header__top__right">
                             <div class="header__top__links" style="margin: 0">
                                 @if (Session["IsAuthenticated"] != null && (bool)Session["IsAuthenticated"])
                                 {
                                     <div class="nav-item dropdown">
-                                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                                        <a href="#" style="margin: 0; padding-right: 0;" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                                             <img class="rounded-circle" src="https://c1.klipartz.com/pngpicture/823/765/sticker-png-login-icon-system-administrator-user-user-profile-icon-design-avatar-face-head.png" alt="" style="width: 40px; height: 40px;">
                                             <span class="d-none d-lg-inline-flex user-name">@Session["name"]</span>
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-end">
                                             <a href="/Client_Account/Index" class="dropdown-item">Thông tin của cá nhân</a>
+                                            <a href="/Client_DanhsachOrders/Index" class="dropdown-item">Đơn hàng của tôi</a>
                                             <a href="~/Logout" class="dropdown-item">Đăng xuất</a>
                                         </div>
                                     </div>
-
-
-
                                 }
                                 else
                                 {
