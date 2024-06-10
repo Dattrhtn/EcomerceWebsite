@@ -25,10 +25,6 @@ namespace EcomerceWebsite.Models
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<account>()
-                .Property(e => e.username)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<account>()
                 .Property(e => e.email)
                 .IsUnicode(false);
 

@@ -67,41 +67,22 @@ namespace EcomerceWebsite.Controllers
                 {
                     list_products = productsSortByPrice;
                 }
-                return View(list_products);
-            }
-            if (productsByCategory != null && productsByCategory.Count > 0)
-            {
-                list_products = productsByCategory;
-            }
-            if (productsBySize != null && productsBySize.Count > 0)
-            {
-                list_products = productsBySize;
-            }
-            if (productsByColor != null && productsByColor.Count > 0)
-            {
-                list_products = productsByColor;
-            }
-            if (productsByPrice != null && productsByPrice.Count > 0)
-            {
-                list_products = productsByPrice;
-            }
-            if (productsSortByPrice != null && productsSortByPrice.Count > 0)
-            {
-                list_products = productsSortByPrice;
-            }
 
-            // Phân trang
-            var totalItems = list_products.Count;
-            var totalPages = (int)Math.Ceiling((double)totalItems / pageSize);
-            var paginatedProducts = list_products.Skip((page - 1) * pageSize).Take(pageSize).ToList();
+                // Phân trang
+                var totalItems = list_products.Count;
+                var totalPages = (int)Math.Ceiling((double)totalItems / pageSize);
+                var paginatedProducts = list_products.Skip((page - 1) * pageSize).Take(pageSize).ToList();
 
-            ViewBag.TotalItems = totalItems;
-            ViewBag.CurrentPage = page;
-            ViewBag.PageSize = pageSize;
-            ViewBag.TotalPages = totalPages;
+                ViewBag.TotalItems = totalItems;
+                ViewBag.CurrentPage = page;
+                ViewBag.PageSize = pageSize;
+                ViewBag.TotalPages = totalPages;
 
-            return View(paginatedProducts);
-            return RedirectToAction("Index", "Login");
+                return View(paginatedProducts);
+            }
+                return RedirectToAction("Index", "Login");
+
+            
         }
 
         // GET: Client_Danhsachsanpham/Details/5

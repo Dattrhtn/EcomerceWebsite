@@ -131,6 +131,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\Admin_accountsController.cs" />
     <Compile Include="Controllers\Admin_CategoriesController.cs" />
+    <Compile Include="Controllers\Client_AccountController.cs" />
     <Compile Include="Controllers\Client_BlogController.cs" />
     <Compile Include="Controllers\Client_CartController.cs" />
     <Compile Include="Controllers\Client_ContactController.cs" />
@@ -142,7 +143,6 @@
     <Compile Include="Controllers\Admin_PaymentsController.cs" />
     <Compile Include="Controllers\Admin_ProductsController.cs" />
     <Compile Include="Controllers\Admin_shipmentsController.cs" />
-    <Compile Include="Controllers\Client_InformationController.cs" />
     <Compile Include="Controllers\Client_ProductDetailController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -391,9 +391,13 @@
     <Content Include="Views\Client_DanhsachOrders\Details.cshtml" />
     <Content Include="Views\Client_DanhsachOrders\Edit.cshtml" />
     <Content Include="Views\Client_DanhsachOrders\Index.cshtml" />
-    <Content Include="Views\Client_Information\Index.cshtml" />
     <Content Include="Views\Client_DangNhap_DangKy\DangNhap.cshtml" />
     <Content Include="Views\Client_DangNhap_DangKy\DangKy.cshtml" />
+    <Content Include="Views\Client_Account\Create.cshtml" />
+    <Content Include="Views\Client_Account\Delete.cshtml" />
+    <Content Include="Views\Client_Account\Details.cshtml" />
+    <Content Include="Views\Client_Account\Edit.cshtml" />
+    <Content Include="Views\Client_Account\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
