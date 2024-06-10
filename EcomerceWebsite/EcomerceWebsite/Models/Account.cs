@@ -18,10 +18,6 @@ namespace EcomerceWebsite.Models
             wishlists = new HashSet<wishlist>();
         }
 
-        [Required]
-        [StringLength(50)]
-        public string username { get; set; }
-
         [Key]
         public int account_id { get; set; }
 
@@ -34,7 +30,6 @@ namespace EcomerceWebsite.Models
         [StringLength(100)]
         public string email { get; set; }
 
-        [Required]
         [StringLength(100)]
         public string password { get; set; }
 

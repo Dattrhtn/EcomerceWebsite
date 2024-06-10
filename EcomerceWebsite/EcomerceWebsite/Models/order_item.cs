@@ -9,6 +9,7 @@ namespace EcomerceWebsite.Models
     public partial class order_item
     {
         [Key]
+        [Column(Order = 0)]
         public int order_item_id { get; set; }
 
         public int? quantity { get; set; }
@@ -17,6 +18,9 @@ namespace EcomerceWebsite.Models
 
         public int? product_product_id { get; set; }
 
+        [Key]
+        [Column(Order = 1)]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int order_order_id { get; set; }
 
         [Column(TypeName = "datetime2")]

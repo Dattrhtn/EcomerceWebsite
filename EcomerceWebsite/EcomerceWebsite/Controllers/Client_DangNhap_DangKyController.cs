@@ -18,41 +18,40 @@ namespace EcomerceWebsite.Controllers
         public ActionResult DangNhap()
         {
             ViewBag.mess = "";
-            var username = Request["username"];
+            var email = Request["mail"];
             var pass = Request["pass"];
-            var currentAccount = db.accounts.Where(ac => ac.username == (username) && ac.password == pass).FirstOrDefault();
+            var currentAccount = db.accounts.Where(ac => ac.email == (email) && ac.password == pass).FirstOrDefault();
             if (currentAccount != null)
             {
                 if(currentAccount.role == 1)
                 {
                     return RedirectToAction("Index", "Admin_dashboard");
                 }
-                Session["Username"] = username;
                 Session["IsAuthenticated"] = true;
                 Session["name"] = currentAccount.first_name;
                 Session["account_id"] = currentAccount.account_id.ToString();
                 return RedirectToAction("Index", "Home");
             }
-            TempData["mess"] = "Username hoặc password không đúng!";
+            TempData["mess"] = "Email hoặc password không đúng!";
             return RedirectToAction("Index", "Login");
         }
-        public ActionResult DangKy(string username, string pass, string last_name, string first_name, string phone_number, string address, string email)
+      
+        public ActionResult DangKy()
         {
             ViewBag.mess = TempData["mess"] as string;
             return View();
         }
         [HttpPost]
-        public ActionResult DangKyAccount(string username, string pass, string last_name, string first_name, string phone_number, string address, string email)
+        public ActionResult DangKyAccount(string pass, string last_name, string first_name, string phone_number, string address, string email)
         {
             ViewBag.mess = "";
              var newAccount = new account();
-            var checkUser = db.accounts.Where(ac => ac.username == username).Select(ac => ac.username).FirstOrDefault();
-            if (checkUser != null)
+            var checkEmail = db.accounts.Where(ac => ac.email == email).Select(ac => ac.email).FirstOrDefault();
+            if (checkEmail != null)
             {
-                TempData["mess"] = "Username đã tồn tại!";
+                TempData["mess"] = "Email đã tồn tại!";
                 return RedirectToAction("DangKy");
             }
-            newAccount.username = username;
             newAccount.password = pass;
             newAccount.last_name = last_name;
             newAccount.first_name = first_name;

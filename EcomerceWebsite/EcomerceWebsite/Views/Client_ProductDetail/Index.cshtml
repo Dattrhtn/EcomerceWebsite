@@ -7,10 +7,30 @@
     .product__details__pic .nav-tabs .nav-item .nav-link .product__thumb__pic {
         width: 130px;
     }
+
     .product-detail {
         position: absolute;
         width: 100%;
         height: 100%;
+    }
+    .product__details__option__color label.c-3 {
+        background:#e8bac4;
+    }
+    .product__details__option__color label.c-2 {
+        background: #ffff;
+    }
+    .product__details__option__color label.c-4 {
+        background: red;
+    }
+    .product__details__option__color label.c-6 {
+        background: #e5ddd2;
+    }
+
+    .product__details__option__color label.c-5 {
+        background: #6c827a;
+    }
+    .product__details__option__color label.c-7 {
+        background: #636068;
     }
 </style>
 <section class="shop-details">
@@ -89,57 +109,42 @@
                 <div class="col-lg-8">
                     <div class="product__details__text">
                         <h4>@ViewBag.product_name</h4>
-                        <h3>$@ViewBag.product_price @*<span>70.00</span>*@</h3>
+                        <h3>$@ViewBag.product_price</h3>
                         <p>
                             @ViewBag.product_description
                         </p>
-                        <div class="product__details__option">
-                            <div class="product__details__option__size">
-                                <span>Kích thước:</span>
-                                <label for="xxl">
-                                    xxl
-                                    <input type="radio" id="xxl">
-                                </label>
-                                <label class="active" for="xl">
-                                    xl
-                                    <input type="radio" id="xl">
-                                </label>
-                                <label for="l">
-                                    l
-                                    <input type="radio" id="l">
-                                </label>
-                                <label for="sm">
-                                    s
-                                    <input type="radio" id="sm">
-                                </label>
-                            </div>
-                            <div class="product__details__option__color">
-                                <span>Màu sắc:</span>
-                                <label class="c-1" for="sp-1">
-                                    <input type="radio" id="sp-1">
-                                </label>
-                                <label class="c-2" for="sp-2">
-                                    <input type="radio" id="sp-2">
-                                </label>
-                                <label class="c-3" for="sp-3">
-                                    <input type="radio" id="sp-3">
-                                </label>
-                                <label class="c-4" for="sp-4">
-                                    <input type="radio" id="sp-4">
-                                </label>
-                                <label class="c-9" for="sp-9">
-                                    <input type="radio" id="sp-9">
-                                </label>
-                            </div>
-                        </div>
-                        <div class="product__details__cart__option">
-                            <div class="quantity">
-                                <div class="pro-qty">
-                                    <input type="text" value="1">
+                        <form method="post" action="/Client_ProductDetail/AddToCart">
+                            <div class="product__details__option">
+                                <div class="product__details__option__size">
+                                    <input style="display: none" id="product_id" name="product_id" value="@ViewBag.product_id" />
+                                    <span>Kích thước:</span>
+                                    @foreach (var item in @ViewBag.listSize) { 
+                                        <label for="@item">
+                                            @item
+                                            <input type="radio" id="@item" name="size" value="@item">
+                                        </label>                              
+                                    }
+                                </div>
+                                <div class="product__details__option__color">
+                                    <span>Màu sắc:</span>
+                                    @foreach (var item in @ViewBag.listColor) { 
+                                        <label class="c-@item" for="sp-@item">
+                                            <input type="radio" id="sp-@item" name="color" value="@item">
+                                        </label>                                  
+                                    }
                                 </div>
                             </div>
-                            <a href="#" class="primary-btn">Thêm vào giỏ hàng</a>
-                        </div>
+                            <div class="product__details__cart__option">
+                                <div class="quantity">
+                                    <div class="pro-qty">
+                                        <input type="text" value="1" id="quantity_value" name="quantity_value">
+                                    </div>
+                                </div>
+                                <input type="hidden" id="selected_color" name="selected_color" value="">
+                                <input type="hidden" id="selected_size" name="selected_size" value="">
+                                <button type="submit" class="primary-btn">Thêm vào giỏ hàng</button>
+                            </div>
+                        </form>
                         <div class="product__details__last__option">
                             <h5><span>Đảm bảo thanh toán an toàn</span></h5>
                             <img src="../../img/shop-details/details-payment.png" alt="">
@@ -212,7 +217,7 @@
             {
                 <div class="col-lg-3 col-md-6 col-sm-6 col-sm-6">
                     <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="@item.Image"  style="border: 0.5px solid #efefef; box-shadow:rgb(131 129 129 / 30%) 10px 10px 35px ; ">
+                        <div class="product__item__pic set-bg" data-setbg="@item.Image" style="border: 0.5px solid #efefef; box-shadow:rgb(131 129 129 / 30%) 10px 10px 35px ; ">
                             <a href="/Client_ProductDetail/Index/?product_id=@item.product_id" class="product-detail"></a>
                             <ul class="product__hover">
                                 <li><a href="#"><img src="../../img/icon/heart.png" alt=""></a></li>
@@ -250,4 +255,21 @@
         </div>
     </div>
 </section>
-
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        // Lấy tất cả các nút radio màu sắc
+        var colorRadios = document.querySelectorAll('input[type="radio"][name="color"]');
+        colorRadios.forEach(function (radio) {
+            radio.addEventListener("click", function () {
+                document.getElementById("selected_color").value = this.value;
+            });
+        });
+        // Lấy tất cả các nút radio kích thước
+        var sizeRadios = document.querySelectorAll('input[type="radio"][name="size"]');
+        sizeRadios.forEach(function (radio) {
+            radio.addEventListener("click", function () {
+                document.getElementById("selected_size").value = this.value;
+            });
+        });
+    });
+</script>

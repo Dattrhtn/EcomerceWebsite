@@ -5,10 +5,19 @@ using System.Web.Mvc;
 
 public class HomeController : Controller
 {
-    ModelDB db = new ModelDB();
 
+    ModelDB db = new ModelDB();
     public ActionResult Index()
     {
+        Session["TramgChu_active"] = "active";
+        if (Session["TramgChu_active"] != null && Session["TramgChu_active"].ToString() == "active")
+        {
+            // Xóa các session khác
+            Session.Remove("Contact_active");
+            Session.Remove("Blog_active");
+            Session.Remove("Cuahang_active");
+        }
+
         if (Session["IsAuthenticated"] != null && (bool)Session["IsAuthenticated"])
         {
             ViewBag.CurentAccount = Session["name"] as string;
@@ -19,11 +28,13 @@ public class HomeController : Controller
         {
             Session["numberOfCart"] = 0;
         }
-
-        ViewBag.BestSellingProducts = GetBestSellingProducts();
-
+        //else
+        //{
+        //    return RedirectToAction("Login", "Account");
+        //}
         return View();
     }
+
 
     private List<Product> GetBestSellingProducts()
     {

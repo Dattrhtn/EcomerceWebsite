@@ -11,6 +11,14 @@ namespace EcomerceWebsite.Controllers
         // GET: Client_Blog
         public ActionResult Index()
         {
+            Session["Blog_active"] = "active";
+            if (Session["Blog_active"] != null && Session["Blog_active"].ToString() == "active")
+            {
+                // Xóa các session khác
+                Session.Remove("Contact_active");
+                Session.Remove("TramgChu_active");
+                Session.Remove("Cuahang_active");
+            }
             return View();
         }
         public ActionResult BlogDetail1()

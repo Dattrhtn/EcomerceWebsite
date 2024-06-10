@@ -20,15 +20,10 @@ namespace EcomerceWebsite.Models
         public virtual DbSet<Payment> Payments { get; set; }
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<shipment> shipments { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<wishlist> wishlists { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<account>()
-                .Property(e => e.username)
-                .IsUnicode(false);
-
             modelBuilder.Entity<account>()
                 .Property(e => e.email)
                 .IsUnicode(false);
