@@ -16,7 +16,8 @@ namespace EcomerceWebsite.Controllers
         // GET: Client_Account
         public ActionResult Index()
         {
-            var currentUserId = 3; // Giả sử account_id được lưu trong User.Identity.Name
+            var account_id = int.Parse(Session["account_id"] as string);
+            var currentUserId = account_id;
             var account = db.accounts
                             .FirstOrDefault(a => a.account_id == currentUserId);
 
@@ -26,6 +27,7 @@ namespace EcomerceWebsite.Controllers
             }
 
             return View(account);
+
         }
 
         // GET: Client_Account/Edit/5

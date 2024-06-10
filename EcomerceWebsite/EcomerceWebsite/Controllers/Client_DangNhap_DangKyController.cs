@@ -1,9 +1,9 @@
-﻿//using EcomerceWebsite.Models;
-//using System;
-//using System.Collections.Generic;
-//using System.Linq;
-//using System.Web;
-//using System.Web.Mvc;
+﻿using EcomerceWebsite.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
 
 namespace EcomerceWebsite.Controllers
 {
@@ -49,7 +49,7 @@ namespace EcomerceWebsite.Controllers
             var checkEmail = db.accounts.Where(ac => ac.email == email).Select(ac => ac.email).FirstOrDefault();
             if (checkEmail != null)
             {
-                TempData["mess"] = "Username đã tồn tại!";
+                TempData["mess"] = "Email đã tồn tại!";
                 return RedirectToAction("DangKy");
             }
             newAccount.password = pass;
