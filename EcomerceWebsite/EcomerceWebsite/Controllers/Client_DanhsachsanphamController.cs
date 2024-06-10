@@ -21,6 +21,15 @@ namespace EcomerceWebsite.Controllers
         [HttpGet]
         public ActionResult Index()
         {
+            Session["Cuahang_active"] = "active";
+            if (Session["Cuahang_active"] != null && Session["Cuahang_active"].ToString() == "active")
+            {
+                // Xóa các session khác
+                Session.Remove("Contact_active");
+                Session.Remove("Blog_active");
+                Session.Remove("TramgChu_active");
+            }
+
             if (Session["IsAuthenticated"] != null && (bool)Session["IsAuthenticated"])
             {
                 var account_id = int.Parse(Session["account_id"] as string);

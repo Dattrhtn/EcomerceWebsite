@@ -46,8 +46,7 @@
         #search_value {
             max-width: 500px;
         }
-
-            #search_value:focus {
+            .customInputNavBar:focus {
                 background-color: #0c0c0c;
                 color: #fff;
                 border: none;
@@ -89,10 +88,10 @@
         <div class="offcanvas__nav__option">
             <a href="#" class="search-switch"><img src="../../img/icon/search.png" alt=""></a>
             <a href="#"><img src="../../img/icon/heart.png" alt=""></a>
-                <a href="/Client_Cart/Index">
-                    <img src="../../img/icon/cart.png" alt="">
-                    <span>@Session["numberOfCart"]</span>
-                </a>
+            <a href="/Client_Cart/Index">
+                <img src="../../img/icon/cart.png" alt="">
+                <span>@Session["numberOfCart"]</span>
+            </a>
             <div class="price">$0.00</div>
         </div>
         <div id="mobile-menu-wrap"></div>
@@ -136,10 +135,10 @@
                 <div class="col-lg-6 col-md-6">
                     <nav class="header__menu mobile-menu">
                         <ul>
-                            <li class="active"><a href="/">Trang chủ</a></li>
-                            <li><a href="/Client_Danhsachsanpham/Index">Cửa hàng</a></li>
-                            <li><a href="/Client_Blog/Index">Bài viết</a></li>
-                            <li><a href="/Client_Contact/Index">Liên hệ</a></li>
+                            <li class=@Session["TramgChu_active"]><a href="/">Trang chủ</a></li>
+                            <li class=@Session["Cuahang_active"] ><a href="/Client_Danhsachsanpham/Index">Cửa hàng</a></li>
+                            <li class=@Session["Blog_active"]><a href="/Client_Blog/Index">Bài viết</a></li>
+                            <li class=@Session["Contact_active"]><a href="/Client_Contact/Index">Liên hệ</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -247,11 +246,14 @@
     <script src="../../js/owl.carousel.min.js"></script>
     <script src="../../js/main.js"></script>
     <script>
-        document.getElementById("searchForm").addEventListener("submit", function (event) {
-            var searchValue = document.getElementById("search_value").value.trim();
-            if (searchValue === "") {
-                event.preventDefault(); // Ngăn chặn sự kiện submit
-            }
+        document.addEventListener("DOMContentLoaded", function () {
+            document.getElementById("searchForm").addEventListener("submit", function (event) {
+                var searchValue = document.getElementById("search_value").value.trim();
+                console.log(searchValue);
+                if (searchValue === "") {
+                    event.preventDefault(); // Prevent the submit event
+                }
+            });
         });
     </script>
     @Scripts.Render("~/bundles/jquery")

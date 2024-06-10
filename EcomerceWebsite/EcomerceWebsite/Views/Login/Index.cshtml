@@ -268,7 +268,7 @@
         <div class="form-container sign-in-container">
             <form id="formSignIn" method="post" action="/Client_DangNhap_DangKy/DangNhap">
                 <h2>Đăng nhập</h2>
-                <input name="username" id="username" type="text" placeholder="User name" required />
+                <input name="mail" id="mail" type="text" placeholder="Email" required />
                 <input name="pass" id="pass" type="password" placeholder="Password" required />
                 <button id="signIn" type="submit">Đăng nhập</button>
             </form>
@@ -291,7 +291,7 @@
 </div>
 <script>
     document.getElementById("formSignIn").addEventListener("submit", function (event) {
-        var usernameValue = document.getElementById("username").value.trim();
+        var usernameValue = document.getElementById("mail").value.trim();
         var passValue = document.getElementById("pass").value.trim();
         if (usernameValue === "" || passValue === "") {
             alert("Username hoặc mật khẩu không được để trống!");
