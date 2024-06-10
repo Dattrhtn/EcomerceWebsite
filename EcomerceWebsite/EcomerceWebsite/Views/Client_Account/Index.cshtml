@@ -1,0 +1,91 @@
+﻿@model EcomerceWebsite.Models.account
+
+@{
+    ViewBag.Title = "Thông tin cá nhân";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    /* Custom CSS for styling */
+    body.custom-body {
+        background-color: #f8f9fa;
+    }
+
+    .custom-container {
+        margin-top: 50px;
+    }
+
+    .custom-card {
+        border: none;
+        border-radius: 10px;
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .custom-card-header {
+        background-color: #343a40;
+        color: #fff;
+        border-radius: 10px 10px 0 0;
+    }
+
+    .custom-list-group-item {
+        border: none;
+    }
+
+        .custom-list-group-item span {
+            color: #6c757d;
+        }
+
+    h2.custom-header {
+        color: #fff;
+    }
+
+    .custom-btn {
+        margin-top: 15px;
+        color: #fff;
+        background-color: palevioletred;
+        width: 120px;
+        font-size: 18px;
+        box-shadow: 2px 2px 10px #a3a0a0;
+    }
+    a.custom-btn:hover,
+    a.custom-btn:active{
+        color: #fff;
+        background-color: palevioletred;
+        width: 120px;
+        font-size: 18px;
+        box-shadow: 2px 2px 10px #a3a0a0;
+        opacity: 0.8;
+    }
+    .btn-check:checked + .btn, :not(.btn-check) + .btn:active, .btn:first-child:active, .btn.active, .btn.show {
+        color: #fff;
+        background-color: palevioletred;
+    }
+</style>
+
+<body class="custom-body">
+    <div class="container custom-container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card custom-card">
+                    <div class="card-header custom-card-header text-center">
+                        <h2 class="custom-header">Thông tin cá nhân</h2>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group">
+                            <li class="list-group-item custom-list-group-item"><strong>Tên:</strong> <span id="firstName">@Html.DisplayFor(model => model.first_name)</span></li>
+                            <li class="list-group-item custom-list-group-item"><strong>Họ:</strong> <span id="lastName">@Html.DisplayFor(model => model.last_name)</span></li>
+                            <li class="list-group-item custom-list-group-item"><strong>Email:</strong> <span id="email">@Html.DisplayFor(model => model.email)</span></li>
+                            <li class="list-group-item custom-list-group-item"><strong>Mật khẩu:</strong> <span id="password">@Html.DisplayFor(model => model.password)</span></li>
+                            <li class="list-group-item custom-list-group-item"><strong>Địa chỉ:</strong> <span id="address">@Html.DisplayFor(model => model.address)</span></li>
+                            <li class="list-group-item custom-list-group-item"><strong>Số điện thoại:</strong> <span id="phoneNumber">@Html.DisplayFor(model => model.phone_number)</span></li>
+                        </ul>
+                        <div class="text-center mt-3">
+                            @Html.ActionLink("Sửa", "Edit", new { id = Model.account_id }, new { @class = "btn custom-btn mr-2" })
+                            @*<a href="/Client_DanhsachOrders/Index" class="btn btn-primary custom-btn">Các đơn hàng đã mua</a>*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>

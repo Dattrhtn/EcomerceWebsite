@@ -1,0 +1,102 @@
+﻿
+@{
+    ViewBag.Title = "Đăng ký";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .card-registration .select-input.form-control[readonly]:not([disabled]) {
+        font-size: 1rem;
+        line-height: 2.15;
+        padding-left: .75em;
+        padding-right: .75em;
+    }
+
+    .card-registration .select-arrow {
+        top: 13px;
+    }
+    #submit:hover {
+        opacity: 0.7;
+    }
+    .checkout__input input {
+        color: #000000;
+    }
+</style>
+<section class="checkout spad">
+    <div class="container">
+        <div class="checkout__form">
+            @using (Html.BeginForm("DangKyAccount", "Client_DangNhap_DangKy", FormMethod.Post, new { id = "form" }))
+            {
+            <div class="row">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="checkout__input">
+                            <p>Email<span>*</span></p>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="checkout__input">
+                            <p>Password<span>*</span></p>
+                            <input type="password" id="pass" name="pass" required>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="checkout__input">
+                            <p>Họ<span>*</span></p>
+                            <input type="text" id="last_name" name="last_name" required>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="checkout__input">
+                            <p>Tên<span>*</span></p>
+                            <input type="text" id="first_name" name="first_name" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="checkout__input">
+                            <p>Số điện thoại<span>*</span></p>
+                            <input type="text" id="phone_number" name="phone_number" required>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="checkout__input">
+                            <p>Địa chỉ<span>*</span></p>
+                            <input type="text" id="address" name="address" required>
+                        </div>
+                    </div>
+                </div>
+                <div style="text-align:center">
+                    <button id="clear" type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-light btn-lg">Nhập lại</button>
+                    <button id="submit" type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-lg ms-2" style=" background-color: palevioletred; color: #fff; box-shadow: 0px 0px 28px #b5afaf;">Đăng ký</button>
+                </div>
+
+            </div>
+            }
+        </div>
+    @if(@ViewBag.mess != ""){
+        <h3 class="text-danger">@ViewBag.mess</h3>
+    
+    }
+    </div>
+</section>
+<script>
+    const clearBtn = document.getElementById("clear");
+    clearBtn.addEventListener("click", () => {
+        document.getElementById("form").reset();
+    });
+    document.getElementById("form").addEventListener("submit", function (event) {
+        var passValue = document.getElementById("pass").value.trim();
+        console.log(passValue);
+        if (passValue.length < 8) {           
+            alert("Mật khẩu tối thiểu 8 ký tự!");
+            event.preventDefault();
+            passValue.focus();
+        }
+    });
+</script>

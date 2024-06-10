@@ -85,7 +85,7 @@
     </table>
 
     <div>
-        @if (Model.shipment.state == "Chờ xử lý")
+        @if (Model.shipment.state == "Đang xử lý")
         {
             using (Html.BeginForm("Cancel", "Client_DanhSachOrders", new { id = Model.order_id }, FormMethod.Post))
             {

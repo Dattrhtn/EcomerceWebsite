@@ -60,10 +60,11 @@ namespace EcomerceWebsite.Controllers
                    // try
                     {
                         // Tạo đối tượng giao hàng
+                        var account_id = int.Parse(Session["account_id"] as string);
                         var total_price = (from product in db.Products
                                            join cart in db.carts
                                            on product.product_id equals cart.product_product_id
-                                           where cart.account_account_id == 1
+                                           where cart.account_account_id == account_id
                                            select (cart.quantity * product.price)).Sum();
 
                         var newShipment = new shipment
@@ -72,8 +73,8 @@ namespace EcomerceWebsite.Controllers
                             city = shipment.city,
                             country = shipment.country,
                             zip_code =shipment.zip_code,
-                            account_account_id = 1,
-                            state = "Chờ xác nhận",
+                            account_account_id = account_id,
+                            state = "Đang xử lý",
                             ngayTao = DateTime.Now,
                             shipment_date = DateTime.Now.AddDays(2)
 
@@ -85,8 +86,8 @@ namespace EcomerceWebsite.Controllers
                         var newOrder = new Order
                         {
                             total_price = total_price,
-                            account_account_id = 1,
-                            Payment_payment_id = 3,                            
+                            account_account_id = account_id,
+                            Payment_payment_id = 1,                            
                             Shipment_shipment_id = id_shipment,
                             ngayTao = DateTime.Now
                         };
@@ -97,7 +98,7 @@ namespace EcomerceWebsite.Controllers
                         var cartJoinProduct = (from p in db.Products
                                                join c in db.carts
                                                on p.product_id equals c.product_product_id
-                                               where c.account_account_id == 1
+                                               where c.account_account_id == account_id
                                                select new
                                                {
                                                    product_id = p.product_id,
@@ -118,7 +119,11 @@ namespace EcomerceWebsite.Controllers
                         }
                         db.SaveChanges();
 
-                        //Commit transaction
+                        var listCart = db.carts.Where(c => c.account_account_id == account_id).ToList();
+                        db.carts.RemoveRange(listCart);
+                        db.SaveChanges();
+                        Session["numberOfCart"] = db.carts.Where(c => c.account_account_id == account_id).Count();
+                        // Commit transaction
                         transaction.Commit();
 
                         return RedirectToAction("OrderSuccess");

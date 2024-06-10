@@ -1,6 +1,6 @@
 ﻿
 @{
-    ViewBag.Title = "OrderSuccess";
+    ViewBag.Title = "Đặt hàng thành công";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <style>
@@ -11,11 +11,14 @@
 
         text-align: center;
     }
+    footer.footer {
+        position: absolute; bottom: 0; right: 0; left: 0;
+    }
 </style>
 <div class="success">
-    <div>
-        <h2>Thanh toán thành công!</h2>
-        <h4>Hóa đơn của bạn đã gửi cho shop. Bạn sẽ nhận được hàng sau 2-3 ngày. Cảm ơn bạn!</h4>
+    <div style="padding: 50px;">
+        <h2 style="color: palevioletred;">Thanh toán thành công!</h2>
+        <h4 style="color: palevioletred;">Hóa đơn của bạn đã gửi cho shop. Bạn sẽ nhận được hàng sau 2-3 ngày. Cảm ơn bạn!</h4>
     </div>
 </div>
 

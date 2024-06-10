@@ -17,7 +17,8 @@ namespace EcomerceWebsite.Controllers
         // GET: Client_DanhSachOrder
         public ActionResult Index()
         {
-            var currentUserId = 1; // Giả sử account_id được lưu trong User.Identity.Name
+            var account_id = int.Parse(Session["account_id"] as string);
+            var currentUserId = account_id; // Giả sử account_id được lưu trong User.Identity.Name
             var orders = db.Orders
                            .Include(o => o.account)
                            .Include(o => o.Payment)
@@ -54,7 +55,7 @@ namespace EcomerceWebsite.Controllers
                 return HttpNotFound();
             }
 
-            if (order.shipment.state == "Chờ xử lý")
+            if (order.shipment.state == "Đang xử lý")
             {
                 order.shipment.state = "đã hủy";
                 db.SaveChanges();

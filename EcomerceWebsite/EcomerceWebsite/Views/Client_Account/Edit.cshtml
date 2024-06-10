@@ -1,0 +1,111 @@
+﻿@model EcomerceWebsite.Models.account
+
+@{
+    ViewBag.Title = "Cập nhật thông tin";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container custom-container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card custom-card">
+                <div class="card-header custom-card-header text-center">
+                    <h2 class="custom-header">Cập nhật thông tin</h2>
+                </div>
+                <div class="card-body">
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                        @Html.HiddenFor(model => model.account_id)
+                        @Html.HiddenFor(model => model.email) 
+                        @Html.HiddenFor(model => model.role) 
+                        @Html.HiddenFor(model => model.ngayTao)
+
+                        <div class="form-group">
+                           <label>Tên</label>
+                            @Html.EditorFor(model => model.first_name, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.first_name, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            <label>Họ</label>
+                            @Html.EditorFor(model => model.last_name, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.last_name, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="text" class="form-control" readonly value="@Model.email" />
+                            @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            <label>Mật khẩu</label>
+                            @Html.EditorFor(model => model.password, new { htmlAttributes = new { @class = "form-control", type = "password" } })
+                            @Html.ValidationMessageFor(model => model.password, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            <label>Địa chỉ</label>
+                            @Html.EditorFor(model => model.address, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.address, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="form-group">
+                            <label>Số điện thoại</label>
+                            @Html.EditorFor(model => model.phone_number, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.phone_number, "", new { @class = "text-danger" })
+                        </div>
+
+                        <div class="text-center">
+                            @Html.ActionLink("Trở lại", "Index", null, new { @class = "btn btn-secondary" })
+                            <button type="submit" class="btn btn-primary">Cập nhật</button>
+
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .custom-container {
+        margin-top: 20px;
+    }
+
+    .custom-card {
+        border: none;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .custom-card-header {
+        background-color: #343a40;
+        color: white;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        padding: 15px 0;
+    }
+
+    .custom-header {
+        margin: 0;
+        color: #fff;
+    }
+
+    .form-control {
+        margin-bottom: 15px;
+    }
+
+    .btn-primary {
+        border-radius: 25px;
+        padding: 10px 20px;
+    }
+
+    .btn-secondary {
+        border-radius: 25px;
+        padding: 10px 20px;
+        margin-left: 10px;
+    }
+</style>

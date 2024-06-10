@@ -1,6 +1,12 @@
 ﻿@{
     ViewBag.Title = "Trang chủ";
 }
+<style>
+    .best-selling.spad,
+    .newest-products.spad {
+        padding-bottom: 0;
+    }
+</style>
 <section class="hero">
     <div class="hero__slider owl-carousel">
         <div class="hero__items set-bg" data-setbg="../../img/hero/hero-1.jpg">
@@ -166,48 +172,103 @@
     </div>
 </section>
 <!-- Instagram Section End -->
-<!-- Latest Blog Section Begin -->
-<section class="latest spad">
+<!-- Best Selling Products Section Begin -->
+<section class="best-selling spad">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
                 <div class="section-title">
-                    <span>Latest News</span>
-                    <h2>Fashion New Trends</h2>
+                    <span>Top Picks</span>
+                    <h2>Sản phẩm bán chạy </h2>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-lg-4 col-md-6 col-sm-6">
-                <div class="blog__item">
-                    <div class="blog__item__pic set-bg" data-setbg="../../img/blog/blog-1.jpg"></div>
-                    <div class="blog__item__text">
-                        <span><img src="../../img/icon/calendar.png" alt=""> 16 February 2020</span>
-                        <h5>What Curling Irons Are The Best Ones</h5>
-                        <a href="#">Read More</a>
+        <div class="row" style=" width: 82%; display: flex; justify-content: space-between; margin-left: 10%;">
+            @foreach (var product in ViewBag.BestSellingProducts)
+            {
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="product__item">
+                        <a href="/Client_ProductDetail/Index/?product_id=@product.product_id" class="product-detail">
+                            <div class="product__item__pic set-bg" data-setbg="@product.Image" style="border: 0.5px solid #efefef; box-shadow:rgb(131 129 129 / 30%) 10px 10px 35px;">
+                            </div>
+                        </a>
+                        <div class="product__item__text">
+                            <h6>@product.name</h6>
+                            <a href="/Client_Danhsachsanpham/AddToCart/?product_id=@product.product_id" class="add-cart">+ Thêm vào giỏ hàng</a>
+                            <div class="rating">
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o"></i>
+                            </div>
+                            <h5>@product.price.ToString("C")</h5>
+                            <div class="product__color__select">
+                                <label for="pc-4">
+                                    <input type="radio" id="pc-4">
+                                </label>
+                                <label class="active black" for="pc-5">
+                                    <input type="radio" id="pc-5">
+                                </label>
+                                <label class="grey" for="pc-6">
+                                    <input type="radio" id="pc-6">
+                                </label>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-6">
-                <div class="blog__item">
-                    <div class="blog__item__pic set-bg" data-setbg="../../img/blog/blog-2.jpg"></div>
-                    <div class="blog__item__text">
-                        <span><img src="../../img/icon/calendar.png" alt=""> 21 February 2020</span>
-                        <h5>Eternity Bands Do Last Forever</h5>
-                        <a href="#">Read More</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 col-sm-6">
-                <div class="blog__item">
-                    <div class="blog__item__pic set-bg" data-setbg="../../img/blog/blog-3.jpg"></div>
-                    <div class="blog__item__text">
-                        <span><img src="../../img/icon/calendar.png" alt=""> 28 February 2020</span>
-                        <h5>The Health Benefits Of Sunglasses</h5>
-                        <a href="#">Read More</a>
-                    </div>
-                </div>
-            </div>
+            }
         </div>
     </div>
 </section>
+<!-- Best Selling Products Section End -->
+<!-- Newest Products Section Begin -->
+<section class="newest-products spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-title">
+                    <span>Bộ sưu tập mới</span>
+                    <h2>Sản phẩm mới</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row" style=" width: 82%; display: flex; justify-content: space-between; margin-left: 10%;">
+            @foreach (var product in ViewBag.NewestProducts)
+            {
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="product__item">
+                        <a href="/Client_ProductDetail/Index/?product_id=@product.product_id" class="product-detail">
+                            <div class="product__item__pic set-bg" data-setbg="@product.Image" style="border: 0.5px solid #efefef; box-shadow:rgb(131 129 129 / 30%) 10px 10px 35px;">
+                            </div>
+                        </a>
+                        <div class="product__item__text">
+                            <h6>@product.name</h6>
+                            <a href="/Client_Danhsachsanpham/AddToCart/?product_id=@product.product_id" class="add-cart">+ Thêm vào giỏ hàng</a>
+                            <div class="rating">
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o"></i>
+                            </div>
+                            <h5>@product.price.ToString("C")</h5>
+                            <div class="product__color__select">
+                                <label for="pc-4">
+                                    <input type="radio" id="pc-4">
+                                </label>
+                                <label class="active black" for="pc-5">
+                                    <input type="radio" id="pc-5">
+                                </label>
+                                <label class="grey" for="pc-6">
+                                    <input type="radio" id="pc-6">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+<!-- Newest Products Section End -->
