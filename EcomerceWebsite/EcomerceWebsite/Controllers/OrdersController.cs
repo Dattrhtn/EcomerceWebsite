@@ -86,7 +86,7 @@ namespace EcomerceWebsite.Controllers
                         {
                             total_price = total_price,
                             account_account_id = 1,
-                            Payment_payment_id = 1,                            
+                            Payment_payment_id = 3,                            
                             Shipment_shipment_id = id_shipment,
                             ngayTao = DateTime.Now
                         };
@@ -118,8 +118,8 @@ namespace EcomerceWebsite.Controllers
                         }
                         db.SaveChanges();
 
-                        // Commit transaction
-                        //transaction.Commit();
+                        //Commit transaction
+                        transaction.Commit();
 
                         return RedirectToAction("OrderSuccess");
                     }

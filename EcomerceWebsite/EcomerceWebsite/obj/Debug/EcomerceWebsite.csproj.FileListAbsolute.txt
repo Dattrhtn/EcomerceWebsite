@@ -413,3 +413,19 @@ D:\HOC KI 6\PTUD THƯƠNG MẠI ĐIỆN TỬ\EcomerceWebsite\EcomerceWebsite\Eco
 D:\HOC KI 6\PTUD THƯƠNG MẠI ĐIỆN TỬ\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\obj\Debug\EcomerceWebsite.csproj.CopyComplete
 D:\HOC KI 6\PTUD THƯƠNG MẠI ĐIỆN TỬ\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\obj\Debug\EcomerceWebsite.dll
 D:\HOC KI 6\PTUD THƯƠNG MẠI ĐIỆN TỬ\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\obj\Debug\EcomerceWebsite.pdb
+D:\EcomerceWebsite2\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\Microsoft.AspNetCore.Http.Features.dll
+D:\EcomerceWebsite2\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\Microsoft.Extensions.Primitives.dll
+D:\EcomerceWebsite2\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\System.Buffers.dll
+D:\EcomerceWebsite2\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\System.IO.Pipelines.dll
+D:\EcomerceWebsite2\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\System.Memory.dll
+D:\EcomerceWebsite2\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\System.Numerics.Vectors.dll
+D:\EcomerceWebsite2\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\System.Runtime.CompilerServices.Unsafe.dll
+D:\EcomerceWebsite2\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\System.Threading.Tasks.Extensions.dll
+D:\EcomerceWebsite2\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\Microsoft.AspNetCore.Http.Features.xml
+D:\EcomerceWebsite2\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\Microsoft.Extensions.Primitives.xml
+D:\EcomerceWebsite2\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\System.Buffers.xml
+D:\EcomerceWebsite2\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\System.IO.Pipelines.xml
+D:\EcomerceWebsite2\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\System.Memory.xml
+D:\EcomerceWebsite2\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\System.Numerics.Vectors.xml
+D:\EcomerceWebsite2\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\System.Runtime.CompilerServices.Unsafe.xml
+D:\EcomerceWebsite2\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\System.Threading.Tasks.Extensions.xml

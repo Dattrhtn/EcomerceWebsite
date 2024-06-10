@@ -6,8 +6,92 @@
 }
 
 <h2>Edit</h2>
+<style>
+    .shop__sidebar__color label {
+        height: 30px;
+        width: 30px;
+        border-radius: 50%;
+        position: relative;
+        margin-right: 10px;
+        display: inline-block;
+        margin-bottom: 10px;
+        cursor: pointer;
+    }
 
-@using (Html.BeginForm())
+        .shop__sidebar__color label.c-1 {
+            background: #0b090c;
+        }
+
+        .shop__sidebar__color label.c-2 {
+            background: #20315f;
+        }
+
+        .shop__sidebar__color label.c-3 {
+            background: #f1af4d;
+        }
+
+        .shop__sidebar__color label.c-4 {
+            background: #636068;
+        }
+
+        .shop__sidebar__color label.c-5 {
+            background: #57594d;
+        }
+
+        .shop__sidebar__color label.c-6 {
+            background: #e8bac4;
+        }
+
+        .shop__sidebar__color label.c-7 {
+            background: #d6c1d7;
+        }
+
+        .shop__sidebar__color label.c-8 {
+            background: #ed1c24;
+        }
+
+        .shop__sidebar__color label.c-9 {
+            background: #ffffff;
+        }
+
+        .shop__sidebar__color label:after {
+            position: absolute;
+            left: -3px;
+            top: -3px;
+            height: 36px;
+            width: 36px;
+            border: 1px solid #e5e5e5;
+            content: "";
+            border-radius: 50%;
+        }
+
+        .shop__sidebar__color label input {
+            position: absolute;
+            visibility: hidden;
+        }
+
+    .shop__sidebar__color input[type="radio"]:checked + label:after {
+        border: 3px solid lightblue; /* Điều chỉnh màu và độ dày viền theo ý muốn */
+    }
+
+    .shop__sidebar__color input[type="radio"] {
+        display: none;
+    }
+
+    .shop__sidebar__color label {
+        display: inline-block;
+        padding: 10px; /* Adjust padding as needed */
+        cursor: pointer;
+    }
+
+    .shop__sidebar__color .size_link_color {
+        display: block;
+        width: 100%; /* Adjust width as needed */
+        height: 100%; /* Adjust height as needed */
+    }
+</style>
+
+@using (Html.BeginForm("Edit", "Admin_Products", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     
@@ -66,15 +150,53 @@
     <div class="form-group">
         @Html.LabelFor(model => model.size, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.size, new { htmlAttributes = new { @class = "form-control" } })
+            @*@Html.EditorFor(model => model.size, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.size, "", new { @class = "text-danger" })*@
+            @Html.DropDownListFor(model => model.size, (IEnumerable<SelectListItem>)ViewBag.States, new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.size, "", new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.color, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.color, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.LabelFor(model => model.color, htmlAttributes: new { @class = "control-label" })
+            <div class="shop__sidebar__color">
+                @Html.RadioButtonFor(model => model.color, "1", new { id = "sp-1", @class = "hidden-radio" })
+                <label class="c-1" for="sp-1">
+                    <a class="size_link_color"></a>
+                </label>
+
+                @Html.RadioButtonFor(model => model.color, "2", new { id = "sp-2", @class = "hidden-radio" })
+                <label class="c-2" for="sp-2">
+                    <a class="size_link_color"></a>
+                </label>
+
+                @Html.RadioButtonFor(model => model.color, "3", new { id = "sp-3", @class = "hidden-radio" })
+                <label class="c-3" for="sp-3">
+                    <a class="size_link_color"></a>
+                </label>
+
+                @Html.RadioButtonFor(model => model.color, "4", new { id = "sp-4", @class = "hidden-radio" })
+                <label class="c-4" for="sp-4">
+                    <a class="size_link_color"></a>
+                </label>
+
+                @Html.RadioButtonFor(model => model.color, "5", new { id = "sp-5", @class = "hidden-radio" })
+                <label class="c-5" for="sp-5">
+                    <a class="size_link_color"></a>
+                </label>
+
+                @Html.RadioButtonFor(model => model.color, "6", new { id = "sp-6", @class = "hidden-radio" })
+                <label class="c-6" for="sp-6">
+                    <a class="size_link_color"></a>
+                </label>
+
+                @Html.RadioButtonFor(model => model.color, "7", new { id = "sp-9", @class = "hidden-radio" })
+                <label class="c-9" for="sp-9">
+                    <a class="size_link_color"></a>
+                </label>
+            </div>
+
             @Html.ValidationMessageFor(model => model.color, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -106,9 +228,12 @@
     <div class="form-group">
         @Html.LabelFor(model => model.Image, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.Image, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Image, "", new { @class = "text-danger" })
+            <input type="file" name="FileAnh" />
         </div>
+        @if(Model.Image != null)
+        {
+            <img src="@Model.Image" style="width: 200px; height:250px; object-fit:cover; margin-top: 20px;"/>
+        }
     </div>
 
     <div class="form-group">

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using EcomerceWebsite.Models;
 
 namespace EcomerceWebsite.Controllers
@@ -15,9 +16,19 @@ namespace EcomerceWebsite.Controllers
         private ModelDB db = new ModelDB();
 
         // GET: Admin_accounts
-        public ActionResult Index()
+        public ActionResult Index(int page = 1, int pageSize = 12)
         {
-            return View(db.accounts.ToList());
+            var totalItems = db.accounts.ToList().Count;
+
+            var totalPages = (int)Math.Ceiling((double)totalItems / pageSize);
+            var paginatedProducts = db.accounts.OrderBy(x => x.ngayTao).Skip((page - 1) * pageSize).Take(pageSize).ToList();
+
+            ViewBag.TotalItems = totalItems;
+            ViewBag.CurrentPage = page;
+            ViewBag.PageSize = pageSize;
+            ViewBag.TotalPages = totalPages;
+
+            return View(paginatedProducts);
         }
 
         // GET: Admin_accounts/Details/5
@@ -38,7 +49,9 @@ namespace EcomerceWebsite.Controllers
         // GET: Admin_accounts/Create
         public ActionResult Create()
         {
-            return View();
+            var model = new account(); // Thay YourModel bằng tên thực của model của bạn
+            model.role = 0;
+            return View(model);
         }
 
         // POST: Admin_accounts/Create

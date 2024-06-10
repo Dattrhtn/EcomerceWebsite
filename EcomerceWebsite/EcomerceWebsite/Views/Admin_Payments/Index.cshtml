@@ -5,11 +5,33 @@
     Layout = "~/Views/Shared/_LayoutPageAdmin.cshtml";
 }
 
-<h2>Phương thức thanh toán</h2>
+<h2 style="font-weight: 700; margin-bottom: 20px;">Phương thức thanh toán</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<style>
+    .excelLink {
+        padding: 0 5px;
+        transition: 0.3s;
+        border-radius: 5px;
+        font-weight: 600;
+        display: block;
+    }
+
+        .excelLink:hover {
+            background-color: lightgreen;
+            color: white !important;
+            font-size: 18px;
+            height: 30px;
+        }
+</style>
+<div style="display:flex;">
+    <p>
+        @Html.ActionLink("Thêm mới", "Create")
+    </p>
+    <div>
+
+        <a class="excelLink" href="@Url.Action("ExportToExcel", "Home", new { code = "Payment" })" style="color: #21b61f; text-decoration:none; margin-left: 20px;">Xuất file excel <i class="fa fa-file-excel" style="margin-left: 5px;"></i></a>
+    </div>
+</div>
 <table class="table">
     <tr>
         <th>
@@ -21,20 +43,21 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.payment_method)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ngayTao)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.payment_id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.payment_id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.payment_id })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.payment_method)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ngayTao)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.payment_id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.payment_id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.payment_id })
+            </td>
+        </tr>
+    }
 
 </table>
