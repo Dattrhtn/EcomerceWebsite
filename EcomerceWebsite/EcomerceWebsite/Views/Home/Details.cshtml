@@ -1,0 +1,102 @@
+﻿@model EcomerceWebsite.Models.Product
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Product</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Category.name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Category.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.productCode)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.productCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SKU)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SKU)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.description)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.price)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.size)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.size)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.color)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.color)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.quantity)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.quantity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.stock)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.stock)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Image)
+        </dt>
+        <dd>
+            <img src="@Model.Image" alt="@Model.name" style="max-width: 100%; height: auto;" />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ngayTao)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ngayTao)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.product_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

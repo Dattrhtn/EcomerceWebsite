@@ -28,10 +28,10 @@ public class HomeController : Controller
         {
             Session["numberOfCart"] = 0;
         }
-        //else
-        //{
-        //    return RedirectToAction("Login", "Account");
-        //}
+
+        ViewBag.BestSellingProducts = GetBestSellingProducts();
+        ViewBag.NewestProducts = GetNewestProducts(); // Thêm dòng này
+
         return View();
     }
 
@@ -45,6 +45,11 @@ public class HomeController : Controller
                                    select g.Key).Take(3).ToList();
 
         return bestSellingProducts;
+    }
+    private List<Product> GetNewestProducts()
+    {
+        var newestProducts = db.Products.OrderByDescending(p => p.ngayTao).Take(3).ToList();
+        return newestProducts;
     }
 
     public ActionResult About()

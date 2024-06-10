@@ -182,11 +182,32 @@
             {
                 <div class="col-lg-4 col-md-6 col-sm-6">
                     <div class="product__item">
-                        <div class="product__item__pic set-bg" style="background-image: url('@product.Image')"></div>
+                        <a href="/Client_ProductDetail/Index/?product_id=@product.product_id" class="product-detail">
+                            <div class="product__item__pic set-bg" data-setbg="@product.Image" style="border: 0.5px solid #efefef; box-shadow:rgb(131 129 129 / 30%) 10px 10px 35px;">
+                            </div>
+                        </a>
                         <div class="product__item__text">
-                            <h5>@product.name</h5>
-                            <span>@product.price.ToString("C")</span>
-                            <a href="/Product/Details/@product.product_id">View Details</a>
+                            <h6>@product.name</h6>
+                            <a href="/Client_Danhsachsanpham/AddToCart/?product_id=@product.product_id" class="add-cart">+ Thêm vào giỏ hàng</a>
+                            <div class="rating">
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o"></i>
+                            </div>
+                            <h5>@product.price.ToString("C")</h5>
+                            <div class="product__color__select">
+                                <label for="pc-4">
+                                    <input type="radio" id="pc-4">
+                                </label>
+                                <label class="active black" for="pc-5">
+                                    <input type="radio" id="pc-5">
+                                </label>
+                                <label class="grey" for="pc-6">
+                                    <input type="radio" id="pc-6">
+                                </label>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -195,10 +216,53 @@
     </div>
 </section>
 <!-- Best Selling Products Section End -->
-
-@section Scripts {
-    <script>$('.set-bg').each(function () {
-            var bg = $(this).data('setbg');
-            $(this).css('background-image', 'url(' + bg + ')');
-        });</script>
-}
+<!-- Newest Products Section Begin -->
+<section class="newest-products spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-title">
+                    <span>New Arrivals</span>
+                    <h2>Newest Products</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            @foreach (var product in ViewBag.NewestProducts)
+            {
+                <div class="col-lg-4 col-md-6 col-sm-6">
+                    <div class="product__item">
+                        <a href="/Client_ProductDetail/Index/?product_id=@product.product_id" class="product-detail">
+                            <div class="product__item__pic set-bg" data-setbg="@product.Image" style="border: 0.5px solid #efefef; box-shadow:rgb(131 129 129 / 30%) 10px 10px 35px;">
+                            </div>
+                        </a>
+                        <div class="product__item__text">
+                            <h6>@product.name</h6>
+                            <a href="/Client_Danhsachsanpham/AddToCart/?product_id=@product.product_id" class="add-cart">+ Thêm vào giỏ hàng</a>
+                            <div class="rating">
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o"></i>
+                                <i class="fa fa-star-o"></i>
+                            </div>
+                            <h5>@product.price.ToString("C")</h5>
+                            <div class="product__color__select">
+                                <label for="pc-4">
+                                    <input type="radio" id="pc-4">
+                                </label>
+                                <label class="active black" for="pc-5">
+                                    <input type="radio" id="pc-5">
+                                </label>
+                                <label class="grey" for="pc-6">
+                                    <input type="radio" id="pc-6">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+<!-- Newest Products Section End -->
