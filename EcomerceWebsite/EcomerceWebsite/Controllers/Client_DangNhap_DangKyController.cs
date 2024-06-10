@@ -49,7 +49,7 @@ namespace EcomerceWebsite.Controllers
             var checkEmail = db.accounts.Where(ac => ac.email == email).Select(ac => ac.email).FirstOrDefault();
             if (checkEmail != null)
             {
-                TempData["mess"] = "Username đã tồn tại!";
+                TempData["mess"] = "Email đã tồn tại!";
                 return RedirectToAction("DangKy");
             }
             newAccount.password = pass;

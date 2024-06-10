@@ -19,7 +19,7 @@ namespace EcomerceWebsite.Controllers
 
         // GET: Client_Danhsachsanpham
         [HttpGet]
-        public ActionResult Index()
+        public ActionResult Index(int page = 1, int pageSize = 12)
         {
             Session["Cuahang_active"] = "active";
             if (Session["Cuahang_active"] != null && Session["Cuahang_active"].ToString() == "active")
@@ -76,9 +76,22 @@ namespace EcomerceWebsite.Controllers
                 {
                     list_products = productsSortByPrice;
                 }
-                return View(list_products);
+
+                // Phân trang
+                var totalItems = list_products.Count;
+                var totalPages = (int)Math.Ceiling((double)totalItems / pageSize);
+                var paginatedProducts = list_products.Skip((page - 1) * pageSize).Take(pageSize).ToList();
+
+                ViewBag.TotalItems = totalItems;
+                ViewBag.CurrentPage = page;
+                ViewBag.PageSize = pageSize;
+                ViewBag.TotalPages = totalPages;
+
+                return View(paginatedProducts);
             }
-            return RedirectToAction("Index", "Login");
+                return RedirectToAction("Index", "Login");
+
+            
         }
 
         // GET: Client_Danhsachsanpham/Details/5
@@ -226,6 +239,7 @@ namespace EcomerceWebsite.Controllers
             }
             return RedirectToAction("Index");
         }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

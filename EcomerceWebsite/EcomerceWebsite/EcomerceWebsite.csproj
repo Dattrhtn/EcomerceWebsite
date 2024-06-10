@@ -131,6 +131,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\Admin_accountsController.cs" />
     <Compile Include="Controllers\Admin_CategoriesController.cs" />
+    <Compile Include="Controllers\Client_AccountController.cs" />
     <Compile Include="Controllers\Client_BlogController.cs" />
     <Compile Include="Controllers\Client_CartController.cs" />
     <Compile Include="Controllers\Client_ContactController.cs" />
@@ -159,7 +160,6 @@
     <Compile Include="Models\Payment.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\shipment.cs" />
-    <Compile Include="Models\sysdiagram.cs" />
     <Compile Include="Models\wishlist.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -393,6 +393,11 @@
     <Content Include="Views\Client_DanhsachOrders\Index.cshtml" />
     <Content Include="Views\Client_DangNhap_DangKy\DangNhap.cshtml" />
     <Content Include="Views\Client_DangNhap_DangKy\DangKy.cshtml" />
+    <Content Include="Views\Client_Account\Create.cshtml" />
+    <Content Include="Views\Client_Account\Delete.cshtml" />
+    <Content Include="Views\Client_Account\Details.cshtml" />
+    <Content Include="Views\Client_Account\Edit.cshtml" />
+    <Content Include="Views\Client_Account\Index.cshtml" />
     <Content Include="Views\Client_ProductDetail\AddToCart.cshtml" />
   </ItemGroup>
   <ItemGroup>
