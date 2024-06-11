@@ -65,9 +65,20 @@
 
     <div class="form-group">
         @Html.LabelFor(model => model.role, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.role, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.role, "", new { @class = "text-danger" })
+        <div class="row">
+            <div class="col-md-3">
+                @Html.RadioButtonFor(model => model.role, "0", new { id = "sp-1", @class = "hidden-radio", style = "width: 20px; height: 20px; margin-left: 15px;" })
+                <label class="c-1" for="sp-1">
+                    Người dùng
+                </label>
+
+            </div>
+            <div class="col-md-3">
+                @Html.RadioButtonFor(model => model.role, "1", new { id = "sp-2 ", @class = "hidden-radio", style = "width: 20px; height: 20px; margin-left: 15px;" })
+                <label class="c-1" for="sp-2">
+                    Quản trị
+                </label>
+            </div>
         </div>
     </div>
 

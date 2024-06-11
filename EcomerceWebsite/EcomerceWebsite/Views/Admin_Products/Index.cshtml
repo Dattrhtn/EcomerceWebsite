@@ -5,11 +5,87 @@
     Layout = "~/Views/Shared/_LayoutPageAdmin.cshtml";
 }
 
-<h2>Quản lý sản phẩm</h2>
+<h2 style="font-weight: 700; margin-bottom: 20px;">Quản lý sản phẩm</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<style>
+    .excelLink {
+        padding: 0 5px;
+        transition: 0.3s;
+        border-radius: 5px;
+        font-weight: 600;
+        display: block;
+    }
+
+        .excelLink:hover {
+            background-color: lightgreen;
+            color: white !important;
+            font-size: 18px;
+            height: 30px;
+        }
+
+    .shop__sidebar__size a.size_link {
+        color: #000;
+        padding: 8px 24px;
+    }
+
+    .shop__product__option__right a.sort_price:hover {
+        opacity: 0.6;
+    }
+
+    .shop__sidebar__size label.active a.size_link {
+        color: #ffffff;
+    }
+
+    .shop__sidebar__size label.label_size {
+        padding: 0;
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .shop__sidebar__color a.size_link_color {
+        width: 30px;
+        height: 30px;
+        display: block;
+        position: relative;
+        z-index: 999;
+    }
+
+    .shop__sidebar__price .btn_searchByPrice:hover {
+        opacity: 0.6;
+    }
+
+    .product-detail {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+    }
+
+    .shop__sidebar__search {
+        margin-bottom: 15px !important;
+        margin-top: 20px;
+    }
+
+    a:hover {
+        color: purple !important;
+    }
+</style>
+
+<link rel="stylesheet" href="../../css/style.css" type="text/css">
+<div class="shop__sidebar__search">
+    <form id="searchForm" method="post" action="@Url.Action("Search", "Admin_Products")">
+        <input class="form-control" aria-describedby="inputGroupPrepend" required type="text" id="search_value" name="search_value" placeholder="Nhập tên sản phẩm...">
+        <button type="submit"><img src="../../img/icon/search.png" /></button>
+    </form>
+</div>
+<div style="display:flex;">
+    <p>
+        @Html.ActionLink("Thêm mới", "Create")
+    </p>
+    <div>
+
+        <a class="excelLink" href="@Url.Action("ExportToExcel", "Home", new { code = "Product" })" style="color: #21b61f; text-decoration:none; margin-left: 20px;">Xuất file excel <i class="fa fa-file-excel" style="margin-left: 5px;"></i></a>
+    </div>
+</div>
 <table class="table">
     <tr>
         <th>
@@ -45,44 +121,53 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Category.name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.productCode)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.price)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.size)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.color)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.quantity)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.stock)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Image)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ngayTao)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.product_id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.product_id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.product_id })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.productCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.size)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.color)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.stock)
+            </td>
+            <td>
+                <img src="@Html.DisplayFor(modelItem => item.Image)" style="width: 80px; height:100px; padding: 5px; object-fit:cover;" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ngayTao)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.product_id }) |
+                @Html.ActionLink("Details", "Details", new { id = item.product_id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.product_id })
+            </td>
+        </tr>
+    }
+
+
 
 </table>
+<div class="product__pagination">
+    @for (int i = 1; i <= ViewBag.TotalPages; i++)
+    {
+        <a class="@(ViewBag.CurrentPage == i ? "active" : "")" href="/Admin_products/Index/?page=@i">@i</a>
+    }
+</div>

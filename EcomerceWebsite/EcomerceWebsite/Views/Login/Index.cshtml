@@ -294,16 +294,8 @@
         var usernameValue = document.getElementById("mail").value.trim();
         var passValue = document.getElementById("pass").value.trim();
         if (usernameValue === "" || passValue === "") {
-            alert("Username hoặc mật khẩu không được để trống!");
+            alert("Email hoặc mật khẩu không được để trống!");
             event.preventDefault(); // Ngăn chặn sự kiện submit
-        }
-        else if (usernameValue.length < 6) {
-            alert("Username tối thiểu 6 ký tự!");
-            event.preventDefault();
-        }
-        else if (passValue.length < 8) {
-            alert("Mật khẩu tối thiểu 8 ký tư!");
-            event.preventDefault();
         }
     });
 </script>

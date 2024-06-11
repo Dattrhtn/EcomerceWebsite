@@ -16,7 +16,9 @@ namespace EcomerceWebsite.Controllers
         // GET: Client_Account
         public ActionResult Index()
         {
+
             var account_id = int.Parse(Session["account_id"] as string);
+            Session["name"] = db.accounts.Where(ac => ac.account_id == account_id).Select(ac => ac.first_name).FirstOrDefault();
             var currentUserId = account_id;
             var account = db.accounts
                             .FirstOrDefault(a => a.account_id == currentUserId);

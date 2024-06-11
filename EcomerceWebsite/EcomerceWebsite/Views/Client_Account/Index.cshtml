@@ -1,7 +1,7 @@
 ﻿@model EcomerceWebsite.Models.account
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Thông tin cá nhân";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -9,7 +9,6 @@
     /* Custom CSS for styling */
     body.custom-body {
         background-color: #f8f9fa;
-        font-family: Arial, sans-serif;
     }
 
     .custom-container {
@@ -42,6 +41,24 @@
 
     .custom-btn {
         margin-top: 15px;
+        color: #fff;
+        background-color: palevioletred;
+        width: 120px;
+        font-size: 18px;
+        box-shadow: 2px 2px 10px #a3a0a0;
+    }
+    a.custom-btn:hover,
+    a.custom-btn:active{
+        color: #fff;
+        background-color: palevioletred;
+        width: 120px;
+        font-size: 18px;
+        box-shadow: 2px 2px 10px #a3a0a0;
+        opacity: 0.8;
+    }
+    .btn-check:checked + .btn, :not(.btn-check) + .btn:active, .btn:first-child:active, .btn.active, .btn.show {
+        color: #fff;
+        background-color: palevioletred;
     }
 </style>
 
@@ -60,13 +77,11 @@
                             <li class="list-group-item custom-list-group-item"><strong>Email:</strong> <span id="email">@Html.DisplayFor(model => model.email)</span></li>
                             <li class="list-group-item custom-list-group-item"><strong>Mật khẩu:</strong> <span id="password">@Html.DisplayFor(model => model.password)</span></li>
                             <li class="list-group-item custom-list-group-item"><strong>Địa chỉ:</strong> <span id="address">@Html.DisplayFor(model => model.address)</span></li>
-                            <li class="list-group-item custom-list-group-item"><strong>Quyền:</strong> <span id="role">@Html.DisplayFor(model => model.role)</span></li>
                             <li class="list-group-item custom-list-group-item"><strong>Số điện thoại:</strong> <span id="phoneNumber">@Html.DisplayFor(model => model.phone_number)</span></li>
-                            <li class="list-group-item custom-list-group-item"><strong>Ngày tạo:</strong> <span id="ngayTao">@Html.DisplayFor(model => model.ngayTao)</span></li>
                         </ul>
                         <div class="text-center mt-3">
-                            @Html.ActionLink("Sửa", "Edit", new { id = Model.account_id }, new { @class = "btn btn-warning custom-btn mr-2" })
-                            <a href="/Client_DanhsachOrders/Index" class="btn btn-primary custom-btn">Các đơn hàng đã mua</a>
+                            @Html.ActionLink("Sửa", "Edit", new { id = Model.account_id }, new { @class = "btn custom-btn mr-2" })
+                            @*<a href="/Client_DanhsachOrders/Index" class="btn btn-primary custom-btn">Các đơn hàng đã mua</a>*@
                         </div>
                     </div>
                 </div>
