@@ -6,34 +6,36 @@ using System.Web.Mvc;
 using System.Web.UI.WebControls;
 using System.Web.UI;
 
-public class HomeController : Controller
+namespace EcomerceWebsite.Controllers
 {
-
-    ModelDB db = new ModelDB();
-    public ActionResult Index()
+    public class HomeController : Controller
     {
-        Session["TramgChu_active"] = "active";
-        if (Session["TramgChu_active"] != null && Session["TramgChu_active"].ToString() == "active")
-        {
-            // Xóa các session khác
-            Session.Remove("Contact_active");
-            Session.Remove("Blog_active");
-            Session.Remove("Cuahang_active");
-        }
 
-        if (Session["IsAuthenticated"] != null && (bool)Session["IsAuthenticated"])
+        ModelDB db = new ModelDB();
+        public ActionResult Index()
         {
-            ViewBag.CurentAccount = Session["name"] as string;
-            var account_id = int.Parse(Session["account_id"] as string);
-            Session["numberOfCart"] = db.carts.Where(c => c.account_account_id == account_id).Count();
-        }
-        else
-        {
-            Session["numberOfCart"] = 0;
-        }
+            Session["TramgChu_active"] = "active";
+            if (Session["TramgChu_active"] != null && Session["TramgChu_active"].ToString() == "active")
+            {
+                // Xóa các session khác
+                Session.Remove("Contact_active");
+                Session.Remove("Blog_active");
+                Session.Remove("Cuahang_active");
+            }
 
-        ViewBag.BestSellingProducts = GetBestSellingProducts();
-        ViewBag.NewestProducts = GetNewestProducts(); // Thêm dòng này
+            if (Session["IsAuthenticated"] != null && (bool)Session["IsAuthenticated"])
+            {
+                ViewBag.CurentAccount = Session["name"] as string;
+                var account_id = int.Parse(Session["account_id"] as string);
+                Session["numberOfCart"] = db.carts.Where(c => c.account_account_id == account_id).Count();
+            }
+            else
+            {
+                Session["numberOfCart"] = 0;
+            }
+
+            ViewBag.BestSellingProducts = GetBestSellingProducts();
+            ViewBag.NewestProducts = GetNewestProducts(); // Thêm dòng này
 
             return View();
         }
@@ -75,35 +77,37 @@ public class HomeController : Controller
 
             return View("MyView");
         }
+    
+
+
+        private List<Product> GetBestSellingProducts()
+        {
+            var bestSellingProducts = (from product in db.Products
+                                        join orderItem in db.order_item on product.product_id equals orderItem.product_product_id
+                                        group orderItem by product into g
+                                        orderby g.Sum(oi => oi.quantity) descending
+                                        select g.Key).Take(3).ToList();
+
+            return bestSellingProducts;
+        }
+        private List<Product> GetNewestProducts()
+        {
+            var newestProducts = db.Products.OrderByDescending(p => p.ngayTao).Take(3).ToList();
+            return newestProducts;
+        }
+
+        public ActionResult About()
+        {
+            ViewBag.Message = "Your application description page.";
+            return View();
+        }
+
+        public ActionResult Contact()
+        {
+            ViewBag.Message = "Your contact page.";
+
+            return View();
+        }
     }
 
-
-    private List<Product> GetBestSellingProducts()
-    {
-        var bestSellingProducts = (from product in db.Products
-                                   join orderItem in db.order_item on product.product_id equals orderItem.product_product_id
-                                   group orderItem by product into g
-                                   orderby g.Sum(oi => oi.quantity) descending
-                                   select g.Key).Take(3).ToList();
-
-        return bestSellingProducts;
-    }
-    private List<Product> GetNewestProducts()
-    {
-        var newestProducts = db.Products.OrderByDescending(p => p.ngayTao).Take(3).ToList();
-        return newestProducts;
-    }
-
-    public ActionResult About()
-    {
-        ViewBag.Message = "Your application description page.";
-        return View();
-    }
-
-    public ActionResult Contact()
-    {
-        ViewBag.Message = "Your contact page.";
-
-        return View();
-    }
 }

@@ -429,3 +429,19 @@ D:\EcomerceWebsite2\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\System.M
 D:\EcomerceWebsite2\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\System.Numerics.Vectors.xml
 D:\EcomerceWebsite2\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\System.Runtime.CompilerServices.Unsafe.xml
 D:\EcomerceWebsite2\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\System.Threading.Tasks.Extensions.xml
+D:\HOC KI 6\PTUD THƯƠNG MẠI ĐIỆN TỬ\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\Microsoft.AspNetCore.Http.Features.dll
+D:\HOC KI 6\PTUD THƯƠNG MẠI ĐIỆN TỬ\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\Microsoft.Extensions.Primitives.dll
+D:\HOC KI 6\PTUD THƯƠNG MẠI ĐIỆN TỬ\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\System.Buffers.dll
+D:\HOC KI 6\PTUD THƯƠNG MẠI ĐIỆN TỬ\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\System.IO.Pipelines.dll
+D:\HOC KI 6\PTUD THƯƠNG MẠI ĐIỆN TỬ\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\System.Memory.dll
+D:\HOC KI 6\PTUD THƯƠNG MẠI ĐIỆN TỬ\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\System.Numerics.Vectors.dll
+D:\HOC KI 6\PTUD THƯƠNG MẠI ĐIỆN TỬ\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\System.Runtime.CompilerServices.Unsafe.dll
+D:\HOC KI 6\PTUD THƯƠNG MẠI ĐIỆN TỬ\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\System.Threading.Tasks.Extensions.dll
+D:\HOC KI 6\PTUD THƯƠNG MẠI ĐIỆN TỬ\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\Microsoft.AspNetCore.Http.Features.xml
+D:\HOC KI 6\PTUD THƯƠNG MẠI ĐIỆN TỬ\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\Microsoft.Extensions.Primitives.xml
+D:\HOC KI 6\PTUD THƯƠNG MẠI ĐIỆN TỬ\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\System.Buffers.xml
+D:\HOC KI 6\PTUD THƯƠNG MẠI ĐIỆN TỬ\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\System.IO.Pipelines.xml
+D:\HOC KI 6\PTUD THƯƠNG MẠI ĐIỆN TỬ\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\System.Memory.xml
+D:\HOC KI 6\PTUD THƯƠNG MẠI ĐIỆN TỬ\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\System.Numerics.Vectors.xml
+D:\HOC KI 6\PTUD THƯƠNG MẠI ĐIỆN TỬ\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\System.Runtime.CompilerServices.Unsafe.xml
+D:\HOC KI 6\PTUD THƯƠNG MẠI ĐIỆN TỬ\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\System.Threading.Tasks.Extensions.xml
