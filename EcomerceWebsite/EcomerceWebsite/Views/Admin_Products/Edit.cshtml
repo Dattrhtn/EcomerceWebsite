@@ -103,6 +103,12 @@
             @ViewBag.erEditPr
         </div>
     }
+    @if (TempData["ttPrd2"] != null)
+    {
+        <div style="padding: 10px 20px; border-radius: 10px; background-color: darkred; color: white; font-weight: 700;">
+            @TempData["ttPrd2"]
+        </div>
+    }
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     @Html.HiddenFor(model => model.product_id)
@@ -230,9 +236,9 @@
         <div class="col-md-10">
             <input type="file" name="FileAnh" />
         </div>
-        @if(Model.Image != null)
+        @if (Model.Image != null)
         {
-            <img src="@Model.Image" style="width: 200px; height:250px; object-fit:cover; margin-top: 20px;"/>
+            <img src="@Model.Image" style="width: 200px; height:250px; object-fit:cover; margin-top: 20px;" />
         }
     </div>
 

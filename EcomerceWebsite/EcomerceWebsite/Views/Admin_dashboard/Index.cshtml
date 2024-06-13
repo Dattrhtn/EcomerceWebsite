@@ -40,11 +40,47 @@
         width: 100%;
         height: 100%;
     }
-</style>
+    #download{
+        padding: 5px 10px;
+        border: none;
+        border-radius: 5px;
+        background-color: white;
+        color: red;
 
+        font-weight: 700;
+        transition: 0.3s;
+    }
+        #download:hover {
+            font-size: 18px;
+            color: white;
+            background-color: red;
+        }
+    #download2 {
+        padding: 5px 10px;
+        border: none;
+        border-radius: 5px;
+        background-color: white;
+        color: #21b61f;
+        font-weight: 700;
+        transition: 0.3s;
+    }
+
+        #download2:hover {
+            background-color: #21b61f;
+            color: white;
+            font-size: 18px;
+        }
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
 <link rel="stylesheet" href="../../css/style.css" type="text/css">
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<h2 style="color:darkblue; margin-bottom: 40px; font-weight: 700">Trang chủ quản trị</h2>
+<h2 style="color:darkblue; margin-bottom: 25px; font-weight: 700">Trang chủ quản trị</h2>
+<div style="display: flex; margin-bottom: 10px;">
+    <button id="download">Xuất file PDF <i class="fas fa-file-pdf"></i></button>
+    <button id="download2">Xuất file EXCEL <i class="fas fa-file-excel"></i></button>
+</div>
+
 <div>
     <div style="display: flex; justify-content:center;">
         <div style="width:48% !important;">
@@ -189,7 +225,7 @@
     const ctx4 = document.getElementById('chartDoanhThuTheoNgay');
     const ctx6 = document.getElementById('chartDoanhThuTheoNam');
 
-        new Chart(ctx2, {
+     var chartNgay1 =   new Chart(ctx2, {
             type: 'bar',
             data: {
                 labels: [
@@ -235,7 +271,7 @@
             }
         });
 
-    new Chart(ctx, {
+        var chartThang1 = new Chart(ctx, {
         type: 'line',
         data: {
             labels: [
@@ -273,7 +309,7 @@
             }
         }
     });
-    new Chart(ctx3, {
+        var chartNam1 = new Chart(ctx3, {
         type: 'line',
         data: {
             labels: [
@@ -313,7 +349,7 @@
         }
     });
 
-     new Chart(ctx4, {
+        var chartNgay2 = new Chart(ctx4, {
      type: 'bar',
      data:
      {
@@ -365,7 +401,7 @@
         }
      });
 
-      new Chart(ctx5, {
+        var chartThang2 = new Chart(ctx5, {
      type: 'line',
      data: {
          labels: [
@@ -405,7 +441,7 @@
      }
  });
 
-     new Chart(ctx6, {
+        var chartNam2 = new Chart(ctx6, {
      type: 'line',
      data: {
          labels: [
@@ -445,6 +481,91 @@
      }
      });
 
+        document.getElementById('download').addEventListener('click', function () {
+            var chart1Image = document.getElementById("chartDonTheoNgay").toDataURL("image/png");
+            var chart2Image = document.getElementById("chartDonTheoThang").toDataURL("image/png");
+            var chart3Image = document.getElementById("chartDonTheoNam").toDataURL("image/png");
+            var chart4Image = document.getElementById("chartDoanhThuTheoNgay").toDataURL("image/png");
+            var chart5Image = document.getElementById("chartDoanhThuTheoThang").toDataURL("image/png");
+            var chart6Image = document.getElementById("chartDoanhThuTheoNam").toDataURL("image/png");
 
+            const { jsPDF } = window.jspdf;
+            var pdf = new jsPDF();
+            pdf.setFontSize(18);
+            pdf.text("Orders by day", 10, 10);
+            pdf.addImage(chart1Image, 'PNG', 10, 10, 180, 100);
+            pdf.addPage();
+            pdf.text("Orders by month", 10, 10);
+            pdf.addImage(chart2Image, 'PNG', 10, 10, 180, 100);
+            pdf.addPage();
+            pdf.text("Orders by year", 10, 10);
+            pdf.addImage(chart3Image, 'PNG', 10, 10, 180, 100);
+            pdf.addPage();
+            pdf.text("Revenue by day", 10, 10);
+            pdf.addImage(chart4Image, 'PNG', 10, 10, 180, 100);
+            pdf.addPage();
+            pdf.text("Revenue by month", 10, 10);
+            pdf.addImage(chart5Image, 'PNG', 10, 10, 180, 100);
+            pdf.addPage();
+            pdf.text("Revenue by year", 10, 10);
+            pdf.addImage(chart6Image, 'PNG', 10, 10, 180, 100);
+
+            pdf.save('ThongKe.pdf');
+        });
+
+
+
+
+        document.getElementById('download2').addEventListener('click', function () {
+            // Tạo workbook mới
+            var wb = XLSX.utils.book_new();
+
+            // Tạo worksheet từ dữ liệu biểu đồ 1
+            var ws1_data = [
+                ["Ngày", "Lượt mua"],
+                ...chartNgay1.data.labels.map((label, index) => [label, chartNgay1.data.datasets[0].data[index]])
+            ];
+            var ws1 = XLSX.utils.aoa_to_sheet(ws1_data);
+            XLSX.utils.book_append_sheet(wb, ws1, "Đơn hàng theo ngày");
+
+            // Tạo worksheet từ dữ liệu biểu đồ 2
+            var ws2_data = [
+                ["Tháng", "Lượt mua"],
+                ...chartThang1.data.labels.map((label, index) => [label, chartThang1.data.datasets[0].data[index]])
+            ];
+            var ws2 = XLSX.utils.aoa_to_sheet(ws2_data);
+            XLSX.utils.book_append_sheet(wb, ws2, "Đơn hàng theo tháng");
+
+            // Tạo worksheet từ dữ liệu biểu đồ 3
+            var ws3_data = [
+                ["Năm", "Lượt mua"],
+                ...chartNam1.data.labels.map((label, index) => [label, chartNam1.data.datasets[0].data[index]])
+            ];
+            var ws3 = XLSX.utils.aoa_to_sheet(ws3_data);
+            XLSX.utils.book_append_sheet(wb, ws3, "Đơn hàng theo năm");
+
+            var ws4_data = [
+                ["Ngày", "Doanh thu"],
+                ...chartNgay2.data.labels.map((label, index) => [label, chartNgay2.data.datasets[0].data[index]])
+            ];
+            var ws4 = XLSX.utils.aoa_to_sheet(ws4_data);
+            XLSX.utils.book_append_sheet(wb, ws4, "Doanh thu theo ngày");
+
+            var ws5_data = [
+                ["Tháng", "Doanh thu"],
+                ...chartThang2.data.labels.map((label, index) => [label, chartThang2.data.datasets[0].data[index]])
+            ];
+            var ws5 = XLSX.utils.aoa_to_sheet(ws5_data);
+            XLSX.utils.book_append_sheet(wb, ws5, "Doanh thu theo tháng");
+
+            var ws6_data = [
+                ["Năm", "Doanh thu"],
+                ...chartNam2.data.labels.map((label, index) => [label, chartNam2.data.datasets[0].data[index]])
+            ];
+            var ws6 = XLSX.utils.aoa_to_sheet(ws6_data);
+            XLSX.utils.book_append_sheet(wb, ws6, "Doanh thu theo năm");
+            // Xuất file Excel
+            XLSX.writeFile(wb, 'ThongKe.xlsx');
+        });
     </script>
 
