@@ -176,6 +176,8 @@ namespace EcomerceWebsite.Controllers
                          on cart.product_product_id equals product.product_id
                          select cart.quantity * product.price;
 
+            var pm = db.Payments.ToList();
+
             var totalPrices = Prices.Sum();
             ViewBag.totalPrices = totalPrices;
             return View(carts.ToList());

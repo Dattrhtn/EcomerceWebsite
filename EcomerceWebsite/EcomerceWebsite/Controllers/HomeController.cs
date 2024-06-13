@@ -10,6 +10,22 @@ public class HomeController : Controller
 {
 
     ModelDB db = new ModelDB();
+    private List<Product> GetBestSellingProducts()
+    {
+        var bestSellingProducts = (from product in db.Products
+                                   join orderItem in db.order_item on product.product_id equals orderItem.product_product_id
+                                   group orderItem by product into g
+                                   orderby g.Sum(oi => oi.quantity) descending
+                                   select g.Key).Take(3).ToList();
+
+        return bestSellingProducts;
+    }
+    private List<Product> GetNewestProducts()
+    {
+        var newestProducts = db.Products.OrderByDescending(p => p.ngayTao).Take(3).ToList();
+        return newestProducts;
+    }
+
     public ActionResult Index()
     {
         Session["TramgChu_active"] = "active";
@@ -35,63 +51,45 @@ public class HomeController : Controller
         ViewBag.BestSellingProducts = GetBestSellingProducts();
         ViewBag.NewestProducts = GetNewestProducts(); // Thêm dòng này
 
-            return View();
-        }
-
-        public ActionResult ExportToExcel(string code)
-        {
-            var query = Enumerable.Empty<object>();
-            if (code == "Account")
-                query = db.accounts.ToList();
-            else if (code == "Product")
-                query = db.Products.ToList();
-            else if (code == "Order")
-                query = db.Orders.ToList();
-            else if (code == "Category")
-                query = db.Categories.ToList();
-            else if (code == "Payment")
-                query = db.Payments.ToList();
-            else if (code == "Shipment")
-                query = db.Payments.ToList();
-
-            var grid = new GridView();
-            grid.DataSource = query;
-            grid.DataBind();
-
-            Response.ClearContent();
-            Response.Buffer = true;
-            Response.AddHeader("content-disposition", $"attachment; filename=DanhSach{code}.xls");
-            Response.ContentType = "application/ms-excel";
-
-            Response.Charset = "";
-            StringWriter sw = new StringWriter();
-            HtmlTextWriter htw = new HtmlTextWriter(sw);
-
-            grid.RenderControl(htw);
-
-            Response.Output.Write(sw.ToString());
-            Response.Flush();
-            Response.End();
-
-            return View("MyView");
-        }
+        return View();
     }
 
-
-    private List<Product> GetBestSellingProducts()
+    public ActionResult ExportToExcel(string code)
     {
-        var bestSellingProducts = (from product in db.Products
-                                   join orderItem in db.order_item on product.product_id equals orderItem.product_product_id
-                                   group orderItem by product into g
-                                   orderby g.Sum(oi => oi.quantity) descending
-                                   select g.Key).Take(3).ToList();
+        var query = Enumerable.Empty<object>();
+        if (code == "Account")
+            query = db.accounts.ToList();
+        else if (code == "Product")
+            query = db.Products.ToList();
+        else if (code == "Order")
+            query = db.Orders.ToList();
+        else if (code == "Category")
+            query = db.Categories.ToList();
+        else if (code == "Payment")
+            query = db.Payments.ToList();
+        else if (code == "Shipment")
+            query = db.Payments.ToList();
 
-        return bestSellingProducts;
-    }
-    private List<Product> GetNewestProducts()
-    {
-        var newestProducts = db.Products.OrderByDescending(p => p.ngayTao).Take(3).ToList();
-        return newestProducts;
+        var grid = new GridView();
+        grid.DataSource = query;
+        grid.DataBind();
+
+        Response.ClearContent();
+        Response.Buffer = true;
+        Response.AddHeader("content-disposition", $"attachment; filename=DanhSach{code}.xls");
+        Response.ContentType = "application/ms-excel";
+
+        Response.Charset = "";
+        StringWriter sw = new StringWriter();
+        HtmlTextWriter htw = new HtmlTextWriter(sw);
+
+        grid.RenderControl(htw);
+
+        Response.Output.Write(sw.ToString());
+        Response.Flush();
+        Response.End();
+
+        return View("MyView");
     }
 
     public ActionResult About()

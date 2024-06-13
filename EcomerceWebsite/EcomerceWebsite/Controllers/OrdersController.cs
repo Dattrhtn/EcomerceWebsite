@@ -74,7 +74,7 @@ namespace EcomerceWebsite.Controllers
                             country = shipment.country,
                             zip_code =shipment.zip_code,
                             account_account_id = account_id,
-                            state = "Đang xử lý",
+                            state = "Chờ xác nhận",
                             ngayTao = DateTime.Now,
                             shipment_date = DateTime.Now.AddDays(2)
 
@@ -87,7 +87,7 @@ namespace EcomerceWebsite.Controllers
                         {
                             total_price = total_price,
                             account_account_id = account_id,
-                            Payment_payment_id = 1,                            
+                            Payment_payment_id = 3,                            
                             Shipment_shipment_id = id_shipment,
                             ngayTao = DateTime.Now
                         };
