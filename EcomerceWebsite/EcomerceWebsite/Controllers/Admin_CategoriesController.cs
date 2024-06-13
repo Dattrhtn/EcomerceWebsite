@@ -15,9 +15,19 @@ namespace EcomerceWebsite.Controllers
         private ModelDB db = new ModelDB();
 
         // GET: Admin_Categories
-        public ActionResult Index()
+        public ActionResult Index(int page = 1, int pageSize = 12)
         {
-            return View(db.Categories.ToList());
+            var totalItems = db.Categories.ToList().Count;
+
+            var totalPages = (int)Math.Ceiling((double)totalItems / pageSize);
+            var paginatedProducts = db.Categories.OrderBy(x => x.ngayTao).Skip((page - 1) * pageSize).Take(pageSize).ToList();
+
+            ViewBag.TotalItems = totalItems;
+            ViewBag.CurrentPage = page;
+            ViewBag.PageSize = pageSize;
+            ViewBag.TotalPages = totalPages;
+
+            return View(paginatedProducts);
         }
 
         // GET: Admin_Categories/Details/5

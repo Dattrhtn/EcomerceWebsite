@@ -5,11 +5,37 @@
     Layout = "~/Views/Shared/_LayoutPageAdmin.cshtml";
 }
 
-<h2 style="font-weight:700;">Loại sản phẩm</h2>
+<h2 style="font-weight:700; margin-bottom:20px;">Loại sản phẩm</h2>
+<style>
+    .excelLink {
+        padding: 0 5px;
+        transition: 0.3s;
+        border-radius: 5px;
+        font-weight: 600;
+        display: block;
+    }
 
-<p>
-    @Html.ActionLink("Thêm mới", "Create")
-</p>
+        .excelLink:hover {
+            background-color: lightgreen;
+            color: white !important;
+            font-size: 18px;
+            height: 30px;
+        }
+
+    a:hover {
+        color: purple !important;
+    }
+</style>
+<link rel="stylesheet" href="../../css/style.css" type="text/css">
+<div style="display:flex;">
+    <p>
+        @Html.ActionLink("Thêm mới", "Create")
+    </p>
+    <div>
+
+        <a class="excelLink" href="@Url.Action("ExportToExcel", "Home", new { code = "Category" })" style="color: #21b61f; text-decoration:none; margin-left: 20px;">Xuất file excel <i class="fa fa-file-excel" style="margin-left: 5px;"></i></a>
+    </div>
+</div>
 <table class="table">
     <tr>
         <th>
@@ -20,20 +46,28 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ngayTao)
-        </td>
-        <td style="text-align:right">
-            @Html.ActionLink("Sửa", "Edit", new { id=item.category_id }) |
-            @Html.ActionLink("Chi tiết", "Details", new { id=item.category_id }) |
-            @Html.ActionLink("Xóa", "Delete", new { id=item.category_id })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ngayTao)
+            </td>
+            <td style="text-align:right">
+                @Html.ActionLink("Sửa", "Edit", new { id = item.category_id }) |
+                @Html.ActionLink("Chi tiết", "Details", new { id = item.category_id }) |
+                @Html.ActionLink("Xóa", "Delete", new { id = item.category_id })
+            </td>
+        </tr>
+    }
 
 </table>
+
+<div class="product__pagination">
+    @for (int i = 1; i <= ViewBag.TotalPages; i++)
+    {
+        <a class="@(ViewBag.CurrentPage == i ? "active" : "")" href="/Admin_Categories/Index/?page=@i">@i</a>
+    }
+</div>

@@ -55,9 +55,9 @@ namespace EcomerceWebsite.Controllers
                 return HttpNotFound();
             }
 
-            if (order.shipment.state == "Đang xử lý")
+            if (order.shipment.state == "Chờ xác nhận")
             {
-                order.shipment.state = "đã hủy";
+                order.shipment.state = "Đã hủy";
                 db.SaveChanges();
                 TempData["Message"] = "Đơn hàng đã được hủy thành công.";
             }

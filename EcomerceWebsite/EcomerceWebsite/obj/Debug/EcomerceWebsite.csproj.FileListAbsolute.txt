@@ -413,86 +413,35 @@ D:\HOC KI 6\PTUD THƯƠNG MẠI ĐIỆN TỬ\EcomerceWebsite\EcomerceWebsite\Eco
 D:\HOC KI 6\PTUD THƯƠNG MẠI ĐIỆN TỬ\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\obj\Debug\EcomerceWebsite.csproj.CopyComplete
 D:\HOC KI 6\PTUD THƯƠNG MẠI ĐIỆN TỬ\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\obj\Debug\EcomerceWebsite.dll
 D:\HOC KI 6\PTUD THƯƠNG MẠI ĐIỆN TỬ\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\obj\Debug\EcomerceWebsite.pdb
-E:\University\Semester 6\PTUDTMDT\Clone Trang\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\EcomerceWebsite.dll.config
-E:\University\Semester 6\PTUDTMDT\Clone Trang\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\EcomerceWebsite.dll
-E:\University\Semester 6\PTUDTMDT\Clone Trang\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\EcomerceWebsite.pdb
-E:\University\Semester 6\PTUDTMDT\Clone Trang\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\Antlr3.Runtime.dll
-E:\University\Semester 6\PTUDTMDT\Clone Trang\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\EntityFramework.dll
-E:\University\Semester 6\PTUDTMDT\Clone Trang\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\EntityFramework.SqlServer.dll
-E:\University\Semester 6\PTUDTMDT\Clone Trang\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
-E:\University\Semester 6\PTUDTMDT\Clone Trang\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\Microsoft.Web.Infrastructure.dll
-E:\University\Semester 6\PTUDTMDT\Clone Trang\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\Newtonsoft.Json.dll
-E:\University\Semester 6\PTUDTMDT\Clone Trang\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\System.Web.Helpers.dll
-E:\University\Semester 6\PTUDTMDT\Clone Trang\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\System.Web.Mvc.dll
-E:\University\Semester 6\PTUDTMDT\Clone Trang\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\System.Web.Optimization.dll
-E:\University\Semester 6\PTUDTMDT\Clone Trang\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\System.Web.Razor.dll
-E:\University\Semester 6\PTUDTMDT\Clone Trang\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\System.Web.WebPages.Deployment.dll
-E:\University\Semester 6\PTUDTMDT\Clone Trang\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\System.Web.WebPages.dll
-E:\University\Semester 6\PTUDTMDT\Clone Trang\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\System.Web.WebPages.Razor.dll
-E:\University\Semester 6\PTUDTMDT\Clone Trang\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\WebGrease.dll
-E:\University\Semester 6\PTUDTMDT\Clone Trang\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\EntityFramework.xml
-E:\University\Semester 6\PTUDTMDT\Clone Trang\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\EntityFramework.SqlServer.xml
-E:\University\Semester 6\PTUDTMDT\Clone Trang\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\System.Web.Helpers.xml
-E:\University\Semester 6\PTUDTMDT\Clone Trang\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\System.Web.Mvc.xml
-E:\University\Semester 6\PTUDTMDT\Clone Trang\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\System.Web.Optimization.xml
-E:\University\Semester 6\PTUDTMDT\Clone Trang\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\System.Web.Razor.xml
-E:\University\Semester 6\PTUDTMDT\Clone Trang\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\System.Web.WebPages.xml
-E:\University\Semester 6\PTUDTMDT\Clone Trang\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\System.Web.WebPages.Deployment.xml
-E:\University\Semester 6\PTUDTMDT\Clone Trang\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\System.Web.WebPages.Razor.xml
-E:\University\Semester 6\PTUDTMDT\Clone Trang\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\Newtonsoft.Json.xml
-E:\University\Semester 6\PTUDTMDT\Clone Trang\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\Antlr3.Runtime.pdb
-E:\University\Semester 6\PTUDTMDT\Clone Trang\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-E:\University\Semester 6\PTUDTMDT\Clone Trang\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\obj\Debug\EcomerceWebsite.csproj.AssemblyReference.cache
-E:\University\Semester 6\PTUDTMDT\Clone Trang\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\obj\Debug\EcomerceWebsite.csproj.CoreCompileInputs.cache
-E:\University\Semester 6\PTUDTMDT\Clone Trang\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\obj\Debug\EcomerceWebsite.csproj.CopyComplete
-E:\University\Semester 6\PTUDTMDT\Clone Trang\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\obj\Debug\EcomerceWebsite.dll
-E:\University\Semester 6\PTUDTMDT\Clone Trang\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\obj\Debug\EcomerceWebsite.pdb
-E:\University\Semester 6\PTUDTMDT\Clone Trang\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\roslyn\csc.exe
-E:\University\Semester 6\PTUDTMDT\Clone Trang\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\roslyn\csc.exe.config
-E:\University\Semester 6\PTUDTMDT\Clone Trang\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\roslyn\csc.rsp
-E:\University\Semester 6\PTUDTMDT\Clone Trang\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\roslyn\csi.exe
-E:\University\Semester 6\PTUDTMDT\Clone Trang\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\roslyn\csi.exe.config
-E:\University\Semester 6\PTUDTMDT\Clone Trang\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\roslyn\csi.rsp
-E:\University\Semester 6\PTUDTMDT\Clone Trang\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
-E:\University\Semester 6\PTUDTMDT\Clone Trang\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
-E:\University\Semester 6\PTUDTMDT\Clone Trang\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
-E:\University\Semester 6\PTUDTMDT\Clone Trang\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\roslyn\Microsoft.CodeAnalysis.dll
-E:\University\Semester 6\PTUDTMDT\Clone Trang\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
-E:\University\Semester 6\PTUDTMDT\Clone Trang\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
-E:\University\Semester 6\PTUDTMDT\Clone Trang\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\roslyn\Microsoft.CSharp.Core.targets
-E:\University\Semester 6\PTUDTMDT\Clone Trang\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
-E:\University\Semester 6\PTUDTMDT\Clone Trang\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
-E:\University\Semester 6\PTUDTMDT\Clone Trang\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\roslyn\Microsoft.Managed.Core.targets
-E:\University\Semester 6\PTUDTMDT\Clone Trang\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\roslyn\Microsoft.VisualBasic.Core.targets
-E:\University\Semester 6\PTUDTMDT\Clone Trang\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\roslyn\Microsoft.Win32.Primitives.dll
-E:\University\Semester 6\PTUDTMDT\Clone Trang\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\roslyn\System.AppContext.dll
-E:\University\Semester 6\PTUDTMDT\Clone Trang\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\roslyn\System.Collections.Immutable.dll
-E:\University\Semester 6\PTUDTMDT\Clone Trang\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\roslyn\System.Console.dll
-E:\University\Semester 6\PTUDTMDT\Clone Trang\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
-E:\University\Semester 6\PTUDTMDT\Clone Trang\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
-E:\University\Semester 6\PTUDTMDT\Clone Trang\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\roslyn\System.Diagnostics.StackTrace.dll
-E:\University\Semester 6\PTUDTMDT\Clone Trang\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\roslyn\System.Globalization.Calendars.dll
-E:\University\Semester 6\PTUDTMDT\Clone Trang\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\roslyn\System.IO.Compression.dll
-E:\University\Semester 6\PTUDTMDT\Clone Trang\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\roslyn\System.IO.Compression.ZipFile.dll
-E:\University\Semester 6\PTUDTMDT\Clone Trang\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\roslyn\System.IO.FileSystem.dll
-E:\University\Semester 6\PTUDTMDT\Clone Trang\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\roslyn\System.IO.FileSystem.Primitives.dll
-E:\University\Semester 6\PTUDTMDT\Clone Trang\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\roslyn\System.Net.Http.dll
-E:\University\Semester 6\PTUDTMDT\Clone Trang\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\roslyn\System.Net.Sockets.dll
-E:\University\Semester 6\PTUDTMDT\Clone Trang\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\roslyn\System.Reflection.Metadata.dll
-E:\University\Semester 6\PTUDTMDT\Clone Trang\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
-E:\University\Semester 6\PTUDTMDT\Clone Trang\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\roslyn\System.Security.Cryptography.Algorithms.dll
-E:\University\Semester 6\PTUDTMDT\Clone Trang\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\roslyn\System.Security.Cryptography.Encoding.dll
-E:\University\Semester 6\PTUDTMDT\Clone Trang\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\roslyn\System.Security.Cryptography.Primitives.dll
-E:\University\Semester 6\PTUDTMDT\Clone Trang\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
-E:\University\Semester 6\PTUDTMDT\Clone Trang\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\roslyn\System.Text.Encoding.CodePages.dll
-E:\University\Semester 6\PTUDTMDT\Clone Trang\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\roslyn\System.Threading.Tasks.Extensions.dll
-E:\University\Semester 6\PTUDTMDT\Clone Trang\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\roslyn\System.ValueTuple.dll
-E:\University\Semester 6\PTUDTMDT\Clone Trang\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\roslyn\System.Xml.ReaderWriter.dll
-E:\University\Semester 6\PTUDTMDT\Clone Trang\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\roslyn\System.Xml.XmlDocument.dll
-E:\University\Semester 6\PTUDTMDT\Clone Trang\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\roslyn\System.Xml.XPath.dll
-E:\University\Semester 6\PTUDTMDT\Clone Trang\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\roslyn\System.Xml.XPath.XDocument.dll
-E:\University\Semester 6\PTUDTMDT\Clone Trang\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\roslyn\vbc.exe
-E:\University\Semester 6\PTUDTMDT\Clone Trang\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\roslyn\vbc.exe.config
-E:\University\Semester 6\PTUDTMDT\Clone Trang\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\roslyn\vbc.rsp
-E:\University\Semester 6\PTUDTMDT\Clone Trang\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\roslyn\VBCSCompiler.exe
-E:\University\Semester 6\PTUDTMDT\Clone Trang\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\roslyn\VBCSCompiler.exe.config
+D:\EcomerceWebsite2\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\Microsoft.AspNetCore.Http.Features.dll
+D:\EcomerceWebsite2\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\Microsoft.Extensions.Primitives.dll
+D:\EcomerceWebsite2\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\System.Buffers.dll
+D:\EcomerceWebsite2\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\System.IO.Pipelines.dll
+D:\EcomerceWebsite2\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\System.Memory.dll
+D:\EcomerceWebsite2\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\System.Numerics.Vectors.dll
+D:\EcomerceWebsite2\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\System.Runtime.CompilerServices.Unsafe.dll
+D:\EcomerceWebsite2\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\System.Threading.Tasks.Extensions.dll
+D:\EcomerceWebsite2\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\Microsoft.AspNetCore.Http.Features.xml
+D:\EcomerceWebsite2\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\Microsoft.Extensions.Primitives.xml
+D:\EcomerceWebsite2\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\System.Buffers.xml
+D:\EcomerceWebsite2\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\System.IO.Pipelines.xml
+D:\EcomerceWebsite2\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\System.Memory.xml
+D:\EcomerceWebsite2\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\System.Numerics.Vectors.xml
+D:\EcomerceWebsite2\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\System.Runtime.CompilerServices.Unsafe.xml
+D:\EcomerceWebsite2\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\System.Threading.Tasks.Extensions.xml
+D:\HOC KI 6\PTUD THƯƠNG MẠI ĐIỆN TỬ\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\Microsoft.AspNetCore.Http.Features.dll
+D:\HOC KI 6\PTUD THƯƠNG MẠI ĐIỆN TỬ\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\Microsoft.Extensions.Primitives.dll
+D:\HOC KI 6\PTUD THƯƠNG MẠI ĐIỆN TỬ\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\System.Buffers.dll
+D:\HOC KI 6\PTUD THƯƠNG MẠI ĐIỆN TỬ\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\System.IO.Pipelines.dll
+D:\HOC KI 6\PTUD THƯƠNG MẠI ĐIỆN TỬ\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\System.Memory.dll
+D:\HOC KI 6\PTUD THƯƠNG MẠI ĐIỆN TỬ\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\System.Numerics.Vectors.dll
+D:\HOC KI 6\PTUD THƯƠNG MẠI ĐIỆN TỬ\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\System.Runtime.CompilerServices.Unsafe.dll
+D:\HOC KI 6\PTUD THƯƠNG MẠI ĐIỆN TỬ\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\System.Threading.Tasks.Extensions.dll
+D:\HOC KI 6\PTUD THƯƠNG MẠI ĐIỆN TỬ\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\Microsoft.AspNetCore.Http.Features.xml
+D:\HOC KI 6\PTUD THƯƠNG MẠI ĐIỆN TỬ\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\Microsoft.Extensions.Primitives.xml
+D:\HOC KI 6\PTUD THƯƠNG MẠI ĐIỆN TỬ\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\System.Buffers.xml
+D:\HOC KI 6\PTUD THƯƠNG MẠI ĐIỆN TỬ\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\System.IO.Pipelines.xml
+D:\HOC KI 6\PTUD THƯƠNG MẠI ĐIỆN TỬ\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\System.Memory.xml
+D:\HOC KI 6\PTUD THƯƠNG MẠI ĐIỆN TỬ\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\System.Numerics.Vectors.xml
+D:\HOC KI 6\PTUD THƯƠNG MẠI ĐIỆN TỬ\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\System.Runtime.CompilerServices.Unsafe.xml
+D:\HOC KI 6\PTUD THƯƠNG MẠI ĐIỆN TỬ\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\System.Threading.Tasks.Extensions.xml

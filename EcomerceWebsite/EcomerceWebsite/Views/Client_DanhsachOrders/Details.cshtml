@@ -58,6 +58,12 @@
             <dd class="col-sm-9">
                 @Html.DisplayFor(model => model.ngayTao)
             </dd>
+            <dt class="col-sm-3">
+                Trạng thái
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.shipment.state)
+            </dd>
         </dl>
     </div>
 
@@ -66,6 +72,8 @@
         <thead class="thead-dark">
             <tr>
                 <th>Tên sản phẩm</th>
+                <th>Màu sắc</th>
+                <th>Kích cỡ</th>
                 <th>Số lượng</th>
                 <th>Đơn giá</th>
                 <th>Tổng giá</th>
@@ -76,6 +84,8 @@
             {
                 <tr>
                     <td>@item.Product.name</td>
+                    <td>@item.Product.color</td>
+                    <td>@item.Product.size</td>
                     <td>@item.quantity</td>
                     <td>@String.Format("{0:C}", item.price)</td>
                     <td>@String.Format("{0:C}", item.quantity * item.price)</td>
@@ -85,7 +95,7 @@
     </table>
 
     <div>
-        @if (Model.shipment.state == "Đang xử lý")
+        @if (Model.shipment.state == "Chờ xác nhận")
         {
             using (Html.BeginForm("Cancel", "Client_DanhSachOrders", new { id = Model.order_id }, FormMethod.Post))
             {
@@ -93,7 +103,7 @@
                 <button type="submit" class="btn btn-danger">Hủy</button>
             }
         }
-        else
+        else if (Model.shipment.state != "Đã hủy")
         {
             <p>Đơn hàng không thể hủy được.</p>
         }

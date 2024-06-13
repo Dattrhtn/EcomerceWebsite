@@ -15,10 +15,20 @@ namespace EcomerceWebsite.Controllers
         private ModelDB db = new ModelDB();
 
         // GET: Admin_Orders
-        public ActionResult Index()
+        public ActionResult Index(int page = 1, int pageSize = 12)
         {
             var orders = db.Orders.Include(o => o.account).Include(o => o.Payment).Include(o => o.shipment);
-            return View(orders.ToList());
+            var totalItems = orders.ToList().Count;
+
+            var totalPages = (int)Math.Ceiling((double)totalItems / pageSize);
+            var paginatedProducts = orders.OrderBy(x => x.ngayTao).Skip((page - 1) * pageSize).Take(pageSize).ToList();
+
+            ViewBag.TotalItems = totalItems;
+            ViewBag.CurrentPage = page;
+            ViewBag.PageSize = pageSize;
+            ViewBag.TotalPages = totalPages;
+
+            return View(paginatedProducts);
         }
 
         // GET: Admin_Orders/Details/5
