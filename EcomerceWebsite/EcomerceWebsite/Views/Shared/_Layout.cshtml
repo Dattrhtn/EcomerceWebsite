@@ -46,11 +46,12 @@
         #search_value {
             max-width: 500px;
         }
-            .customInputNavBar:focus {
-                background-color: #0c0c0c;
-                color: #fff;
-                border: none;
-            }
+
+        .customInputNavBar:focus {
+            background-color: #0c0c0c;
+            color: #fff;
+            border: none;
+        }
 
         .form-control:focus {
             outline: 0;
@@ -60,6 +61,7 @@
         .search-model-form input {
             border-bottom: 1px solid #9b9b9b;
         }
+
         .nav-item.dropdown .dropdown-toggle {
             display: flex;
             align-items: center;
@@ -92,6 +94,18 @@
                 .nav-item.dropdown .dropdown-menu .dropdown-item:hover {
                     background-color: #f8f9fa;
                 }
+
+        .non_active_messeage {
+            display: block;
+            text-align: right;
+        }
+
+        .active_messeage {
+            display: flex;
+            justify-content: space-between;
+            align-content: center;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -138,30 +152,70 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12 col-md-5" style="padding-right: 0;">
-                        <div class="header__top__right">
-                            <div class="header__top__links" style="margin: 0">
-                                @if (Session["IsAuthenticated"] != null && (bool)Session["IsAuthenticated"])
-                                {
-                                    <div class="nav-item dropdown">
-                                        <a href="#" style="margin: 0; padding-right: 0;" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                                            <img class="rounded-circle" src="https://c1.klipartz.com/pngpicture/823/765/sticker-png-login-icon-system-administrator-user-user-profile-icon-design-avatar-face-head.png" alt="" style="width: 40px; height: 40px;">
-                                            <span class="d-none d-lg-inline-flex user-name">@Session["name"]</span>
-                                        </a>
-                                        <div class="dropdown-menu dropdown-menu-end">
-                                            <a href="/Client_Account/Index" class="dropdown-item">Thông tin của cá nhân</a>
-                                            <a href="/Client_DanhsachOrders/Index" class="dropdown-item">Đơn hàng của tôi</a>
-                                            <a href="~/Logout" class="dropdown-item">Đăng xuất</a>
+                        @{
+                            var messeage_outOfRange = TempData["messeage_outOfStock_1"] as string;
+                        }
+                        @if (!string.IsNullOrEmpty(messeage_outOfRange))
+                        {
+                            <div class="header__top__right active_messeage" style="text-align: center; display: flex; justify-content: space-between;">
+                                @*@if (!string.IsNullOrEmpty(messeage_outOfRange))
+                                    {*@
+                                <div class="text-bg-danger" style="padding: 16px; font-size: 18px; font-weight: 800;">
+                                    @messeage_outOfRange
+                                </div>
+                                @*}*@
+                                <div class="header__top__links" style="margin: 0; font-size: 24px; margin: 0; font-weight: 700;">
+                                    @if (Session["IsAuthenticated"] != null && (bool)Session["IsAuthenticated"])
+                                    {
+                                        <div class="nav-item dropdown">
+                                            <a href="#" style="margin: 0; padding-right: 0;" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                                                <img class="rounded-circle" src="https://c1.klipartz.com/pngpicture/823/765/sticker-png-login-icon-system-administrator-user-user-profile-icon-design-avatar-face-head.png" alt="" style="width: 40px; height: 40px;">
+                                                <span class="d-none d-lg-inline-flex user-name">@Session["name"]</span>
+                                            </a>
+                                            <div class="dropdown-menu dropdown-menu-end">
+                                                <a href="/Client_Account/Index" class="dropdown-item">Thông tin cá nhân</a>
+                                                <a href="/Client_DanhsachOrders/Index" class="dropdown-item">Đơn hàng của tôi</a>
+                                                <a href="~/Logout" class="dropdown-item">Đăng xuất</a>
+                                            </div>
                                         </div>
-                                    </div>
-                                }
-                                else
-                                {
-                                    <a href="~/Login/Index">Đăng nhập</a>
-                                    <a href="~/Client_DangNhap_DangKy/DangKy">Đăng ký</a>
-                                }
+                                    }
+                                    else
+                                    {
+                                        <a href="~/Login/Index">Đăng nhập</a>
+                                        <a href="~/Client_DangNhap_DangKy/DangKy">Đăng ký</a>
+                                    }
 
+                                </div>
                             </div>
-                        </div>
+                        }
+                        else
+                        {
+                            <div class="header__top__right active_messeage" style="text-align: right; display: block;">
+                                @*}*@
+                                <div class="header__top__links" style="margin: 0; font-size: 24px; margin: 0; font-weight: 700;">
+                                    @if (Session["IsAuthenticated"] != null && (bool)Session["IsAuthenticated"])
+                                    {
+                                        <div class="nav-item dropdown">
+                                            <a href="#" style="margin: 0; padding-right: 0;" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                                                <img class="rounded-circle" src="https://c1.klipartz.com/pngpicture/823/765/sticker-png-login-icon-system-administrator-user-user-profile-icon-design-avatar-face-head.png" alt="" style="width: 40px; height: 40px;">
+                                                <span class="d-none d-lg-inline-flex user-name">@Session["name"]</span>
+                                            </a>
+                                            <div class="dropdown-menu dropdown-menu-end">
+                                                <a href="/Client_Account/Index" class="dropdown-item">Thông tin của cá nhân</a>
+                                                <a href="/Client_DanhsachOrders/Index" class="dropdown-item">Đơn hàng của tôi</a>
+                                                <a href="~/Logout" class="dropdown-item">Đăng xuất</a>
+                                            </div>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <a href="~/Login/Index">Đăng nhập</a>
+                                        <a href="~/Client_DangNhap_DangKy/DangKy">Đăng ký</a>
+                                    }
+
+                                </div>
+                            </div>
+                        }
                     </div>
                 </div>
             </div>

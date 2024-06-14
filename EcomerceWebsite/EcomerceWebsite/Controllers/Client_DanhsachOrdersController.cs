@@ -49,7 +49,23 @@ namespace EcomerceWebsite.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Cancel(int id)
         {
+            var account_id = int.Parse(Session["account_id"] as string);
             Order order = db.Orders.Include(o => o.shipment).FirstOrDefault(o => o.order_id == id);
+            var oder_oder_item = (from od in db.Orders
+                                  join ot in db.order_item
+                                  on od.order_id equals ot.order_order_id
+                                  where od.order_id == id
+                                  select ot).ToList();
+                                
+                                 
+            foreach (var item in oder_oder_item)
+            {
+
+                var product = db.Products.Where(p => p.product_id == item.product_product_id).FirstOrDefault();
+                product.quantity = product.quantity + Convert.ToInt32(item.quantity);
+                db.Entry(product).State = EntityState.Modified;
+                db.SaveChanges();
+            }
             if (order == null)
             {
                 return HttpNotFound();

@@ -15,9 +15,14 @@ namespace EcomerceWebsite.Controllers
         private ModelDB db = new ModelDB();
 
         // GET: Admin_Payments
+
         public ActionResult Index()
         {
-            return View(db.Payments.ToList());
+            if (Session["IsAuthenticated"] != null && (bool)Session["IsAuthenticated"])
+            {
+                return View(db.Payments.ToList());
+            }
+            return RedirectToAction("Index", "Login");
         }
 
         // GET: Admin_Payments/Details/5

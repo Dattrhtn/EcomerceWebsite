@@ -17,18 +17,22 @@ namespace EcomerceWebsite.Controllers
         // GET: Admin_Orders
         public ActionResult Index(int page = 1, int pageSize = 12)
         {
-            var orders = db.Orders.Include(o => o.account).Include(o => o.Payment).Include(o => o.shipment);
-            var totalItems = orders.ToList().Count;
+            if (Session["IsAuthenticated"] != null && (bool)Session["IsAuthenticated"])
+            {
+                var orders = db.Orders.Include(o => o.account).Include(o => o.Payment).Include(o => o.shipment);
+                var totalItems = orders.ToList().Count;
 
-            var totalPages = (int)Math.Ceiling((double)totalItems / pageSize);
-            var paginatedProducts = orders.OrderBy(x => x.ngayTao).Skip((page - 1) * pageSize).Take(pageSize).ToList();
+                var totalPages = (int)Math.Ceiling((double)totalItems / pageSize);
+                var paginatedProducts = orders.OrderBy(x => x.ngayTao).Skip((page - 1) * pageSize).Take(pageSize).ToList();
 
-            ViewBag.TotalItems = totalItems;
-            ViewBag.CurrentPage = page;
-            ViewBag.PageSize = pageSize;
-            ViewBag.TotalPages = totalPages;
+                ViewBag.TotalItems = totalItems;
+                ViewBag.CurrentPage = page;
+                ViewBag.PageSize = pageSize;
+                ViewBag.TotalPages = totalPages;
 
-            return View(paginatedProducts);
+                return View(paginatedProducts);
+            }
+            return RedirectToAction("Index", "Login");
         }
 
         // GET: Admin_Orders/Details/5

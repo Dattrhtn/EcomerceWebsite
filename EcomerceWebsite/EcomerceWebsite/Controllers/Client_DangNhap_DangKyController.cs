@@ -23,13 +23,13 @@ namespace EcomerceWebsite.Controllers
             var currentAccount = db.accounts.Where(ac => ac.email == (email) && ac.password == pass).FirstOrDefault();
             if (currentAccount != null)
             {
-                if(currentAccount.role == 1)
-                {
-                    return RedirectToAction("Index", "Admin_dashboard");
-                }
                 Session["IsAuthenticated"] = true;
                 Session["name"] = currentAccount.first_name;
                 Session["account_id"] = currentAccount.account_id.ToString();
+                if (currentAccount.role == 1)
+                {
+                    return RedirectToAction("Index", "Admin_dashboard");
+                }
                 return RedirectToAction("Index", "Home");
             }
             TempData["mess"] = "Email hoặc password không đúng!";

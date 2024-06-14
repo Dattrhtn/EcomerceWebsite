@@ -17,17 +17,21 @@ namespace EcomerceWebsite.Controllers
         // GET: Admin_Categories
         public ActionResult Index(int page = 1, int pageSize = 12)
         {
-            var totalItems = db.Categories.ToList().Count;
+            if (Session["IsAuthenticated"] != null && (bool)Session["IsAuthenticated"])
+            {
+                var totalItems = db.Categories.ToList().Count;
 
-            var totalPages = (int)Math.Ceiling((double)totalItems / pageSize);
-            var paginatedProducts = db.Categories.OrderBy(x => x.ngayTao).Skip((page - 1) * pageSize).Take(pageSize).ToList();
+                var totalPages = (int)Math.Ceiling((double)totalItems / pageSize);
+                var paginatedProducts = db.Categories.OrderBy(x => x.ngayTao).Skip((page - 1) * pageSize).Take(pageSize).ToList();
 
-            ViewBag.TotalItems = totalItems;
-            ViewBag.CurrentPage = page;
-            ViewBag.PageSize = pageSize;
-            ViewBag.TotalPages = totalPages;
+                ViewBag.TotalItems = totalItems;
+                ViewBag.CurrentPage = page;
+                ViewBag.PageSize = pageSize;
+                ViewBag.TotalPages = totalPages;
 
-            return View(paginatedProducts);
+                return View(paginatedProducts);
+            }
+            return RedirectToAction("Index", "Login");
         }
 
         // GET: Admin_Categories/Details/5

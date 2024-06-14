@@ -17,8 +17,12 @@ namespace EcomerceWebsite.Controllers
         // GET: Admin_shipments
         public ActionResult Index()
         {
-            var shipments = db.shipments.Include(s => s.account);
-            return View(shipments.ToList());
+            if (Session["IsAuthenticated"] != null && (bool)Session["IsAuthenticated"])
+            {
+                var shipments = db.shipments.Include(s => s.account);
+                return View(shipments.ToList());
+            }
+            return RedirectToAction("Index", "Login");
         }
 
         // GET: Admin_shipments/Details/5

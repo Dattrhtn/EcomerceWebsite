@@ -1,5 +1,4 @@
 ﻿@model IEnumerable<EcomerceWebsite.Models.cart>
-
 @{
     ViewBag.Title = "Checkout";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -145,7 +144,6 @@
         }
 
     .checkout__order__products {
-        
         font-size: 16px;
         color: #111111;
         overflow: hidden;
@@ -161,7 +159,6 @@
     }
 
         .checkout__total__products li {
-           
             font-size: 16px;
             color: #444444;
             list-style: none;
@@ -199,6 +196,12 @@
                 font-weight: 700;
                 float: right;
             }
+
+
+    .form-control.custom {
+        width: 100%;
+        line-height: 28px;
+    }
 </style>
 <!-- Breadcrumb Section Begin -->
 <section class="breadcrumb-option">
@@ -235,50 +238,49 @@
                                 <div class="checkout__input">
 
                                     <p>Họ<span>*</span></p>
-                                    <input type="text" >
+                                    <input type="text" required>
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="checkout__input">
                                     <p>Tên<span>*</span></p>
-                                    <input type="text">
+                                    <input type="text" required>
                                 </div>
                             </div>
                         </div>
                         <div class="checkout__input">
                             <p>Địa chỉ cụ thể<span>*</span></p>
-                            <input type="text" placeholder="Thôn/Xã/Huyện" class="checkout__input__add" name="address">
+                            <input type="text" placeholder="Thôn/Xã/Huyện" class="checkout__input__add" name="address" required>
                         </div>
                         <div class="checkout__input">
                             <p>Tỉnh/Thành Phố<span>*</span></p>
-                            <input type="text" name="city">
+                            <input type="text" name="city" required>
                         </div>
                         <div class="checkout__input">
                             <p>Quốc gia<span>*</span></p>
-                            <input type="text" name="country">
+                            <input type="text" name="country" required>
                         </div>
                         <div class="checkout__input">
                             <p>Code/Zip<span>*</span></p>
-                            <input type="text" name="zip_code">
+                            <input type="text" name="zip_code" required>
                         </div>
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="checkout__input">
                                     <p>Số điện thoại<span>*</span></p>
-                                    <input type="text">
+                                    <input type="text" required>
                                 </div>
                             </div>
                             <div class="col-lg-6">
                                 <div class="checkout__input">
                                     <p>Email<span>*</span></p>
-                                    <input type="text">
+                                    <input type="text" required>
                                 </div>
                             </div>
                         </div>
                         <div class="checkout__input">
-                            <p>Ghi chú <span>*</span></p>
-                            <input type="text" />
-
+                            <p>Phương thức thanh toán <span>*</span></p>
+                            @Html.DropDownList("Payment_payment_id", (SelectList)ViewBag.PaymentList, new { @class = "form-control custom" })
                         </div>
                     </div>
                     <div class="col-lg-5 col-md-6">
@@ -300,7 +302,7 @@
                     </div>
                 </div>
             }
-            </div>
+        </div>
     </div>
 </section>
 <!-- Checkout Section End -->

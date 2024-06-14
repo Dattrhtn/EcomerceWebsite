@@ -232,6 +232,9 @@ namespace EcomerceWebsite.Controllers
                     db.Entry(check_product_ID).State = EntityState.Modified;
                     db.SaveChanges();
                 }
+                //product.quantity = product.quantity - 1;
+                //db.Entry(product).State = EntityState.Modified;
+                //db.SaveChanges();
             }
             catch (Exception e)
             {

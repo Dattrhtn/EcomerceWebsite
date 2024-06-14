@@ -9,6 +9,9 @@
         width: 100px;
     }
 
+    th, td, .quantity__item {
+        text-align: center;
+    }
     button.button_submit_form {
         color: #ffffff;
         font-size: 14px;
@@ -21,17 +24,90 @@
         background: #111111;
         border-color: #111111;
     }
+    .product_color {
+        text-align:center;
+    }
+    .product_color label {
+        height: 30px;
+        width: 30px;
+        border-radius: 50%;
+        position: relative;
+        margin-right: 10px;
+        margin-bottom: 0;
+        display: inline-block;
+        cursor: pointer;
+        padding: 10px;
+        border: 1px solid #e5dcdc;
+    }
+    .product_size label {
+        color: #111111;
+        font-size: 15px;
+        font-weight: 700;
+        text-transform: uppercase;
+        display: inline-block;
+        border: 1px solid #e5e5e5;
+        padding: 6px 15px;
+        margin-bottom: 0;
+        margin-right: 5px;
+        cursor: pointer;
+    }
+    label input {
+        display: none;
+    }
+    td label.c-3 {
+        background: #e8bac4;
+    }
+
+    td label.c-2 {
+        background: #ffff;
+    }
+
+    td label.c-4 {
+        background: red;
+    }
+    td label.c-1 {
+        background: #0b090c;
+    }
+
+    td label.c-6 {
+        background: #e5ddd2;
+    }
+
+    td label.c-5 {
+        background: #6c827a;
+    }
+
+    td label.c-7 {
+        background: #636068;
+    }
+
+    .shop__sidebar__color input[type="radio"]:checked + label:after {
+        border: 3px solid lightblue; /* Điều chỉnh màu và độ dày viền theo ý muốn */
+    }
+
+    .shop__sidebar__color input[type="radio"] {
+        display: none;
+    }
+
+    .shop__sidebar__color label {
+        display: inline-block;
+        padding: 10px; /* Adjust padding as needed */
+        cursor: pointer;
+    }
+    .shopping__cart__table table tbody tr .product_color {
+        width: 100px !important;
+    }
 </style>
 <section class="breadcrumb-option">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
                 <div class="breadcrumb__text">
-                    <h4>Shopping Cart</h4>
+                    <h4>Giỏ hàng</h4>
                     <div class="breadcrumb__links">
-                        <a href="./index.html">Home</a>
-                        <a href="./shop.html">Shop</a>
-                        <span>Shopping Cart</span>
+                        <a href="/Home/Index">Trang chủ</a>
+                        <a href="/Client_Danhsachsanpham/Index">Cửa hàng</a>
+                        <span>Giỏ hàng</span>
                     </div>
                 </div>
             </div>
@@ -41,9 +117,9 @@
 <!-- Breadcrumb Section End -->
 <!-- Shopping Cart Section Begin -->
 <section class="shopping-cart spad">
-    <div class="container">
+    <div class="container" style="max-width: 90%">
         <div class="row">
-            <div class="col-lg-8">
+            <div class="col-lg-9">
                 <div class="shopping__cart__table">
                     <form id="searchForm1" method="post" action="/Client_Cart/Update_Cart">
                         <table>
@@ -51,13 +127,15 @@
                                 <tr>
                                     <th>Sản phẩm</th>
                                     <th>Số lượng</th>
+                                    <th>Màu sắc</th>
+                                    <th>Kích thước</th>
                                     <th>Tổng tiền</th>
                                     <th></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach (var item in Model)
-                                {
+                                {                              
                                     <tr>
                                         <td class="product__cart__item">
                                             <div class="product__cart__item__pic">
@@ -70,11 +148,22 @@
                                             </div>
                                         </td>
                                         <td class="quantity__item">
-                                            <div class="quantity">
+                                            <div class="quantity" style="display: flex; justify-content: center; align-items: center; }">
                                                 <div class="pro-qty-2">
                                                     <input id="quantity_value" name="quantity_value" type="text" value="@item.quantity">
                                                 </div>
                                             </div>
+                                        </td>
+                                        <td class="product_color" style="width: 100px">
+                                            <label class="c-@item.Product.color" for="sp-@item.Product.color">
+                                                <input type="radio" id="sp-@item.Product.color" name="color" value="@item.Product.color">
+                                            </label>
+                                        </td>
+                                        <td class="product_size">
+                                            <label for="@item.Product.size">
+                                                @item.Product.size
+                                                <input type="radio" id="@item..Product.size" name="size" value="@item.Product.size">
+                                            </label>
                                         </td>
                                         <td class="cart__price">$  @(@item.quantity * @item.Product.price)</td>
                                         <td class="cart__close"><a href="/Client_Cart/Xoa/?id=@item.cart_id"><i class="fa fa-close"></i></a></td>
@@ -90,7 +179,7 @@
                                     </td>
                                     <td>
                                         <div class="continue__btn update__btn" style="width: 300px">
-                                            <button class="button_submit_form" type="submit"><i class="fa fa-spinner"></i> Update cart</button>
+                                            <button class="button_submit_form" type="submit"><i class="fa fa-spinner"></i> Cập nhật</button>
                                         </div>
                                     </td>
                                 </tr>
@@ -99,7 +188,7 @@
                     </form>
                 </div>
             </div>
-            <div class="col-lg-4">
+            <div class="col-lg-3">
                 <div class="cart__total">
                     <h6>Tổng thanh toán</h6>
                     <ul>

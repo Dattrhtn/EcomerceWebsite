@@ -17,7 +17,56 @@
         @TempData["Error"]
     </div>
 }
+<style>
+    .product_color {
+        text-align: center;
+    }
 
+        .product_color label {
+            height: 30px;
+            width: 30px;
+            border-radius: 50%;
+            position: relative;
+            margin-right: 10px;
+            margin-bottom: 0;
+            display: inline-block;
+            cursor: pointer;
+            padding: 10px;
+            border: 1px solid #e5dcdc;
+        }
+    label input {
+        display: none;
+    }
+
+    td label.c-3 {
+        background: #e8bac4;
+    }
+
+    td label.c-2 {
+        background: #ffff;
+    }
+
+    td label.c-4 {
+        background: red;
+    }
+
+    td label.c-1 {
+        background: #0b090c;
+    }
+
+    td label.c-6 {
+        background: #e5ddd2;
+    }
+
+    td label.c-5 {
+        background: #6c827a;
+    }
+
+    td label.c-7 {
+        background: #636068;
+    }
+
+</style>
 <div class="container mt-4">
     <h2 class="text-center">Chi tiết đơn hàng</h2>
     <h4 class="mt-4">Đơn hàng</h4>
@@ -84,11 +133,15 @@
             {
                 <tr>
                     <td>@item.Product.name</td>
-                    <td>@item.Product.color</td>
+                    <td class="product_color" style="width: 100px">
+                        <label class="c-@item.Product.color" for="sp-@item.Product.color">
+                            <input type="radio" id="sp-@item.Product.color" name="color" value="@item.Product.color">
+                        </label>
+                    </td>
                     <td>@item.Product.size</td>
                     <td>@item.quantity</td>
-                    <td>@String.Format("{0:C}", item.price)</td>
-                    <td>@String.Format("{0:C}", item.quantity * item.price)</td>
+                    <td>@String.Format(new System.Globalization.CultureInfo("en-US"), "{0:C}", item.price)</td>
+                    <td>@String.Format(new System.Globalization.CultureInfo("en-US"), "{0:C}", item.quantity * item.price)</td>
                 </tr>
             }
         </tbody>

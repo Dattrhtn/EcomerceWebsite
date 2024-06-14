@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using EcomerceWebsite.Models;
+using Microsoft.Ajax.Utilities;
 
 namespace EcomerceWebsite.Controllers
 {
@@ -28,6 +29,10 @@ namespace EcomerceWebsite.Controllers
             }
             if (Session["IsAuthenticated"] != null && (bool)Session["IsAuthenticated"])
             {
+                if (!(TempData["messeage_outOfStock"] as string).IsNullOrWhiteSpace())
+                {
+                    TempData["messeage_outOfStock_1"] = TempData["messeage_outOfStock"];
+                }
                 var account_id = int.Parse(Session["account_id"] as string);
                 Session["numberOfCart"] = db.carts.Where(c => c.account_account_id == account_id).Count();
                 var carts = db.carts.Include(c => c.account).Include(c => c.Product).Where(c => c.account_account_id == account_id);
@@ -125,9 +130,21 @@ namespace EcomerceWebsite.Controllers
         [HttpGet]
         public ActionResult Xoa(int? id)
         {
-            cart cart = db.carts.Find(id);
-            db.carts.Remove(cart);
-            db.SaveChanges();
+            var current_account = int.Parse(Session["account_id"] as string);
+            cart cart = db.carts.Where(c => c.cart_id == id && c.account_account_id == current_account).FirstOrDefault();
+            if (cart != null)
+            {
+                //var current_product = db.Products.Where(p => p.product_id == cart.product_product_id).FirstOrDefault();
+                //if (current_product != null)
+                //{
+                //    current_product.quantity = current_product.quantity + cart.quantity;
+                //    db.Entry(current_product).State = EntityState.Modified;
+                //}
+                db.carts.Remove(cart);
+
+                db.SaveChanges();
+            }
+
 
             // Lấy thông tin về controller hiện tại
             string currentController = ControllerContext.RouteData.Values["controller"].ToString();
@@ -138,8 +155,10 @@ namespace EcomerceWebsite.Controllers
         [HttpPost]
         public ActionResult Update_Cart()
         {
+            var current_account = int.Parse(Session["account_id"] as string);
             string list_cartid = Request["cart_id"].ToString();
             string list_quantity = Request["quantity_value"].ToString();
+            
             if (list_cartid != null && list_quantity != null)
             {
                 var mang_cartid = list_cartid.Split(',');
@@ -149,11 +168,26 @@ namespace EcomerceWebsite.Controllers
                 {
                     int cart_id = int.Parse(mang_cartid[i]);
                     int current_quantity = int.Parse(mang_quantity[i]);
-                    var cart = db.carts.Find(cart_id);
+                    var cart = db.carts.Where(c => c.cart_id == cart_id && c.account_account_id == current_account).FirstOrDefault();
+                    var curent_product = db.Products.Where(p => p.product_id == cart.product_product_id).FirstOrDefault();
+                    if(curent_product != null)
+                    {
+                        if(current_quantity > curent_product.quantity)
+                        {
+                            TempData["messeage_outOfStock"] = "Số lượng vượt quá số lượng sản phẩm còn lại trong kho!";
+                            return RedirectToAction("Index");
+                        }
+                    }
+                    if (cart != null)
+                    {
+                        var current_cart_quantity = cart.quantity;
 
-                    cart.quantity = current_quantity;
-                    db.Entry(cart).State = EntityState.Modified;
-                    db.SaveChanges();
+                        cart.quantity = current_quantity;
+                        db.Entry(cart).State = EntityState.Modified;
+                        db.SaveChanges();
+                    }
+
+
                 }
             }
             return RedirectToAction("Index");
@@ -169,7 +203,7 @@ namespace EcomerceWebsite.Controllers
         //[Authorize]
         public ActionResult Checkout()
         {
-            var carts = db.carts.Include(c => c.account).Include(c => c.Product);
+            var carts = db.carts.Include(c => c.account).Include(c => c.Product).ToList();
 
             var Prices = from cart in db.carts
                          join product in db.Products
@@ -180,7 +214,10 @@ namespace EcomerceWebsite.Controllers
 
             var totalPrices = Prices.Sum();
             ViewBag.totalPrices = totalPrices;
-            return View(carts.ToList());
+
+            var payments= db.Payments.ToList();
+            ViewBag.PaymentList = new SelectList(payments, "payment_id", "payment_method");
+            return View(carts);
         }
     }
 }

@@ -25,8 +25,13 @@ namespace EcomerceWebsite.Controllers
             }
             if (Session["IsAuthenticated"] != null && (bool)Session["IsAuthenticated"])
             {
+                //TempData["messeage_outOfStock"] as string;
+                if (!(TempData["messeage_outOfStock"] as string).IsNullOrWhiteSpace())
+                {
+                    TempData["messeage_outOfStock_1"] = TempData["messeage_outOfStock"];
+                }
                 ViewBag.CurentAccount = TempData["name"] as string;
-                if(product_id == null)
+                if (product_id == null)
                 {
                     product_id = int.Parse(TempData["product_id"] as string);
                 }
@@ -62,47 +67,55 @@ namespace EcomerceWebsite.Controllers
         }
         public ActionResult AddToCart(string product_id, string selected_color, string selected_size, string quantity_value)
         {
-            if(string.IsNullOrEmpty(selected_size))
-            {
-                selected_size = "L";
-            }
             var productId = Convert.ToInt32(product_id);
-            if(string.IsNullOrEmpty(selected_color))
+            if (string.IsNullOrEmpty(selected_size))
             {
-                selected_color = "1";
+                var first_Size = db.Products.Where(p => p.product_id == productId).Select(p => p.size).FirstOrDefault();
+                selected_size = first_Size;
+            }
+            var current_quantity = int.Parse(quantity_value);
+            if (string.IsNullOrEmpty(selected_color))
+            {
+                var first_color = db.Products.Where(p => p.product_id == productId).Select(p => p.color).FirstOrDefault();
+                selected_color = first_color.ToString();
             }
             var color = Convert.ToInt32(selected_color);
             var productCode = db.Products.Where(p => p.product_id == productId).Select(p => p.productCode).FirstOrDefault();
             var product = db.Products.Where(p => p.color == color && p.size == selected_size && p.productCode == productCode).FirstOrDefault();
-            if(product == null)
+            if (product == null)
             {
-                product = db.Products.Where(p => p.product_id == productId).FirstOrDefault();
-            }
-            var account_id = int.Parse(Session["account_id"] as string);
-            var check_product_ID = db.carts.Where(c => c.product_product_id == product.product_id && c.account_account_id == account_id).FirstOrDefault();
-            if (check_product_ID == null)
-            {
-                cart new_Cart_Item = new cart();
-                new_Cart_Item.quantity = int.Parse(quantity_value);
-                new_Cart_Item.product_product_id = product.product_id;
-                new_Cart_Item.account_account_id = account_id;
-                new_Cart_Item.ngayTao = DateTime.Now;
-                db.carts.Add(new_Cart_Item);
-                db.SaveChanges();
+                //product = db.Products.Where(p => p.product_id == productId).FirstOrDefault();
+                TempData["messeage_outOfStock"] = "Kích thước và màu đã hết hàng. Vui lòng chọn kích thước và màu khác!";
+                return RedirectToAction("Index", new { product_id = productId });
             }
             else
             {
-                check_product_ID.quantity = int.Parse(quantity_value);
-                db.Entry(check_product_ID).State = EntityState.Modified;
-                db.SaveChanges();
+                if (current_quantity > product.quantity)
+                {
+                    TempData["messeage_outOfStock"] = "Số lượng vượt quá số lượng sản phẩm còn lại trong kho!";
+                    return RedirectToAction("Index", new { product_id = productId });
+                }
+                var account_id = int.Parse(Session["account_id"] as string);
+                var check_product_ID = db.carts.Where(c => c.product_product_id == product.product_id && c.account_account_id == account_id).FirstOrDefault();
+                if (check_product_ID == null)
+                {
+                    cart new_Cart_Item = new cart();
+                    new_Cart_Item.quantity = int.Parse(quantity_value);
+                    new_Cart_Item.product_product_id = product.product_id;
+                    new_Cart_Item.account_account_id = account_id;
+                    new_Cart_Item.ngayTao = DateTime.Now;
+                    db.carts.Add(new_Cart_Item);
+                    db.SaveChanges();
+                }
+                else
+                {
+                    check_product_ID.quantity = int.Parse(quantity_value);
+                    db.Entry(check_product_ID).State = EntityState.Modified;
+                    db.SaveChanges();
+                }
+                TempData["product_id"] = product_id;
+                return RedirectToAction("Index");
             }
-            TempData["product_id"] = product_id;
-            return RedirectToAction("Index");
-            //ViewBag.product_id = product_id;
-            //ViewBag.product_color = selected_color;
-            //ViewBag.product_size = selected_size;
-            //ViewBag.quantity = quantity_value;
-            return View();
         }
     }
 }

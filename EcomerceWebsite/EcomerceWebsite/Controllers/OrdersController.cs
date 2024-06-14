@@ -43,6 +43,7 @@ namespace EcomerceWebsite.Controllers
             ViewBag.account_account_id = new SelectList(db.accounts, "account_id", "first_name");
             ViewBag.Payment_payment_id = new SelectList(db.Payments, "payment_id", "payment_method");
             ViewBag.Shipment_shipment_id = new SelectList(db.shipments, "shipment_id", "address");
+
             return View();
         }
 
@@ -87,7 +88,7 @@ namespace EcomerceWebsite.Controllers
                         {
                             total_price = total_price,
                             account_account_id = account_id,
-                            Payment_payment_id = 3,                            
+                            Payment_payment_id = Convert.ToInt32(order.Payment_payment_id),                            
                             Shipment_shipment_id = id_shipment,
                             ngayTao = DateTime.Now
                         };
@@ -116,6 +117,10 @@ namespace EcomerceWebsite.Controllers
                                 ngayTao = DateTime.Now
                             };
                             db.order_item.Add(orderItem);
+                            var product = db.Products.Where(p => p.product_id == item.product_id).FirstOrDefault();
+                            product.quantity = product.quantity - Convert.ToInt32(item.quantity);
+                            db.Entry(product).State = EntityState.Modified;
+                            db.SaveChanges();
                         }
                         db.SaveChanges();
 
