@@ -445,3 +445,19 @@ D:\HOC KI 6\PTUD THƯƠNG MẠI ĐIỆN TỬ\EcomerceWebsite\EcomerceWebsite\Eco
 D:\HOC KI 6\PTUD THƯƠNG MẠI ĐIỆN TỬ\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\System.Numerics.Vectors.xml
 D:\HOC KI 6\PTUD THƯƠNG MẠI ĐIỆN TỬ\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\System.Runtime.CompilerServices.Unsafe.xml
 D:\HOC KI 6\PTUD THƯƠNG MẠI ĐIỆN TỬ\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\System.Threading.Tasks.Extensions.xml
+E:\PTUDTMDT\lastProject\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\Microsoft.AspNetCore.Http.Features.dll
+E:\PTUDTMDT\lastProject\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\Microsoft.Extensions.Primitives.dll
+E:\PTUDTMDT\lastProject\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\System.Buffers.dll
+E:\PTUDTMDT\lastProject\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\System.IO.Pipelines.dll
+E:\PTUDTMDT\lastProject\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\System.Memory.dll
+E:\PTUDTMDT\lastProject\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\System.Numerics.Vectors.dll
+E:\PTUDTMDT\lastProject\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\System.Runtime.CompilerServices.Unsafe.dll
+E:\PTUDTMDT\lastProject\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\System.Threading.Tasks.Extensions.dll
+E:\PTUDTMDT\lastProject\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\Microsoft.AspNetCore.Http.Features.xml
+E:\PTUDTMDT\lastProject\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\Microsoft.Extensions.Primitives.xml
+E:\PTUDTMDT\lastProject\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\System.Buffers.xml
+E:\PTUDTMDT\lastProject\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\System.IO.Pipelines.xml
+E:\PTUDTMDT\lastProject\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\System.Memory.xml
+E:\PTUDTMDT\lastProject\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\System.Numerics.Vectors.xml
+E:\PTUDTMDT\lastProject\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\System.Runtime.CompilerServices.Unsafe.xml
+E:\PTUDTMDT\lastProject\EcomerceWebsite\EcomerceWebsite\EcomerceWebsite\bin\System.Threading.Tasks.Extensions.xml
