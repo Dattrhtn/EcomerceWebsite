@@ -32,6 +32,26 @@
     .product__details__option__color label.c-7 {
         background: #636068;
     }
+
+    .shop__sidebar__color input[type="radio"]:checked + label:after {
+        border: 3px solid lightblue; /* Điều chỉnh màu và độ dày viền theo ý muốn */
+    }
+
+    .shop__sidebar__color input[type="radio"] {
+        display: none;
+    }
+
+    .shop__sidebar__color label {
+        display: inline-block;
+        padding: 10px; /* Adjust padding as needed */
+        cursor: pointer;
+    }
+
+    .shop__sidebar__color .size_link_color {
+        display: block;
+        width: 100%; /* Adjust width as needed */
+        height: 100%; /* Adjust height as needed */
+    }
 </style>
 <section class="shop-details">
     <div class="product__details__pic">
@@ -127,13 +147,16 @@
                                 </div>
                                 <div class="product__details__option__color">
                                     <span>Màu sắc:</span>
-                                    @foreach (var item in @ViewBag.listColor) { 
-                                        <label class="c-@item" for="sp-@item">
-                                            <input type="radio" id="sp-@item" name="color" value="@item">
-                                        </label>                                  
-                                    }
+                                    <div class="shop__sidebar__color">
+                                        @foreach (var item in @ViewBag.listColor)
+                                        {
+                                            <label class="c-@item" for="sp-@item">
+                                                <input type="radio" id="sp-@item" name="color" value="@item">
+                                            </label>
+                                        }
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
                             <div class="product__details__cart__option">
                                 <div class="quantity">
                                     <div class="pro-qty">

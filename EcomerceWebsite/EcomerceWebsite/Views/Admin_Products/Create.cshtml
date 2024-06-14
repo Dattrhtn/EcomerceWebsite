@@ -103,6 +103,12 @@
             @ViewBag.erAddPr
         </div>
     }
+    @if (TempData["ttPrd"] != null)
+    {
+        <div style="padding: 10px 20px; border-radius: 10px; background-color: darkred; color: white; font-weight: 700;">
+            @TempData["ttPrd"]
+        </div>
+    }
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     <div class="form-group">
@@ -149,7 +155,7 @@
         @Html.LabelFor(model => model.size, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @*@Html.EditorFor(model => model.size, new { htmlAttributes = new { @class = "form-control" } })
-        @Html.ValidationMessageFor(model => model.size, "", new { @class = "text-danger" })*@
+                @Html.ValidationMessageFor(model => model.size, "", new { @class = "text-danger" })*@
             @Html.DropDownListFor(model => model.size, (IEnumerable<SelectListItem>)ViewBag.States, new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.size, "", new { @class = "text-danger" })
         </div>
@@ -194,7 +200,7 @@
                     <a class="size_link_color"></a>
                 </label>
 
-            @Html.ValidationMessageFor(model => model.color, "", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(model => model.color, "", new { @class = "text-danger" })
             </div>
         </div>
     </div>
@@ -226,12 +232,12 @@
     <div class="form-group">
         @Html.LabelFor(model => model.Image, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            <input type="file" name="FileAnh"/>
+            <input type="file" name="FileAnh" />
         </div>
         @*@if(@Model.Image != null)
-        {
-            <img src="@Model.Image" style="width: 80px; height:100px; object-fit:cover"/>
-        }*@
+            {
+                <img src="@Model.Image" style="width: 80px; height:100px; object-fit:cover"/>
+            }*@
     </div>
 
 

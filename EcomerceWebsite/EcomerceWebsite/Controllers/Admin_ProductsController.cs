@@ -76,6 +76,14 @@ namespace EcomerceWebsite.Controllers
         {
             if (ModelState.IsValid)
             {
+                var query = db.Products.Where(a => a.productCode ==  product.productCode && a.size == product.size && a.color == product.color).FirstOrDefault();
+                if(query != null)
+                {
+                    TempData["ttPrd"] = "Sản phẩm đã tồn tại!";
+                    ViewBag.ttPrd = TempData["ttPrd"] as string;
+
+                    return RedirectToAction("Create");
+                }
                 product.ngayTao = DateTime.Now;
                 if(FileAnh is null)
                 {
@@ -141,6 +149,15 @@ namespace EcomerceWebsite.Controllers
             var existingPayment = db.Products.AsNoTracking().FirstOrDefault(p => p.product_id == product.product_id);
             if (ModelState.IsValid)
             {
+
+                var query = db.Products.Where(a => a.productCode == product.productCode && a.size == product.size && a.color == product.color && a.product_id != product.product_id).FirstOrDefault();
+                if (query != null)
+                {
+                    TempData["ttPrd2"] = "Sản phẩm đã tồn tại!";
+                    ViewBag.ttPrd = TempData["ttPrd2"] as string;
+
+                    return RedirectToAction("Edit");
+                }
                 product.ngayTao = existingPayment.ngayTao; // Giữ nguyên giá trị ngayTao
                 if (FileAnh is null)
                 {

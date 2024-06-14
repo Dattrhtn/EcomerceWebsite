@@ -11,17 +11,33 @@ namespace EcomerceWebsite.Controllers
     public class HomeController : Controller
     {
 
-        ModelDB db = new ModelDB();
-        public ActionResult Index()
+    ModelDB db = new ModelDB();
+    private List<Product> GetBestSellingProducts()
+    {
+        var bestSellingProducts = (from product in db.Products
+                                   join orderItem in db.order_item on product.product_id equals orderItem.product_product_id
+                                   group orderItem by product into g
+                                   orderby g.Sum(oi => oi.quantity) descending
+                                   select g.Key).Take(3).ToList();
+
+        return bestSellingProducts;
+    }
+    private List<Product> GetNewestProducts()
+    {
+        var newestProducts = db.Products.OrderByDescending(p => p.ngayTao).Take(3).ToList();
+        return newestProducts;
+    }
+
+    public ActionResult Index()
+    {
+        Session["TramgChu_active"] = "active";
+        if (Session["TramgChu_active"] != null && Session["TramgChu_active"].ToString() == "active")
         {
-            Session["TramgChu_active"] = "active";
-            if (Session["TramgChu_active"] != null && Session["TramgChu_active"].ToString() == "active")
-            {
-                // Xóa các session khác
-                Session.Remove("Contact_active");
-                Session.Remove("Blog_active");
-                Session.Remove("Cuahang_active");
-            }
+            // Xóa các session khác
+            Session.Remove("Contact_active");
+            Session.Remove("Blog_active");
+            Session.Remove("Cuahang_active");
+        }
 
             if (Session["IsAuthenticated"] != null && (bool)Session["IsAuthenticated"])
             {
@@ -37,64 +53,47 @@ namespace EcomerceWebsite.Controllers
             ViewBag.BestSellingProducts = GetBestSellingProducts();
             ViewBag.NewestProducts = GetNewestProducts(); // Thêm dòng này
 
-            return View();
-        }
+        return View();
+    }
 
-        public ActionResult ExportToExcel(string code)
-        {
-            var query = Enumerable.Empty<object>();
-            if (code == "Account")
-                query = db.accounts.ToList();
-            else if (code == "Product")
-                query = db.Products.ToList();
-            else if (code == "Order")
-                query = db.Orders.ToList();
-            else if (code == "Category")
-                query = db.Categories.ToList();
-            else if (code == "Payment")
-                query = db.Payments.ToList();
-            else if (code == "Shipment")
-                query = db.Payments.ToList();
+    public ActionResult ExportToExcel(string code)
+    {
+        var query = Enumerable.Empty<object>();
+        if (code == "Account")
+            query = db.accounts.ToList();
+        else if (code == "Product")
+            query = db.Products.ToList();
+        else if (code == "Order")
+            query = db.Orders.ToList();
+        else if (code == "Category")
+            query = db.Categories.ToList();
+        else if (code == "Payment")
+            query = db.Payments.ToList();
+        else if (code == "Shipment")
+            query = db.Payments.ToList();
 
-            var grid = new GridView();
-            grid.DataSource = query;
-            grid.DataBind();
+        var grid = new GridView();
+        grid.DataSource = query;
+        grid.DataBind();
 
-            Response.ClearContent();
-            Response.Buffer = true;
-            Response.AddHeader("content-disposition", $"attachment; filename=DanhSach{code}.xls");
-            Response.ContentType = "application/ms-excel";
+        Response.ClearContent();
+        Response.Buffer = true;
+        Response.AddHeader("content-disposition", $"attachment; filename=DanhSach{code}.xls");
+        Response.ContentType = "application/ms-excel";
 
-            Response.Charset = "";
-            StringWriter sw = new StringWriter();
-            HtmlTextWriter htw = new HtmlTextWriter(sw);
+        Response.Charset = "";
+        StringWriter sw = new StringWriter();
+        HtmlTextWriter htw = new HtmlTextWriter(sw);
 
-            grid.RenderControl(htw);
+        grid.RenderControl(htw);
 
-            Response.Output.Write(sw.ToString());
-            Response.Flush();
-            Response.End();
+        Response.Output.Write(sw.ToString());
+        Response.Flush();
+        Response.End();
 
             return View("MyView");
         }
     
-
-
-        private List<Product> GetBestSellingProducts()
-        {
-            var bestSellingProducts = (from product in db.Products
-                                        join orderItem in db.order_item on product.product_id equals orderItem.product_product_id
-                                        group orderItem by product into g
-                                        orderby g.Sum(oi => oi.quantity) descending
-                                        select g.Key).Take(3).ToList();
-
-            return bestSellingProducts;
-        }
-        private List<Product> GetNewestProducts()
-        {
-            var newestProducts = db.Products.OrderByDescending(p => p.ngayTao).Take(3).ToList();
-            return newestProducts;
-        }
 
         public ActionResult About()
         {
