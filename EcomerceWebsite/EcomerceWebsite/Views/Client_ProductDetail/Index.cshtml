@@ -150,11 +150,11 @@
                                     <div class="shop__sidebar__color">
                                         @foreach (var item in @ViewBag.listColor)
                                         {
+                                            <input type="radio" id="sp-@item" name="color" value="@item">
                                             <label class="c-@item" for="sp-@item">
-                                                <input type="radio" id="sp-@item" name="color" value="@item">
                                             </label>
                                         }
-                                        </div>
+                                    </div>
                                     </div>
                                 </div>
                             <div class="product__details__cart__option">
