@@ -102,6 +102,29 @@ namespace EcomerceWebsite.Controllers
         public ActionResult Edit([Bind(Include = "shipment_id,shipment_date,address,city,state,country,zip_code,account_account_id")] shipment shipment)
         {
             var existingPayment = db.shipments.AsNoTracking().FirstOrDefault(p => p.shipment_id == shipment.shipment_id);
+            if (shipment.state == "Đã hủy")
+            {
+                if(existingPayment.state != "Đã hủy")
+                {
+
+                    var tmp = Session["order_id"];
+                    var oder_oder_item = (from od in db.Orders
+                                          join ot in db.order_item
+                                          on od.order_id equals ot.order_order_id
+                                          where od.order_id.ToString() == tmp.ToString()
+                                          select ot).ToList();
+
+
+                    foreach (var item in oder_oder_item)
+                    {
+
+                        var product = db.Products.Where(p => p.product_id == item.product_product_id).FirstOrDefault();
+                        product.quantity = product.quantity + Convert.ToInt32(item.quantity);
+                        db.Entry(product).State = EntityState.Modified;
+                        db.SaveChanges();
+                    }
+                }
+            }
             if (ModelState.IsValid)
             {
                 shipment.ngayTao = existingPayment.ngayTao; // Giữ nguyên giá trị ngayTao

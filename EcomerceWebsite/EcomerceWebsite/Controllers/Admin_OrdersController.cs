@@ -87,7 +87,7 @@ namespace EcomerceWebsite.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Order order = db.Orders.Find(id);
+            Order order = db.Orders.Include(o => o.order_item).FirstOrDefault(x => x.order_id == id);
             if (order == null)
             {
                 return HttpNotFound();
@@ -95,6 +95,8 @@ namespace EcomerceWebsite.Controllers
             var itemShipment = db.shipments.FirstOrDefault(p => p.shipment_id == order.Shipment_shipment_id);
             string tmp = ""; 
             tmp = itemShipment.address?.ToString() + " " + itemShipment.city?.ToString() + " " + itemShipment.country?.ToString();
+
+            Session["order_id"] = id;
             ViewBag.address = tmp;
             ViewBag.zipCode = itemShipment.zip_code;
             ViewBag.shipDate = itemShipment.shipment_date;

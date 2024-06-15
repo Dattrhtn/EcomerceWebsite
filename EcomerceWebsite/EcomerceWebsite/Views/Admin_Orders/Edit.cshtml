@@ -6,6 +6,55 @@
 }
 
 <h2>Edit</h2>
+<style>
+    .product_color {
+        text-align: center;
+    }
+
+        .product_color label {
+            height: 30px;
+            width: 30px;
+            border-radius: 50%;
+            position: relative;
+            margin-right: 10px;
+            margin-bottom: 0;
+            display: inline-block;
+            cursor: pointer;
+            padding: 10px;
+            border: 1px solid #e5dcdc;
+        }
+
+    label input {
+        display: none;
+    }
+    td label.c-3 {
+        background: #e8bac4;
+    }
+
+    td label.c-2 {
+        background: #ffff;
+    }
+
+    td label.c-4 {
+        background: red;
+    }
+
+    td label.c-1 {
+        background: #0b090c;
+    }
+
+    td label.c-6 {
+        background: #e5ddd2;
+    }
+
+    td label.c-5 {
+        background: #6c827a;
+    }
+
+    td label.c-7 {
+        background: #636068;
+    }
+</style>
 
 @using (Html.BeginForm())
 {
@@ -96,6 +145,36 @@
                  }, new { @class = "form-control" })
             </div>
         </div>*@
+
+    <table class="table table-bordered table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th>Tên sản phẩm</th>
+                <th>Màu sắc</th>
+                <th>Kích cỡ</th>
+                <th>Số lượng</th>
+                <th>Đơn giá</th>
+                <th>Tổng giá</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.order_item)
+            {
+                <tr>
+                    <td>@item.Product.name</td>
+                    <td class="product_color" style="width: 100px">
+                        <label class="c-@item.Product.color" for="sp-@item.Product.color">
+                           <input type="radio" id="sp-@item.Product.color" name="color" value="@item.Product.color">
+                        </label>
+                    </td>
+                    <td>@item.Product.size</td>
+                    <td>@item.quantity</td>
+                    <td>@String.Format(new System.Globalization.CultureInfo("en-US"), "{0:C}", item.price)</td>
+                    <td>@String.Format(new System.Globalization.CultureInfo("en-US"), "{0:C}", item.quantity * item.price)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </div>
 }
 
