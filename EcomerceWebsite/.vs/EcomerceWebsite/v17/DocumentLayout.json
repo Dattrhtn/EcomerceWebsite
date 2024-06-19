@@ -1,34 +1,10 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\EcomerceWebsite2\\EcomerceWebsite\\EcomerceWebsite\\",
+  "WorkspaceRootPath": "E:\\PTUDTMDT\\LastProject\\EcomerceWebsite\\EcomerceWebsite\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{125AE78A-DC5C-4149-851A-5FD6DA087084}|EcomerceWebsite\\EcomerceWebsite.csproj|d:\\ecomercewebsite2\\ecomercewebsite\\ecomercewebsite\\ecomercewebsite\\controllers\\admin_shipmentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{125AE78A-DC5C-4149-851A-5FD6DA087084}|EcomerceWebsite\\EcomerceWebsite.csproj|solutionrelative:ecomercewebsite\\controllers\\admin_shipmentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{125AE78A-DC5C-4149-851A-5FD6DA087084}|EcomerceWebsite\\EcomerceWebsite.csproj|d:\\ecomercewebsite2\\ecomercewebsite\\ecomercewebsite\\ecomercewebsite\\controllers\\client_danhsachorderscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{125AE78A-DC5C-4149-851A-5FD6DA087084}|EcomerceWebsite\\EcomerceWebsite.csproj|solutionrelative:ecomercewebsite\\controllers\\client_danhsachorderscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{125AE78A-DC5C-4149-851A-5FD6DA087084}|EcomerceWebsite\\EcomerceWebsite.csproj|d:\\ecomercewebsite2\\ecomercewebsite\\ecomercewebsite\\ecomercewebsite\\controllers\\admin_orderscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{125AE78A-DC5C-4149-851A-5FD6DA087084}|EcomerceWebsite\\EcomerceWebsite.csproj|solutionrelative:ecomercewebsite\\controllers\\admin_orderscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{125AE78A-DC5C-4149-851A-5FD6DA087084}|EcomerceWebsite\\EcomerceWebsite.csproj|d:\\ecomercewebsite2\\ecomercewebsite\\ecomercewebsite\\ecomercewebsite\\views\\admin_shipments\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{125AE78A-DC5C-4149-851A-5FD6DA087084}|EcomerceWebsite\\EcomerceWebsite.csproj|solutionrelative:ecomercewebsite\\views\\admin_shipments\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{125AE78A-DC5C-4149-851A-5FD6DA087084}|EcomerceWebsite\\EcomerceWebsite.csproj|d:\\ecomercewebsite2\\ecomercewebsite\\ecomercewebsite\\ecomercewebsite\\views\\client_danhsachorders\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{125AE78A-DC5C-4149-851A-5FD6DA087084}|EcomerceWebsite\\EcomerceWebsite.csproj|E:\\PTUDTMDT\\LastProject\\EcomerceWebsite\\EcomerceWebsite\\ecomercewebsite\\views\\client_danhsachorders\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{125AE78A-DC5C-4149-851A-5FD6DA087084}|EcomerceWebsite\\EcomerceWebsite.csproj|solutionrelative:ecomercewebsite\\views\\client_danhsachorders\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{125AE78A-DC5C-4149-851A-5FD6DA087084}|EcomerceWebsite\\EcomerceWebsite.csproj|d:\\ecomercewebsite2\\ecomercewebsite\\ecomercewebsite\\ecomercewebsite\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
-      "RelativeMoniker": "D:0:0:{125AE78A-DC5C-4149-851A-5FD6DA087084}|EcomerceWebsite\\EcomerceWebsite.csproj|solutionrelative:ecomercewebsite\\web.config||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{125AE78A-DC5C-4149-851A-5FD6DA087084}|EcomerceWebsite\\EcomerceWebsite.csproj|d:\\ecomercewebsite2\\ecomercewebsite\\ecomercewebsite\\ecomercewebsite\\views\\shared\\_layoutpageadmin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{125AE78A-DC5C-4149-851A-5FD6DA087084}|EcomerceWebsite\\EcomerceWebsite.csproj|solutionrelative:ecomercewebsite\\views\\shared\\_layoutpageadmin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,7 +18,7 @@
           "Children": [
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
             },
             {
               "$type": "Bookmark",
@@ -54,7 +30,7 @@
             },
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
             }
           ]
         },
@@ -64,103 +40,23 @@
           "Children": [
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
             },
             {
               "$type": "Bookmark",
-              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Admin_shipmentsController.cs",
-              "DocumentMoniker": "D:\\EcomerceWebsite2\\EcomerceWebsite\\EcomerceWebsite\\EcomerceWebsite\\Controllers\\Admin_shipmentsController.cs",
-              "RelativeDocumentMoniker": "EcomerceWebsite\\Controllers\\Admin_shipmentsController.cs",
-              "ToolTip": "D:\\EcomerceWebsite2\\EcomerceWebsite\\EcomerceWebsite\\EcomerceWebsite\\Controllers\\Admin_shipmentsController.cs",
-              "RelativeToolTip": "EcomerceWebsite\\Controllers\\Admin_shipmentsController.cs",
-              "ViewState": "AQIAAGAAAAAAAAAAAAAowHUAAAAUAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-15T17:44:23.147Z",
-              "IsPinned": true,
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Client_DanhsachOrdersController.cs",
-              "DocumentMoniker": "D:\\EcomerceWebsite2\\EcomerceWebsite\\EcomerceWebsite\\EcomerceWebsite\\Controllers\\Client_DanhsachOrdersController.cs",
-              "RelativeDocumentMoniker": "EcomerceWebsite\\Controllers\\Client_DanhsachOrdersController.cs",
-              "ToolTip": "D:\\EcomerceWebsite2\\EcomerceWebsite\\EcomerceWebsite\\EcomerceWebsite\\Controllers\\Client_DanhsachOrdersController.cs",
-              "RelativeToolTip": "EcomerceWebsite\\Controllers\\Client_DanhsachOrdersController.cs",
-              "ViewState": "AQIAAC0AAAAAAAAAAAAYwDkAAAA2AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-15T17:30:44.168Z",
-              "IsPinned": true,
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Edit.cshtml",
-              "DocumentMoniker": "D:\\EcomerceWebsite2\\EcomerceWebsite\\EcomerceWebsite\\EcomerceWebsite\\Views\\Admin_shipments\\Edit.cshtml",
-              "RelativeDocumentMoniker": "EcomerceWebsite\\Views\\Admin_shipments\\Edit.cshtml",
-              "ToolTip": "D:\\EcomerceWebsite2\\EcomerceWebsite\\EcomerceWebsite\\EcomerceWebsite\\Views\\Admin_shipments\\Edit.cshtml",
-              "RelativeToolTip": "EcomerceWebsite\\Views\\Admin_shipments\\Edit.cshtml",
-              "ViewState": "AQIAABsAAAAAAAAAAIAwwDEAAAAWAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-06-15T18:07:52.449Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
               "Title": "Details.cshtml",
-              "DocumentMoniker": "D:\\EcomerceWebsite2\\EcomerceWebsite\\EcomerceWebsite\\EcomerceWebsite\\Views\\Client_DanhsachOrders\\Details.cshtml",
+              "DocumentMoniker": "E:\\PTUDTMDT\\LastProject\\EcomerceWebsite\\EcomerceWebsite\\EcomerceWebsite\\Views\\Client_DanhsachOrders\\Details.cshtml",
               "RelativeDocumentMoniker": "EcomerceWebsite\\Views\\Client_DanhsachOrders\\Details.cshtml",
-              "ToolTip": "D:\\EcomerceWebsite2\\EcomerceWebsite\\EcomerceWebsite\\EcomerceWebsite\\Views\\Client_DanhsachOrders\\Details.cshtml",
+              "ToolTip": "E:\\PTUDTMDT\\LastProject\\EcomerceWebsite\\EcomerceWebsite\\EcomerceWebsite\\Views\\Client_DanhsachOrders\\Details.cshtml",
               "RelativeToolTip": "EcomerceWebsite\\Views\\Client_DanhsachOrders\\Details.cshtml",
-              "ViewState": "AQIAAHoAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "ViewState": "AQIAAHcAAAAAAAAAAAAAAIAAAAARAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-06-15T17:58:58.45Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Admin_OrdersController.cs",
-              "DocumentMoniker": "D:\\EcomerceWebsite2\\EcomerceWebsite\\EcomerceWebsite\\EcomerceWebsite\\Controllers\\Admin_OrdersController.cs",
-              "RelativeDocumentMoniker": "EcomerceWebsite\\Controllers\\Admin_OrdersController.cs",
-              "ToolTip": "D:\\EcomerceWebsite2\\EcomerceWebsite\\EcomerceWebsite\\EcomerceWebsite\\Controllers\\Admin_OrdersController.cs",
-              "RelativeToolTip": "EcomerceWebsite\\Controllers\\Admin_OrdersController.cs",
-              "ViewState": "AQIAAFIAAAAAAAAAAAAkwGIAAAAkAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-15T17:33:55.787Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Web.config",
-              "DocumentMoniker": "D:\\EcomerceWebsite2\\EcomerceWebsite\\EcomerceWebsite\\EcomerceWebsite\\Web.config",
-              "RelativeDocumentMoniker": "EcomerceWebsite\\Web.config",
-              "ToolTip": "D:\\EcomerceWebsite2\\EcomerceWebsite\\EcomerceWebsite\\EcomerceWebsite\\Web.config",
-              "RelativeToolTip": "EcomerceWebsite\\Web.config",
-              "ViewState": "AQIAADYAAAAAAAAAAAAAAE4AAABDAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000601|",
-              "WhenOpened": "2024-06-15T17:22:33.329Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "_LayoutPageAdmin.cshtml",
-              "DocumentMoniker": "D:\\EcomerceWebsite2\\EcomerceWebsite\\EcomerceWebsite\\EcomerceWebsite\\Views\\Shared\\_LayoutPageAdmin.cshtml",
-              "RelativeDocumentMoniker": "EcomerceWebsite\\Views\\Shared\\_LayoutPageAdmin.cshtml",
-              "ToolTip": "D:\\EcomerceWebsite2\\EcomerceWebsite\\EcomerceWebsite\\EcomerceWebsite\\Views\\Shared\\_LayoutPageAdmin.cshtml",
-              "RelativeToolTip": "EcomerceWebsite\\Views\\Shared\\_LayoutPageAdmin.cshtml",
-              "ViewState": "AQIAACUAAAAAAAAAAAAAwKMAAAAdAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-06-15T17:05:08.541Z",
               "EditorCaption": ""
             }
           ]
