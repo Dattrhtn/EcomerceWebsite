@@ -67,6 +67,12 @@ namespace EcomerceWebsite.Controllers
         {
             if (Session["IsAuthenticated"] != null && (bool)Session["IsAuthenticated"])
             {
+                var ac_id = Convert.ToInt32(Session["account_id"] as string);
+                var currentac = db.accounts.FirstOrDefault(ac => ac.account_id == ac_id);
+                if (currentac.role == 0)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
                 var latestFourYears = Enumerable.Range(DateTime.Now.Year - 3, 4);
                 var topThreeYears = db.Orders
                  .GroupBy(o => o.ngayTao.Year)

@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "check";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>check</h2>
+
+@{
+    ViewBag.Title = "Gửi Form đến Các Controller Khác Nhau";
+}
+
+<h2>Gửi Form đến Các Controller Khác Nhau</h2>
+
+<form id="myForm" method="post">
+    <label for="inputData">Nhập dữ liệu:</label>
+    <input type="text" id="inputData" name="inputData" />
+
+    <button type="button" onclick="submitForm('/Home/index')">Gửi đến Controller 1</button>
+    <button type="button" onclick="submitForm('/Client_Cart/Index')">Gửi đến Controller 2</button>
+</form>
+
+<script type="text/javascript">
+    function submitForm(action) {
+        var form = document.getElementById('myForm');
+        form.action = action;
+        form.submit();
+    }
+</script>

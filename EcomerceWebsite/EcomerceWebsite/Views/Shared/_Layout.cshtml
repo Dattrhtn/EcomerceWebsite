@@ -32,14 +32,14 @@
             color: #fff;
             font-size: 14px;
             position: absolute;
-            right: -15px;
-            top: -15px;
+            right: -10px;
+            top: -10px;
             border-radius: 50%;
             background-color: palevioletred;
             z-index: 999;
-            width: 30px;
-            height: 30px;
-            line-height: 30px;
+            width: 25px;
+            height: 25px;
+            line-height: 25px;
             text-align: center;
         }
 
@@ -240,7 +240,7 @@
                 <div class="col-lg-3 col-md-3">
                     <div class="header__nav__option">
                         <a href="#" data-toggle="tooltip" title="Tìm kiếm" class="search-switch"><img src="../../img/icon/search.png" alt=""></a>
-                        <a href="#" data-toggle="tooltip" title="Yêu thích"><img src="../../img/icon/heart.png" alt=""></a>
+                        <a href="/Client_Wishlist/Index" data-toggle="tooltip" title="Yêu thích"><img src="../../img/icon/heart.png" alt=""><span>@Session["numberOfWishlist"]</span></a>
                         <a href="/Client_Cart/Index" data-toggle="tooltip" title="Giỏ hàng"><img src="../../img/icon/cart.png" alt=""> <span>@Session["numberOfCart"]</span></a>
                     </div>
                 </div>

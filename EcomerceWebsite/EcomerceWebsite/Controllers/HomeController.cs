@@ -44,10 +44,12 @@ namespace EcomerceWebsite.Controllers
                 ViewBag.CurentAccount = Session["name"] as string;
                 var account_id = int.Parse(Session["account_id"] as string);
                 Session["numberOfCart"] = db.carts.Where(c => c.account_account_id == account_id).Count();
+                Session["numberOfWishlist"] = db.wishlists.Where(w => w.account_account_id == account_id).Count();
             }
             else
             {
                 Session["numberOfCart"] = 0;
+                Session["numberOfWishlist"] = 0;
             }
 
             ViewBag.BestSellingProducts = GetBestSellingProducts();

@@ -34,6 +34,7 @@ namespace EcomerceWebsite.Controllers
             {
                 var account_id = int.Parse(Session["account_id"] as string);
                 Session["numberOfCart"] = db.carts.Where(c => c.account_account_id == account_id).Count();
+                Session["numberOfWishlist"] = db.wishlists.Where(w => w.account_account_id == account_id).Count();
                 List<Product> products_Search = TempData["products_Search"] as List<Product>;
                 List<Product> productsByCategory = TempData["products_ByCategory"] as List<Product>;
                 List<Product> productsBySize = TempData["products_BySize"] as List<Product>;
@@ -89,9 +90,9 @@ namespace EcomerceWebsite.Controllers
 
                 return View(paginatedProducts);
             }
-                return RedirectToAction("Index", "Login");
+            return RedirectToAction("Index", "Login");
 
-            
+
         }
 
         // GET: Client_Danhsachsanpham/Details/5
@@ -232,9 +233,6 @@ namespace EcomerceWebsite.Controllers
                     db.Entry(check_product_ID).State = EntityState.Modified;
                     db.SaveChanges();
                 }
-                //product.quantity = product.quantity - 1;
-                //db.Entry(product).State = EntityState.Modified;
-                //db.SaveChanges();
             }
             catch (Exception e)
             {
@@ -243,6 +241,33 @@ namespace EcomerceWebsite.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult AddToWishlist(int? product_id)
+        {
+            try
+            {
+                var current_product = db.Products.FirstOrDefault(p => p.product_id == product_id);
+                var account_id = int.Parse(Session["account_id"] as string);
+                var check_product_ID = db.wishlists.Where(w => w.product_product_id == product_id && w.account_account_id == account_id).FirstOrDefault();
+                if (check_product_ID == null)
+                {
+                    wishlist new_wishlist = new wishlist();
+                    new_wishlist.account_account_id = account_id;
+                    new_wishlist.product_product_id = product_id;
+                    new_wishlist.ngayTao = DateTime.Now;
+
+                    db.wishlists.Add(new_wishlist);
+                    db.SaveChanges();
+
+                    var dswl = new List<int>();
+                    dswl.Add(product_id ?? 0);
+                }
+            }
+            catch (Exception e)
+            {
+                TempData["MessAddCateError"] = "Có lỗi trong quá trình thêm sản phẩm yêu thích!" + e.InnerException?.Message;
+            }
+            return RedirectToAction("Index");
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)

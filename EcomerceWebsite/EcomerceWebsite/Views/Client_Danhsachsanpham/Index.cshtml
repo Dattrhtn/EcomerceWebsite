@@ -144,7 +144,7 @@
                                                 <a class="size_link_color" href="/Client_Danhsachsanpham/SearchbyColor/?Color=1"></a>
                                                 <input type="radio" id="sp-1">
                                             </label>
-                                            <label class="c-2" for="sp-2" style=" background: #4fca9d">
+                                            <label class="c-2" for="sp-2" style=" background: #6c827a">
                                                 <a class="size_link_color" href="/Client_Danhsachsanpham/SearchbyColor/?Color=5"></a>
                                                 <input type="radio" id="sp-2">
                                             </label>
@@ -201,17 +201,15 @@
                             <div class="product__item">
                                 <div class="product__item__pic set-bg" data-setbg="@item.Image" style="border: 0.5px solid #efefef; box-shadow:rgb(131 129 129 / 30%) 10px 10px 35px ; ">
                                     <a href="/Client_ProductDetail/Index/?product_id=@item.product_id" class="product-detail"></a>
+                                    <ul class="product__hover">
+                                        <li><a href="/Client_Danhsachsanpham/AddToWishlist?product_id=@item.product_id"><img src="../../img/icon/heart.png" alt=""></a></li>
+                                        <li><a href="#"><img src="../../img/icon/compare.png" alt=""> <span>So sánh</span></a></li>
+                                        <li><a href="#"><img src="../../img/icon/search.png" alt=""></a></li>
+                                    </ul>
                                 </div>
                                 <div class="product__item__text">
                                     <h6>@item.name</h6>
                                     <a href="/Client_Danhsachsanpham/AddToCart/?product_id=@item.product_id" class="add-cart">+ Thêm vào giỏ hàng</a>
-                                    <div class="rating">
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star-o"></i>
-                                        <i class="fa fa-star-o"></i>
-                                    </div>
                                     <h5>@item.price$</h5>
                                     <div class="product__color__select">
                                         <label for="pc-4">

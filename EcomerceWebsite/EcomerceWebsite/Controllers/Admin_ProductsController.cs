@@ -21,6 +21,12 @@ namespace EcomerceWebsite.Controllers
         {
             if (Session["IsAuthenticated"] != null && (bool)Session["IsAuthenticated"])
             {
+                var ac_id = Convert.ToInt32(Session["account_id"] as string);
+                var currentac = db.accounts.FirstOrDefault(ac => ac.account_id == ac_id);
+                if (currentac.role == 0)
+                {
+                    return RedirectToAction("Index", "Home");
+                }
                 var products = db.Products.Include(p => p.Category);
                 var totalItems = products.ToList().Count;
 

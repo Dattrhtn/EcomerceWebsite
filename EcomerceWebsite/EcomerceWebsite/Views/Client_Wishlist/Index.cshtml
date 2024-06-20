@@ -1,7 +1,6 @@
-﻿@model IEnumerable<EcomerceWebsite.Models.cart>
-
+﻿
 @{
-    ViewBag.Title = "Giỏ hàng";
+    ViewBag.Title = "Sản phẩm yêu thích";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <style>
@@ -12,6 +11,7 @@
     th, td, .quantity__item {
         text-align: center;
     }
+
     button.button_submit_form {
         color: #ffffff;
         font-size: 14px;
@@ -24,21 +24,24 @@
         background: #111111;
         border-color: #111111;
     }
+
     .product_color {
-        text-align:center;
+        text-align: center;
     }
-    .product_color label {
-        height: 30px;
-        width: 30px;
-        border-radius: 50%;
-        position: relative;
-        margin-right: 10px;
-        margin-bottom: 0;
-        display: inline-block;
-        cursor: pointer;
-        padding: 10px;
-        border: 1px solid #e5dcdc;
-    }
+
+        .product_color label {
+            height: 30px;
+            width: 30px;
+            border-radius: 50%;
+            position: relative;
+            margin-right: 10px;
+            margin-bottom: 0;
+            display: inline-block;
+            cursor: pointer;
+            padding: 10px;
+            border: 1px solid #e5dcdc;
+        }
+
     .product_size label {
         color: #111111;
         font-size: 15px;
@@ -51,9 +54,11 @@
         margin-right: 5px;
         cursor: pointer;
     }
+
     label input {
         display: none;
     }
+
     td label.c-3 {
         background: #e8bac4;
     }
@@ -65,6 +70,7 @@
     td label.c-4 {
         background: red;
     }
+
     td label.c-1 {
         background: #0b090c;
     }
@@ -94,12 +100,18 @@
         padding: 10px; /* Adjust padding as needed */
         cursor: pointer;
     }
+
     .shopping__cart__table table tbody tr .product_color {
-        width: 100px !important;
+        width: 200px !important;
     }
-    .continue__btn:hover,
-    .cart__total:hover{
-        opacity: 0.8;
+
+    .shopping__cart__table table tbody tr td.cart__price {
+        color: #f16868;
+        font-size: 24px;
+    }
+
+    .continue__btn:hover {
+        opacity: 0.7;
     }
 </style>
 <section class="breadcrumb-option">
@@ -111,7 +123,7 @@
                     <div class="breadcrumb__links">
                         <a href="/Home/Index">Trang chủ</a>
                         <a href="/Client_Danhsachsanpham/Index">Cửa hàng</a>
-                        <span>Giỏ hàng</span>
+                        <span>Sản phẩm yêu thích</span>
                     </div>
                 </div>
             </div>
@@ -123,68 +135,55 @@
 <section class="shopping-cart spad">
     <div class="container" style="max-width: 90%">
         <div class="row">
-            <div class="col-lg-9">
+            <div class="col-lg-11">
                 <div class="shopping__cart__table">
                     <form id="searchForm1" method="post" action="/Client_Cart/Update_Cart">
                         <table>
                             <thead>
                                 <tr>
                                     <th>Sản phẩm</th>
-                                    <th>Số lượng</th>
                                     <th>Màu sắc</th>
                                     <th>Kích thước</th>
-                                    <th>Tổng tiền</th>
+                                    <th></th>
                                     <th></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach (var item in Model)
-                                {                              
+                                {
                                     <tr>
-                                        <td class="product__cart__item">
+                                        <td class="product__cart__item" style="width: 600px">
                                             <div class="product__cart__item__pic">
                                                 <img class="cart__image__product" src="@item.Product.Image" alt="@item.Product.name">
                                             </div>
                                             <div class="product__cart__item__text">
-                                                <input style="display: none" id="cart_id" name="cart_id" value="@item.cart_id" />
+                                                <input style="display: none" id="cart_id" name="cart_id" />
                                                 <h6>@item.Product.name</h6>
                                                 <h5>@item.Product.price</h5>
                                             </div>
                                         </td>
-                                        <td class="quantity__item">
-                                            <div class="quantity" style="display: flex; justify-content: center; align-items: center; }">
-                                                <div class="pro-qty-2">
-                                                    <input id="quantity_value" name="quantity_value" type="text" value="@item.quantity">
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td class="product_color" style="width: 100px">
+                                        <td class="product_color">
                                             <label class="c-@item.Product.color" for="sp-@item.Product.color">
-                                                <input type="radio" id="sp-@item.Product.color" name="color" value="@item.Product.color">
+                                                <input type="radio" id="sp-@item.Product.color" name="color">
                                             </label>
                                         </td>
                                         <td class="product_size">
                                             <label for="@item.Product.size">
                                                 @item.Product.size
-                                                <input type="radio" id="@item..Product.size" name="size" value="@item.Product.size">
+                                                <input type="radio" id="@item..Product.size" name="size">
                                             </label>
                                         </td>
-                                        <td class="cart__price">$  @(@item.quantity * @item.Product.price)</td>
-                                        <td class="cart__close"><a href="/Client_Cart/Xoa/?id=@item.cart_id"><i class="fa fa-close"></i></a></td>
+                                        <td class="cart__price"><i class="fa fa-heart"></i></td>
+                                        <td class="cart__close"><a href="/Client_Wishlist/Xoa/?id=@item.wishlist_id"><i class="fa fa-close"></i></a></td>
                                     </tr>
                                 }
                                 <tr>
-                                    <td>
+                                    <td colspan="5" style="text-align: center">
                                         <div class="continue__btn">
                                             <a href="/Client_Danhsachsanpham/Index">Tiếp tục mua sắm</a>
                                         </div>
                                     </td>
                                     <td>
-                                    </td>
-                                    <td>
-                                        <div class="continue__btn update__btn" style="width: 300px">
-                                            <button class="button_submit_form" type="submit"><i class="fa fa-spinner"></i> Cập nhật</button>
-                                        </div>
                                     </td>
                                 </tr>
                             </tbody>
@@ -192,16 +191,7 @@
                     </form>
                 </div>
             </div>
-            <div class="col-lg-3">
-                <div class="cart__total">
-                    <h6>Tổng thanh toán</h6>
-                    <ul>
-                        <li>Tạm tính <span>$ @ViewBag.totalPrices</span></li>
-                        <li>Tổng <span>$ @ViewBag.totalPrices</span></li>
-                    </ul>
-                    <a href="/Client_Cart/Checkout" class="primary-btn">Thanh toán</a>
-                </div>
-            </div>
         </div>
     </div>
 </section>
+

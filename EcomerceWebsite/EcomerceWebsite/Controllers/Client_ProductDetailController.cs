@@ -37,6 +37,7 @@ namespace EcomerceWebsite.Controllers
                 }
                 var account_id = int.Parse(Session["account_id"] as string);
                 Session["numberOfCart"] = db.carts.Where(c => c.account_account_id == account_id).Count();
+                Session["numberOfWishlist"] = db.wishlists.Where(w => w.account_account_id == account_id).Count();
                 var product = db.Products.Where(p => p.product_id == product_id).FirstOrDefault();
                 if (product != null)
                 {
@@ -84,7 +85,6 @@ namespace EcomerceWebsite.Controllers
             var product = db.Products.Where(p => p.color == color && p.size == selected_size && p.productCode == productCode).FirstOrDefault();
             if (product == null)
             {
-                //product = db.Products.Where(p => p.product_id == productId).FirstOrDefault();
                 TempData["messeage_outOfStock"] = "Kích thước và màu đã hết hàng. Vui lòng chọn kích thước và màu khác!";
                 return RedirectToAction("Index", new { product_id = productId });
             }

@@ -35,6 +35,7 @@ namespace EcomerceWebsite.Controllers
                 }
                 var account_id = int.Parse(Session["account_id"] as string);
                 Session["numberOfCart"] = db.carts.Where(c => c.account_account_id == account_id).Count();
+                Session["numberOfWishlist"] = db.wishlists.Where(w => w.account_account_id == account_id).Count();
                 var carts = db.carts.Include(c => c.account).Include(c => c.Product).Where(c => c.account_account_id == account_id);
 
                 var Prices = from cart in db.carts
@@ -134,21 +135,12 @@ namespace EcomerceWebsite.Controllers
             cart cart = db.carts.Where(c => c.cart_id == id && c.account_account_id == current_account).FirstOrDefault();
             if (cart != null)
             {
-                //var current_product = db.Products.Where(p => p.product_id == cart.product_product_id).FirstOrDefault();
-                //if (current_product != null)
-                //{
-                //    current_product.quantity = current_product.quantity + cart.quantity;
-                //    db.Entry(current_product).State = EntityState.Modified;
-                //}
                 db.carts.Remove(cart);
 
                 db.SaveChanges();
             }
-
-
             // Lấy thông tin về controller hiện tại
             string currentController = ControllerContext.RouteData.Values["controller"].ToString();
-
             // Chuyển hướng đến action Index của controller hiện tại
             return RedirectToAction("Index", currentController);
         }

@@ -11,6 +11,7 @@ namespace EcomerceWebsite.Models
     {
         [Key]
         [Column(Order = 0)]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int wishlist_id { get; set; }
 
         [Key]

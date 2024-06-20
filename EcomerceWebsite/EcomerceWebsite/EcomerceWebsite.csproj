@@ -169,6 +169,7 @@
     <Compile Include="Controllers\Admin_ProductsController.cs" />
     <Compile Include="Controllers\Admin_shipmentsController.cs" />
     <Compile Include="Controllers\Client_ProductDetailController.cs" />
+    <Compile Include="Controllers\Client_WishlistController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\LogoutController.cs" />
@@ -437,6 +438,8 @@
     <Content Include="Views\Client_Account\Index.cshtml" />
     <Content Include="Views\Client_ProductDetail\AddToCart.cshtml" />
     <Content Include="Views\Home\Details.cshtml" />
+    <Content Include="Views\Client_Wishlist\Index.cshtml" />
+    <Content Include="Views\Client_Wishlist\check.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
